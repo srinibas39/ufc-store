@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { CartPage } from "./pages/CartPage";
 import { Home } from "./pages/Home";
+import { LoginPage } from "./pages/LoginPage";
 import { PreviewPage } from "./pages/PreviewPage";
 import { Products } from "./pages/Products";
 import { WishListPage } from "./pages/WishListPage";
@@ -15,6 +16,7 @@ const App = () => {
       <Route path="/preview" element={<PreviewPage />} />
       <Route path="/wishlist" element={<WishListPage />} />
       <Route path="/cart" element={<CartPage />} />
+      <Route path="/login" element={<LoginPage/>}/>
     </Routes>
   </>
 }
