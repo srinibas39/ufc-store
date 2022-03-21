@@ -345,25 +345,23 @@
 
 
   position: absolute;
-  bottom: 19px;
+  bottom: 5px;
   left: 12px;
   width: 90%;
   height: 2rem;
   border: none;
   background-color: var(--secondary-color);
   cursor: pointer;
-  border-bottom: 4px solid var(--primary-color)
+  border-bottom: 4px solid var(--primary-color);
+  transition: transform 0.2s;
+  
 }
 .display-container button:hover{
-  position: absolute;
-  bottom: 0px;
-  left: 0rem;
-  width: 100%;
-  height: 2rem;
-  border: none;
-  background-color:  var(--secondary-color);
-  cursor: pointer;
-  border-bottom: 4px solid var(--primary-color)
+ 
+  transform: scale(1.1,1.2);
+  
+  
+  
 }
 
 /* Login */
@@ -584,23 +582,13 @@ footer{
   position: absolute;
   width: 20rem;
   padding: 0 1rem;
-  top: 26rem;
+  top: 26.7rem;
   left: 16px;
   cursor: pointer;
+  transition: transform 0.2s;
 }
 .card-img div:hover{
-  background-color: var(--secondary-color);
-  display: flex;
-  height: 4rem;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 4px solid var(--primary-color);
-  position: absolute;
-  width: 100%;
-  padding: 0 1rem;
-  left: 0px;
-  top: 27.3rem;
-  cursor: pointer;
+  transform: scale(1.1,1.3);
 }
 
 

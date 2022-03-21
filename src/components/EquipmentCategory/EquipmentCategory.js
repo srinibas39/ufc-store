@@ -25,7 +25,7 @@ export const EquipmentCategory = () => {
                 <div class="card-img">
                     <img src={require("../../images/ShopEquipment.png")} alt="loading" />
                     <div>
-                        <p>SHOP eQUIPMENT</p>
+                        <p>SHOP EQUIPMENT</p>
                         <span class="material-icons-outlined"> trending_flat </span>
                     </div>
                 </div>
