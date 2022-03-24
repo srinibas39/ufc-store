@@ -22,6 +22,6 @@ export const ProductSection=()=>{
     },[])
     return  <section class="product-section">
         <Filter/>
-        <AllProducts/>
+        <AllProducts allProducts={allProducts}/>
     </section>
 }
