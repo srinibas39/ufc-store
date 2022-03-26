@@ -1,29 +1,20 @@
 import axios from "axios";
 import { useState } from "react";
+import { useAuth } from "../../context/AuthContext";
 
-export const Signup = () => {
+export const Signup = (e) => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
     password: "",
   });
-  console.log(formData);
+  const {handleSignup}=useAuth()
+  
+  const handleClick=()=>{
+    handleSignup(formData)
+  }
 
-  const handleSubmit = async (e) => {
-   e.preventDefault();
-    try {
-      const res = await axios.post(
-        "/api/auth/signup",
-        JSON.stringify(formData)
-      );
-      // save the JWT token in the server
-      localStorage.setItem("token",res.data.encodedToken)
-      console.log(res);
-    } catch (error) {
-      console.log(error);
-    }
-  };
   return (
     <>
       <div class="login-container">
@@ -79,7 +70,7 @@ export const Signup = () => {
               <label for="remember-me">I accept all terms and condition</label>
             </div>
           </div>
-          <button class="btn-login" onClick={() => handleSubmit()}>
+          <button class="btn-login" onClick={handleClick}>
             Create new Account
           </button>
           <div class="create-new">

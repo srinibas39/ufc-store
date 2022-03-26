@@ -9,7 +9,7 @@ import { Products } from "./pages/Products";
 import { WishListPage } from "./pages/WishListPage";
 
 
-const App = () => {
+export  const App = () => {
   return <>
     <Routes>
       <Route path="/" element={<Home />} />
@@ -24,4 +24,3 @@ const App = () => {
   </>
 }
 
-export default App;

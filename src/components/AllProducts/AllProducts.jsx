@@ -1,5 +1,5 @@
+import axios from "axios";
 import { useState } from "react";
-import { AddToCartButton } from "../AddToCartButton/AddToCartButton";
 
 export const AllProducts = ({ allProducts }) => {
   const discountPrice = (price, discount) => {
@@ -9,6 +9,8 @@ export const AllProducts = ({ allProducts }) => {
   };
   const [countCartItems, setCountCartItems] = useState(0);
   console.log(countCartItems);
+  
+
   return (
     <div class="all-products">
       <h1>
@@ -43,9 +45,9 @@ export const AllProducts = ({ allProducts }) => {
                         Preview
                       </a>
                     </button>
-                    <AddToCartButton countCartItems={countCartItems} setCountCartItems={setCountCartItems} />
-
-                    <button>Remove from Wishlist</button>
+                    <button>
+                      <a class="link black">Add to Cart</a>
+                    </button>
                   </div>
                 </div>
               </div>

@@ -4,7 +4,7 @@ import { AllProducts } from "../AllProducts/AllProducts"
 import { Filter } from "../Filter/Filter"
 
 export const ProductSection=()=>{
-    const [allProducts,setAllProducts]=useState(null);
+    const [allProducts,setAllProducts]=useState([]);
    
     useEffect(()=>{
       (async()=>{

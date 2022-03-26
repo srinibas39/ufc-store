@@ -1,17 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import App from "./App";
+import { App } from "./App";
+import { AuthProvider } from "./context/AuthContext";
+import { CartProvider } from "./context/CartContext";
 import { makeServer } from "./server";
 
 // Call make Server
 makeServer();
 
 ReactDOM.render(
+
   <BrowserRouter>
-    <React.StrictMode>
+    <AuthProvider>
       <App />
-    </React.StrictMode>
-  </BrowserRouter>,
+    </AuthProvider>
+  </BrowserRouter>
+  ,
   document.getElementById("root")
 );
