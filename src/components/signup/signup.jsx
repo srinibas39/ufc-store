@@ -1,6 +1,6 @@
-import axios from "axios";
+
 import { useState } from "react";
-import { useAuth } from "../../context/AuthContext";
+
 
 export const Signup = (e) => {
   const [formData, setFormData] = useState({
@@ -9,12 +9,7 @@ export const Signup = (e) => {
     email: "",
     password: "",
   });
-  const {handleSignup}=useAuth()
-  
-  const handleClick=()=>{
-    handleSignup(formData)
-  }
-
+ 
   return (
     <>
       <div class="login-container">
@@ -70,7 +65,7 @@ export const Signup = (e) => {
               <label for="remember-me">I accept all terms and condition</label>
             </div>
           </div>
-          <button class="btn-login" onClick={handleClick}>
+          <button class="btn-login"> 
             Create new Account
           </button>
           <div class="create-new">
