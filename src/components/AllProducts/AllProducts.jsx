@@ -62,7 +62,7 @@ export const AllProducts = ({ allProducts }) => {
       <h1>
         Showing all products
         <small class="lighter">
-          (showing {allProducts && allProducts.length} products)
+          (showing {rangeData && rangeData.length} products)
         </small>
       </h1>
       <div class="all-products-div">
