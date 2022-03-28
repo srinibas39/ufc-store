@@ -874,7 +874,7 @@ export const products = [
   {
     _id: uuid(),
     title: "UFC Ulti-Man Whiteout Lanyard",
-    price: "80",
+    price: "180",
     categoryName: "Lanyard",
     rating: "4",
     image: "https://cdn.shopify.com/s/files/1/0035/4274/5152/products/UFCGNV0130_500x.jpg?v=1645626509",
@@ -884,7 +884,7 @@ export const products = [
   {
     _id: uuid(),
     title: "UFC Charcoal Lanyard",
-    price: "80",
+    price: "180",
     categoryName: "Lanyard",
     rating: "4",
     image: "https://cdn.shopify.com/s/files/1/0035/4274/5152/products/UFCGNV0129_500x.jpg?v=1645626498",
@@ -895,7 +895,7 @@ export const products = [
   {
     _id: uuid(),
     title: "UFC White Lanyard",
-    price: "80",
+    price: "180",
     categoryName: "Lanyard",
     rating: "4",
     image: "https://cdn.shopify.com/s/files/1/0035/4274/5152/products/UFCGNV004300_500x.jpg?v=1569281896",
@@ -906,7 +906,7 @@ export const products = [
   {
     _id: uuid(),
     title: "UFC Blackout Lanyard",
-    price: "80",
+    price: "190",
     categoryName: "Lanyard",
     rating: "4",
     image: "https://cdn.shopify.com/s/files/1/0035/4274/5152/products/UFCGNV004800_500x.jpg?v=1569281896",

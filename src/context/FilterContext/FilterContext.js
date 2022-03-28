@@ -18,6 +18,8 @@ export const FilterProvider = ({ children }) => {
                   ? state.filterCategory.filter((el) => el !== action.payload)
                   : [...state.filterCategory, action.payload],
             };
+         case "RANGE":
+            return  {...state,range:action.payload} 
          default:
             return { ...state };
       }
@@ -27,6 +29,7 @@ export const FilterProvider = ({ children }) => {
       sort: null,
       filterCategory: [],
       stars: null,
+      range:null
    });
    return (<FilterContext.Provider value={{state,dispatch}}>
       {children}

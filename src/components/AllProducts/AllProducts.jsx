@@ -48,6 +48,15 @@ export const AllProducts = ({ allProducts }) => {
     return sortedData;
   }
   const starData=getStarData();
+
+  const getRangeData=()=>{
+    if(state.range!==null){
+      return starData.filter((el)=>Number(el.price)<=Number(state.range))
+    }
+    return starData;
+  }
+  const rangeData=getRangeData();
+
   return (
     <div class="all-products">
       <h1>
@@ -57,8 +66,8 @@ export const AllProducts = ({ allProducts }) => {
         </small>
       </h1>
       <div class="all-products-div">
-        {starData &&
-         starData.map((el) => {
+        {rangeData &&
+         rangeData.map((el) => {
             return (
               <div key={el._id} class="item-container">
                 <div class="item-img">

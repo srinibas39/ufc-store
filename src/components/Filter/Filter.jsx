@@ -28,7 +28,13 @@ export const Filter = ({ allProducts }) => {
         <p>150</p>
         <p>200</p>
       </div>
-      <input type="range" id="filter-price" min="50" max="150" value="50" />
+      <input
+        type="range"
+        id="filter-price"
+        min="100"
+        max="5000"
+        onChange={(e) => dispatch({ type: "RANGE", payload: e.target.value })}
+      />
 
       <h2>Category</h2>
       {categories.map((el, idx) => {
@@ -53,7 +59,7 @@ export const Filter = ({ allProducts }) => {
               key={idx}
               name="rating"
               id="filter-rating"
-              onClick={() => dispatch({ type: "STARS",payload:el})}
+              onClick={() => dispatch({ type: "STARS", payload: el })}
             />
             <label for="#filter-rating">{el} star</label>
           </div>
