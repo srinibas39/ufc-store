@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { useFilter } from "../../context/FilterContext/FilterContext";
 
 export const AllProducts = ({ allProducts }) => {
   const discountPrice = (price, discount) => {
@@ -10,7 +11,43 @@ export const AllProducts = ({ allProducts }) => {
   const [countCartItems, setCountCartItems] = useState(0);
   console.log(countCartItems);
   
+  const {state}=useFilter()
+  
 
+  const getCategoryData=()=>{
+    if(state.filterCategory.length!==0){
+      const newProducts= allProducts.filter((el)=>{
+            if(state.filterCategory.includes(el.categoryName)){
+                 return el;
+            }
+       })
+       return newProducts;
+    }
+    else {
+      return allProducts;
+    }
+  }
+
+  const categoryData=getCategoryData();
+ 
+  const getSortedData=()=>{
+    if(state.sort==="LOW_TO_HIGH"){
+      return categoryData.sort((a,b)=>a.price-b.price)
+    }
+    if(state.sort==="HIGH_TO_LOW"){
+      return categoryData.sort((a,b)=>b.price-a.price)
+    }
+    return categoryData;
+  }
+  const sortedData=getSortedData();
+
+  const getStarData=()=>{
+     if(state.stars!==null){
+       return sortedData.filter((el)=>el.rating===state.stars)
+     }
+    return sortedData;
+  }
+  const starData=getStarData();
   return (
     <div class="all-products">
       <h1>
@@ -20,8 +57,8 @@ export const AllProducts = ({ allProducts }) => {
         </small>
       </h1>
       <div class="all-products-div">
-        {allProducts &&
-          allProducts.map((el) => {
+        {starData &&
+         starData.map((el) => {
             return (
               <div key={el._id} class="item-container">
                 <div class="item-img">
