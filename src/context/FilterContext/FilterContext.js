@@ -43,7 +43,7 @@ export const FilterProvider = ({ children }) => {
       filterCategory: [],
       stars: null,
       range: null,
-      cart: []
+      cart: [],
    });
    return (<FilterContext.Provider value={{ state, dispatch }}>
       {children}

@@ -7,6 +7,37 @@ export const Cart = () => {
     const nPrice = price * (newD / 100);
     return Number(nPrice) + Number(price);
   };
+  const calculateTotalPrice=()=>{
+    let tp=0;
+    let deliveryCharges=500;
+    state.cart.forEach((el)=>{
+      tp+=Number(el.price)*el.qty
+    })
+    tp+=deliveryCharges;
+    return tp;
+  }
+
+  const totalDiscountPrice=()=>{
+    let dprice=0;
+
+    state.cart.forEach((el)=>{
+       dprice+=discountPrice(el.price,el.discount)*el.qty;
+    })
+     return dprice;
+  }
+
+  const discount=()=>{
+    let discount=totalDiscountPrice()-calculateTotalPrice()+500;//delivery charges=500
+    return discount;
+  }
+
+  const totalQty=()=>{
+    let qty=0;
+    state.cart.forEach((el)=>{
+      qty+=el.qty
+    })
+    return qty;
+  }
   return (
     <>
       <h1 class="cart-header">My Cart({state.cart.length})</h1>
@@ -51,21 +82,21 @@ export const Cart = () => {
           <h2>PRICE DETAILS</h2>
           <hr />
           <div class="priceDetail-price">
-            <p>Price(2 items)</p>
-            <p>&#8377;4999</p>
+            <p>Price({totalQty()})</p>
+            <p>&#8377;{totalDiscountPrice()}</p>
           </div>
           <div class="priceDetail-discount">
             <p>Discount</p>
-            <p>&#8377;1999</p>
+            <p>- &#8377;{discount()}</p>
           </div>
           <div class="priceDetail-DC">
             <p>Delivery Charges</p>
-            <p>&#8377;499</p>
+            <p>+ &#8377;500</p>
           </div>
           <hr />
           <div class="priceDetail-total">
             <h2>TOTAL AMOUNT</h2>
-            <h2>&#8377;3499</h2>
+            <h2>&#8377;{calculateTotalPrice()}</h2>
           </div>
           <hr />
           <p>You will save &#8377;1999 on this order</p>
