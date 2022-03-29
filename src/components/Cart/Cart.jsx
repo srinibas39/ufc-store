@@ -39,7 +39,7 @@ export const Cart = () => {
               </div>
               <div class="cartItem-buttons">
                 <button class="background">SAVE FOR LATER</button>
-                <button>REMOVE</button>
+                <button onClick={()=>dispatch({type:"REMOVE_FROM_CART",payload:el})}>REMOVE</button>
               </div>
             </div>
           </div>

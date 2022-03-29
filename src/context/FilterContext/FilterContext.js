@@ -31,7 +31,8 @@ export const FilterProvider = ({ children }) => {
             return {...state,cart:state.cart.map((el)=>el._id===action.payload._id?{...el,qty:el.qty+1}:el)}
          case "DEC_QTY":
             return {...state,cart:state.cart.map((el)=>el._id===action.payload._id && el.qty>1 ?{...el,qty:el.qty-1}:el)}   
-
+         case "REMOVE_FROM_CART":
+             return {...state,cart:state.cart.filter((el)=>el._id!==action.payload._id)}
          default:
             return { ...state }
       }
