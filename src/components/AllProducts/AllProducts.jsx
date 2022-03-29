@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useFilter } from "../../context/FilterContext/FilterContext";
+import { AddToCartButton } from "../AddToCartButton/AddToCartButton";
 
 export const AllProducts = ({ allProducts }) => {
   const discountPrice = (price, discount) => {
@@ -87,12 +88,11 @@ export const AllProducts = ({ allProducts }) => {
                   <div class="item-buttons">
                     <button class="background">
                       <a class="link" href="../pages/preview.html">
-                        Preview
+                        PREVIEW
                       </a>
                     </button>
-                    <button onClick={()=>dispatch({type:"ADD_TO_CART",payload:el})}>
-                      <a class="link black">Add to Cart</a>
-                    </button>
+              
+                    <AddToCartButton el={el}/>
                   </div>
                 </div>
               </div>
