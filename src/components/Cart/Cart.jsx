@@ -30,7 +30,8 @@ export const Cart = () => {
                 <div class="qty">
                   <p>Quantity :</p>
   
-                  <span class="material-icons"> remove_circle_outline </span>
+                  <span class="material-icons"
+                  onClick={()=>dispatch({type:"DEC_QTY",payload:el})}> remove_circle_outline </span>
                   <div class="qty-value">{el.qty}</div>
                   <span class="material-icons" 
                   onClick={()=>dispatch({type:"INC_QTY",payload:el})}> add_circle_outline </span>

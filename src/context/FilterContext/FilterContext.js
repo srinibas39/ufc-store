@@ -29,6 +29,8 @@ export const FilterProvider = ({ children }) => {
          case "INC_QTY":
             // {...state.cart.find((el)=>el._id===action.payload._id),qty:action.payload.qty+1}
             return {...state,cart:state.cart.map((el)=>el._id===action.payload._id?{...el,qty:el.qty+1}:el)}
+         case "DEC_QTY":
+            return {...state,cart:state.cart.map((el)=>el._id===action.payload._id && el.qty>1 ?{...el,qty:el.qty-1}:el)}   
 
          default:
             return { ...state }
