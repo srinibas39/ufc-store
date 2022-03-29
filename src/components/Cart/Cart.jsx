@@ -1,64 +1,51 @@
+import { useFilter } from "../../context/FilterContext/FilterContext";
+
 export const Cart = () => {
+  const {state,dispatch}=useFilter();;
+  const discountPrice = (price, discount) => {
+    const newD = discount.split("%")[0];
+    const nPrice = price * (newD / 100);
+    return Number(nPrice) + Number(price);
+  };
   return (
     <>
       <h1 class="cart-header">My Cart(2)</h1>
       <div class="cart-box">
-        <div class="cartItem-container">
-          <div class="cartItem-img">
-            <img src={require("../../images/product-img1.jpg")} alt="loading..." />
-          </div>
-          <div class="cartItem-list">
-            <div class="cartItem-content">
-              <p>UFC VENUM Authentic Fight Night Men's Walkout Jersey</p>
-              <div class="item-price">
-                <h2>&#8377; 2000</h2>
-                <h3>
-                  <del>&#8377; 3000</del>
-                </h3>
-              </div>
-              <h4>50% off</h4>
-              <div class="qty">
-                <p>Quantity :</p>
-
-                <span class="material-icons"> remove_circle_outline </span>
-                <div class="qty-value">1</div>
-                <span class="material-icons"> add_circle_outline </span>
-              </div>
+        {
+          state.cart && state.cart.map((el)=>{
+            return <div key={el._id} class="cartItem-container">
+            <div class="cartItem-img">
+              <img src={el.image} alt="loading..." />
             </div>
-            <div class="cartItem-buttons">
-              <button class="background">SAVE FOR LATER</button>
-              <button>REMOVE</button>
-            </div>
-          </div>
-        </div>
-        <div class="cartItem-container">
-          <div class="cartItem-img">
-            <img src="../images/product-img1.jpg" alt="loading..." />
-          </div>
-          <div class="cartItem-list">
-            <div class="cartItem-content">
-              <p>UFC VENUM Authentic Fight Night Men's Walkout Jersey</p>
-              <div class="item-price">
-                <h2>&#8377; 2000</h2>
-                <h3>
-                  <del>&#8377; 3000</del>
-                </h3>
+            <div class="cartItem-list">
+              <div class="cartItem-content">
+                <p>{el.title}</p>
+                <div class="item-price">
+                  <h2>&#8377; {el.price}</h2>
+                  <h3>
+                    <del>&#8377; {discountPrice(el.price,el.discount)}</del>
+                  </h3>
+                </div>
+                <h4>{el.discount}</h4>
+                <div class="qty">
+                  <p>Quantity :</p>
+  
+                  <span class="material-icons"> remove_circle_outline </span>
+                  <div class="qty-value">{el.qty}</div>
+                  <span class="material-icons" 
+                  onClick={()=>dispatch({type:"INC_QTY",payload:el})}> add_circle_outline </span>
+                </div>
               </div>
-              <h4>50% off</h4>
-              <div class="qty">
-                <p>Quantity :</p>
-
-                <span class="material-icons"> remove_circle_outline </span>
-                <div class="qty-value">1</div>
-                <span class="material-icons"> add_circle_outline </span>
+              <div class="cartItem-buttons">
+                <button class="background">SAVE FOR LATER</button>
+                <button>REMOVE</button>
               </div>
             </div>
-            <div class="cartItem-buttons">
-              <button class="background">SAVE FOR LATER</button>
-              <button>REMOVE</button>
-            </div>
           </div>
-        </div>
+          })
+        }
+        
+        
         <div class="priceDetail-container">
           <h2>PRICE DETAILS</h2>
           <hr />

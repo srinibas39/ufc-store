@@ -1,4 +1,4 @@
-import { createContext, useContext , useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 
 
 export const FilterContext = createContext();
@@ -19,11 +19,19 @@ export const FilterProvider = ({ children }) => {
                   : [...state.filterCategory, action.payload],
             };
          case "RANGE":
-            return  {...state,range:action.payload} 
+            return { ...state, range: action.payload }
          case "CLEAR":
-             return {...state,sort:null,filterCategory:[],stars:null,range:null}
+            return { ...state, sort: null, filterCategory: [], stars: null, range: null }
+         case "ADD_TO_CART":
+            return {
+               ...state, cart: [...state.cart, { ...action.payload, qty: action.payload.qty + 1 }]
+            }
+         case "INC_QTY":
+            // {...state.cart.find((el)=>el._id===action.payload._id),qty:action.payload.qty+1}
+            return {...state,cart:state.cart.map((el)=>el._id===action.payload._id?{...el,qty:el.qty+1}:el)}
+
          default:
-            return { ...state};
+            return { ...state }
       }
    };
 
@@ -31,9 +39,10 @@ export const FilterProvider = ({ children }) => {
       sort: null,
       filterCategory: [],
       stars: null,
-      range:null,
+      range: null,
+      cart: []
    });
-   return (<FilterContext.Provider value={{state,dispatch}}>
+   return (<FilterContext.Provider value={{ state, dispatch }}>
       {children}
    </FilterContext.Provider>)
 }

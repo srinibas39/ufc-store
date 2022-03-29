@@ -8,10 +8,9 @@ export const AllProducts = ({ allProducts }) => {
     const nPrice = price * (newD / 100);
     return Number(nPrice) + Number(price);
   };
-  const [countCartItems, setCountCartItems] = useState(0);
-  console.log(countCartItems);
+ 
   
-  const {state}=useFilter()
+  const {state,dispatch}=useFilter()
   
 
   const getCategoryData=()=>{
@@ -91,7 +90,7 @@ export const AllProducts = ({ allProducts }) => {
                         Preview
                       </a>
                     </button>
-                    <button>
+                    <button onClick={()=>dispatch({type:"ADD_TO_CART",payload:el})}>
                       <a class="link black">Add to Cart</a>
                     </button>
                   </div>

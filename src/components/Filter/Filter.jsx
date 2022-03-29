@@ -44,9 +44,9 @@ export const Filter = ({ allProducts }) => {
         />
 
         <h2>Category</h2>
-        {categories.map((el, idx) => {
+        {categories.map((el, id) => {
           return (
-            <div key={idx} class="filter-category">
+            <div key={id} class="filter-category">
               <input
                 type="checkbox"
                 name="category"

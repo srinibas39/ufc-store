@@ -10,11 +10,13 @@ makeServer();
 
 ReactDOM.render(
 
-  <BrowserRouter>
-    <FilterProvider>
+
+  <FilterProvider>
+    <BrowserRouter>
       <App />
-    </FilterProvider>
-  </BrowserRouter>
+    </BrowserRouter>
+  </FilterProvider>
+
   ,
   document.getElementById("root")
 );
