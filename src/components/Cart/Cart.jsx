@@ -9,7 +9,7 @@ export const Cart = () => {
   };
   return (
     <>
-      <h1 class="cart-header">My Cart(2)</h1>
+      <h1 class="cart-header">My Cart({state.cart.length})</h1>
       <div class="cart-box">
         {
           state.cart && state.cart.map((el)=>{

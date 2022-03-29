@@ -1,16 +1,17 @@
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import { Link } from "react-router-dom";
+
 import { useFilter } from "../../context/FilterContext/FilterContext";
 
 
 export const AddToCartButton = ({el}) => {
-    const [buttonClicked,setButtonClicked]=useState(false);
-   const {dispatch}=useFilter()
+    const {state,dispatch}=useFilter()
+    const item=state.cart.find((ele)=>el._id===ele._id)
+   
     return<>
        {
-           
-           buttonClicked ? <button><Link className="link black" to="/cart">GO TO CART</Link></button> :
-           <button onClick={() =>(dispatch({ type: "ADD_TO_CART", payload: el }),setButtonClicked(true))}>
+            item && item.qty>0? <button><Link className="link black" to="/cart">GO TO CART</Link></button> :
+           <button onClick={() =>(dispatch({ type: "ADD_TO_CART", payload: el }))}>
            <a class="link black">ADD TO CART</a>
        </button>
        }
