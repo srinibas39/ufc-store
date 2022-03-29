@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useFilter } from "../../context/FilterContext/FilterContext";
 import { AddToCartButton } from "../AddToCartButton/AddToCartButton";
+import { AddToWishList } from "../AddToWishList/AddToWishList";
 
 export const AllProducts = ({ allProducts }) => {
   const discountPrice = (price, discount) => {
@@ -72,9 +73,7 @@ export const AllProducts = ({ allProducts }) => {
               <div key={el._id} class="item-container">
                 <div class="item-img">
                   <img src={el.image} alt="loading" />
-                  <div class="product-like pink">
-                    <span class="material-icons"> favorite </span>
-                  </div>
+                  <AddToWishList el={el}/>
                 </div>
                 <div class="item-list">
                   <p>{el.title}</p>
