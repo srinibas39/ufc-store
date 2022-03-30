@@ -27,7 +27,7 @@ export const Navbar = () => {
                 <span class="material-icons-outlined"> search </span>
             </div>
             <div>
-                <a href="../../pages/Login.html" class="link2"></a>
+
                 <span class="material-icons-outlined"> person </span>
             </div>
             <div>
@@ -41,7 +41,7 @@ export const Navbar = () => {
                 <span class="material-icons-outlined"> shopping_bag </span>
             </div>
             <div>
-                <a href="../../pages/WishList.html" class="link2"></a>
+                <Link to="/wishlist" class="link2"></Link>
                 <span class="material-icons-outlined">
                     favorite_border
                 </span>
