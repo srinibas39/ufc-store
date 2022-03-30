@@ -34,7 +34,10 @@ export const FilterProvider = ({ children }) => {
          case "REMOVE_FROM_CART":
              return {...state,cart:state.cart.filter((el)=>el._id!==action.payload._id)}
          case "ADD_TO_WISHLIST":
-            return {...state,wishList:[...state.wishList,action.payload]}    
+            return {...state,wishList:[...state.wishList,action.payload]}  
+         case "REMOVE_FROM_WISHLIST":
+            return {...state,wishList:state.wishList.filter((el)=>el._id!==action.payload._id)}  
+
          default:
             return { ...state }
       }
