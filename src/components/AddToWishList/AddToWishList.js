@@ -6,11 +6,11 @@ export const AddToWishList = ({ el }) => {
     const item = state.wishList.find((ele) => el._id === ele._id);
     console.log(item);
     return <>{
-        item && item ? <div class='product-like pink'onClick={()=>dispatch({type:"REMOVE_FROM_WISHLIST",payload:el})} >
-            <span class="material-icons"> favorite </span>
+        item && item ? <div className='product-like pink'onClick={()=>dispatch({type:"REMOVE_FROM_WISHLIST",payload:el})} >
+            <span className="material-icons"> favorite </span>
         </div> :
-            <div class='product-like' onClick={() => dispatch({ type: "ADD_TO_WISHLIST", payload: el })}>
-                <span class="material-icons"> favorite </span>
+            <div className='product-like' onClick={() => dispatch({ type: "ADD_TO_WISHLIST", payload: el })}>
+                <span className="material-icons"> favorite </span>
             </div>
 
     }

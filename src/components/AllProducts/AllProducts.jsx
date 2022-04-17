@@ -59,34 +59,34 @@ export const AllProducts = ({ allProducts }) => {
   const rangeData=getRangeData();
 
   return (
-    <div class="all-products">
+    <div className="all-products">
       <h1>
         Showing all products
-        <small class="lighter">
+        <small className="lighter">
           (showing {rangeData && rangeData.length} products)
         </small>
       </h1>
-      <div class="all-products-div">
+      <div className="all-products-div">
         {rangeData &&
          rangeData.map((el) => {
             return (
-              <div key={el._id} class="item-container">
-                <div class="item-img">
+              <div key={el._id} className="item-container">
+                <div className="item-img">
                   <img src={el.image} alt="loading" />
                   <AddToWishList el={el}/>
                 </div>
-                <div class="item-list">
+                <div className="item-list">
                   <p>{el.title}</p>
-                  <div class="price">
+                  <div className="price">
                     <h2>&#8377; {el.price}</h2>
                     <h3>
                       <del>&#8377; {discountPrice(el.price, el.discount)}</del>
                     </h3>
                   </div>
                   <h4>{el.discount}</h4>
-                  <div class="item-buttons">
-                    <button class="background">
-                      <a class="link" href="../pages/preview.html">
+                  <div className="item-buttons">
+                    <button className="background">
+                      <a className="link" href="../pages/preview.html">
                         PREVIEW
                       </a>
                     </button>

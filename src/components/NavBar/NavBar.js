@@ -2,11 +2,11 @@ import { Link } from "react-router-dom"
 
 
 export const Navbar = () => {
-    return <div class="navBar">
-        <div class="navBar-img">
-            <a href="../../pages/HomePage.html" class="link2"></a>
+    return <div className="navBar">
+        <div className="navBar-img">
+            <a href="../../pages/HomePage.html" className="link2"></a>
             <svg
-                class="site-logo"
+                className="site-logo"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 122 26"
@@ -21,28 +21,28 @@ export const Navbar = () => {
                 ></path>
             </svg>
         </div>
-        <div class="navBar-content">
-            <div class="searchBox">
+        <div className="navBar-content">
+            <div className="searchBox">
                 <input type="search" placeholder="search" />
-                <span class="material-icons-outlined"> search </span>
+                <span className="material-icons-outlined"> search </span>
             </div>
             <div>
 
-                <span class="material-icons-outlined"> person </span>
+                <span className="material-icons-outlined"> person </span>
             </div>
             <div>
-                <Link to="/products" class="link2"></Link>
-                <span class="material-icons-outlined">
+                <Link to="/products" className="link2"></Link>
+                <span className="material-icons-outlined">
                     inventory_2
                 </span>
             </div>
             <div>
-                <Link to="/cart" class="link2"></Link>
-                <span class="material-icons-outlined"> shopping_bag </span>
+                <Link to="/cart" className="link2"></Link>
+                <span className="material-icons-outlined"> shopping_bag </span>
             </div>
             <div>
-                <Link to="/wishlist" class="link2"></Link>
-                <span class="material-icons-outlined">
+                <Link to="/wishlist" className="link2"></Link>
+                <span className="material-icons-outlined">
                     favorite_border
                 </span>
             </div>

@@ -1,15 +1,15 @@
 export const Preview = () => {
   return (
-    <div class="preview">
-      <div class="preview-img">
+    <div className="preview">
+      <div className="preview-img">
         <img src={require("../../images/product-img1.jpg")} alt="loading..." />
       </div>
-      <div class="preview-description">
-        <h1 class="Preview-header">
+      <div className="preview-description">
+        <h1 className="Preview-header">
           UFC VENUM MAGOMED FIGHT NIGHT MEN'S WALKOUT JERSEY
         </h1>
         <h2>&#8377; 2000</h2>
-        <div class="description">
+        <div className="description">
           <h2>Description</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque
@@ -23,7 +23,7 @@ export const Preview = () => {
           </p>
         </div>
         <button>
-          <a href="./Cart.html" class="link">
+          <a href="./Cart.html" className="link">
             ADD TO CART
           </a>
         </button>

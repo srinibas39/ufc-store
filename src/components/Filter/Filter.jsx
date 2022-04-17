@@ -23,14 +23,14 @@ export const Filter = ({ allProducts }) => {
 
   return (
     clear && (
-      <div class="filter-container">
-        <div class="filter">
+      <div className="filter-container">
+        <div className="filter">
           <h2>Filters</h2>
           <p onClick={() => handleClear()}>Clear</p>
         </div>
 
         <h2>Price</h2>
-        <div class="range">
+        <div className="range">
           <p>50</p>
           <p>150</p>
           <p>200</p>
@@ -46,7 +46,7 @@ export const Filter = ({ allProducts }) => {
         <h2>Category</h2>
         {categories.map((el, id) => {
           return (
-            <div key={id} class="filter-category">
+            <div key={id} className="filter-category">
               <input
                 type="checkbox"
                 name="category"
@@ -60,7 +60,7 @@ export const Filter = ({ allProducts }) => {
         <h2>Rating</h2>
         {stars.map((el, idx) => {
           return (
-            <div class="filter-rating">
+            <div className="filter-rating">
               <input
                 type="radio"
                 key={idx}
@@ -74,7 +74,7 @@ export const Filter = ({ allProducts }) => {
         })}
 
         <h2>Sort by</h2>
-        <div class="filter-sort">
+        <div className="filter-sort">
           <input
             type="radio"
             name="sort"
@@ -83,7 +83,7 @@ export const Filter = ({ allProducts }) => {
           />
           <label for="#filter-sort">Price-Low to High</label>
         </div>
-        <div class="filter-sort">
+        <div className="filter-sort">
           <input
             type="radio"
             name="sort"

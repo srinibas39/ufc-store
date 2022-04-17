@@ -40,36 +40,36 @@ export const Cart = () => {
   }
   return (
     <>
-      <h1 class="cart-header">My Cart({state.cart.length})</h1>
-      <div class="cart-box">
+      <h1 className="cart-header">My Cart({state.cart.length})</h1>
+      <div className="cart-box">
         {
           state.cart && state.cart.map((el)=>{
-            return <div key={el._id} class="cartItem-container">
-            <div class="cartItem-img">
+            return <div key={el._id} className="cartItem-container">
+            <div className="cartItem-img">
               <img src={el.image} alt="loading..." />
             </div>
-            <div class="cartItem-list">
-              <div class="cartItem-content">
+            <div className="cartItem-list">
+              <div className="cartItem-content">
                 <p>{el.title}</p>
-                <div class="item-price">
+                <div className="item-price">
                   <h2>&#8377; {el.price}</h2>
                   <h3>
                     <del>&#8377; {discountPrice(el.price,el.discount)}</del>
                   </h3>
                 </div>
                 <h4>{el.discount}</h4>
-                <div class="qty">
+                <div className="qty">
                   <p>Quantity :</p>
   
-                  <span class="material-icons"
+                  <span className="material-icons"
                   onClick={()=>dispatch({type:"DEC_QTY",payload:el})}> remove_circle_outline </span>
-                  <div class="qty-value">{el.qty}</div>
-                  <span class="material-icons" 
+                  <div className="qty-value">{el.qty}</div>
+                  <span className="material-icons" 
                   onClick={()=>dispatch({type:"INC_QTY",payload:el})}> add_circle_outline </span>
                 </div>
               </div>
-              <div class="cartItem-buttons">
-                <button class="background">SAVE FOR LATER</button>
+              <div className="cartItem-buttons">
+                <button className="background">SAVE FOR LATER</button>
                 <button onClick={()=>dispatch({type:"REMOVE_FROM_CART",payload:el})}>REMOVE</button>
               </div>
             </div>
@@ -78,29 +78,29 @@ export const Cart = () => {
         }
         
         
-        <div class="priceDetail-container">
+        <div className="priceDetail-container">
           <h2>PRICE DETAILS</h2>
           <hr />
-          <div class="priceDetail-price">
+          <div className="priceDetail-price">
             <p>Price({totalQty()})</p>
             <p>&#8377;{totalDiscountPrice()}</p>
           </div>
-          <div class="priceDetail-discount">
+          <div className="priceDetail-discount">
             <p>Discount</p>
             <p>- &#8377;{discount()}</p>
           </div>
-          <div class="priceDetail-DC">
+          <div className="priceDetail-DC">
             <p>Delivery Charges</p>
             <p>+ &#8377;500</p>
           </div>
           <hr />
-          <div class="priceDetail-total">
+          <div className="priceDetail-total">
             <h2>TOTAL AMOUNT</h2>
             <h2>&#8377;{calculateTotalPrice()}</h2>
           </div>
           <hr />
           <p>You will save &#8377;1999 on this order</p>
-          <button class="background">PLACE ORDER</button>
+          <button className="background">PLACE ORDER</button>
         </div>
       </div>
     </>

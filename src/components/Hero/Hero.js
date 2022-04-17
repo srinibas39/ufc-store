@@ -2,9 +2,9 @@ import { requiresAuth } from "../../backend/utils/authUtils"
 
 
 export const Hero=()=>{
-    return <div class="hero-container">
-    <div class="hero-content">
-      <h1>UFC T-SHIRTS, JERSEYS & APPAREL FOR MEN</h1>
+    return <div className="hero-container">
+    <div className="hero-content">
+      <h1>{`UFC T-SHIRTS, JERSEYS & APPAREL FOR MEN`}</h1>
       <p>
         If you’re an athlete or a fan looking for some new UFC merchandise,
         then you’ve come to the right place. Get your hands on the very latest
@@ -13,7 +13,7 @@ export const Hero=()=>{
         sizes, comfortable fits, and durable materials.
       </p>
     </div>
-    <div class="hero-img">
+    <div className="hero-img">
       <img src={require(`../../images/Hero.jpg`)} alt="loading..." />
     </div>
   </div>

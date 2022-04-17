@@ -2,26 +2,26 @@
 
 export const Footer = () => {
     return <footer>
-        <ul class="footer-list">
-            <li class="bold">SHOP</li>
+        <ul className="footer-list">
+            <li className="bold">SHOP</li>
             <li>About us</li>
             <li>Gift Cards</li>
             <li>Contact us</li>
         </ul>
-        <ul class="footer-list">
-            <li class="bold">HELP AND ADVICE</li>
+        <ul className="footer-list">
+            <li className="bold">HELP AND ADVICE</li>
             <li>Shipping and Returns</li>
             <li>Cookie policy</li>
             <li>Size Guide</li>
         </ul>
-        <ul class="footer-list">
-            <li class="bold">CONTACT</li>
+        <ul className="footer-list">
+            <li className="bold">CONTACT</li>
             <li>UFCStore@ufc.com</li>
             <li>Gift Cards</li>
-            <li class="footer-icons">
-                <i class="fab fa-facebook"></i>
-                <i class="fab fa-instagram"></i>
-                <i class="fab fa-twitter"></i>
+            <li className="footer-icons">
+                <i className="fab fa-facebook"></i>
+                <i className="fab fa-instagram"></i>
+                <i className="fab fa-twitter"></i>
             </li>
         </ul>
     </footer>

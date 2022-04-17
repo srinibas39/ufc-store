@@ -6,21 +6,21 @@ export const WishList = () => {
 
   return (
     <>
-      <div class="wishList">
+      <div className="wishList">
        {
          state.wishList && state.wishList.map((el)=>{
-           return  <div key={el._id} class="product-container">
-           <div class="product-img">
+           return  <div key={el._id} className="product-container">
+           <div className="product-img">
              <img src={require("../../images/product-img1.jpg")} alt="loading..." />
-             <div class="product-like pink">
-               <span class="material-icons"> favorite </span>
+             <div className="product-like pink">
+               <span className="material-icons"> favorite </span>
              </div>
            </div>
-           <div class="product-list">
+           <div className="product-list">
              <p>UFC VENUM Authentic Fight Night Men's Walkout Jersey</p>
              <h2>&#8377; 2000</h2>
-             <button class="background">
-               <a class="link" href="../pages/Cart.html">
+             <button className="background">
+               <a className="link" href="../pages/Cart.html">
                  Move to cart
                </a>
              </button>
