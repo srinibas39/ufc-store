@@ -7,20 +7,32 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
 
-    const [user, setUser] = useState("");
-    const [token, setToken] = useState("");
+    const local = JSON.parse(localStorage.getItem("login"));
+    const [user, setUser] = useState(local?.user);
+    const [token, setToken] = useState(local?.token);
+
 
     const handleLogin = async (email, password) => {
-        console.log({ email, password });
+
         try {
-            const res = await LoginService({ email, password });
-
-
-
+            const { data, status } = await LoginService({ email, password });
+            if (status === 200 || status === 201) {
+                localStorage.setItem("login",
+                    JSON.stringify({ token: data.encodedToken, user: data.createdUser }))
+            }
+            setToken(data.encodedToken);
+            setUser(data.foundUser);
+            console.log("successfully logged in");
         }
         catch (error) {
             console.log(error);
         }
+    }
+
+    const handleLogout = () => {
+        localStorage.removeItem("login");
+        setUser(null);
+        setToken(null)
     }
 
     const handleSignup = async (firstName, lastName, email, password) => {
@@ -40,7 +52,7 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
-    return <AuthContext.Provider value={{ handleLogin, handleSignup }}>
+    return <AuthContext.Provider value={{ handleLogin, handleSignup, handleLogout }}>
         {children}
     </AuthContext.Provider>
 }
