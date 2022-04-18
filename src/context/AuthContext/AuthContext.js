@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 import { LoginService } from "../../services/LoginService";
 import { SignupServices } from "../../services/SignupServices";
 
@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
-    return <AuthContext.Provider value={{ handleLogin, handleSignup, handleLogout }}>
+    return <AuthContext.Provider value={{ token, user, handleLogin, handleSignup, handleLogout, }}>
         {children}
     </AuthContext.Provider>
 }
