@@ -11,15 +11,17 @@ import { makeServer } from "./server";
 makeServer();
 
 ReactDOM.render(
-  <ProductProvider>
-    <AuthProvider>
+
+  <AuthProvider>
+    <ProductProvider>
       <FilterProvider>
         <BrowserRouter>
           <App />
         </BrowserRouter>
       </FilterProvider>
-    </AuthProvider>
-  </ProductProvider>
+    </ProductProvider>
+  </AuthProvider>
+
   ,
   document.getElementById("root")
 );

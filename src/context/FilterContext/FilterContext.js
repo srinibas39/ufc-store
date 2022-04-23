@@ -37,7 +37,7 @@ export const FilterProvider = ({ children }) => {
             return {...state,wishList:[...state.wishList,action.payload]}  
          case "REMOVE_FROM_WISHLIST":
             return {...state,wishList:state.wishList.filter((el)=>el._id!==action.payload._id)}  
-
+         
          default:
             return { ...state }
       }
@@ -49,7 +49,8 @@ export const FilterProvider = ({ children }) => {
       stars: null,
       range: null,
       cart: [],
-      wishList:[]
+      wishList:[],
+      
    });
    return (<FilterContext.Provider value={{ state, dispatch }}>
       {children}

@@ -10,8 +10,7 @@ export const AuthProvider = ({ children }) => {
     const local = JSON.parse(localStorage.getItem("login"));
     const [user, setUser] = useState(local?.user);
     const [token, setToken] = useState(local?.token);
-
-
+    
     const handleLogin = async (email, password) => {
 
         try {

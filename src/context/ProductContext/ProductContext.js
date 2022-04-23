@@ -1,45 +1,56 @@
-import { createContext, useContext } from "react";
-import { useReducer, useEffect } from "react";
-import { GetWishlist } from "../../services/GetWishlist";
+import { createContext, useContext, useState, useEffect, useReducer } from "react";
+
+import { GetAllProducts } from "../../services/GetAllProducts";
+import { GetWishList } from "../../services/GetWishlist";
 import { useAuth } from "../AuthContext/AuthContext";
 
 
 export const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
-    const {token} = useAuth();
-    console.log(token);
-    // const productReducer = (state, action) => {
-    //     switch (action.type) {
-    //         default:
-    //             return { ...state }
-    //     }
-    // }
-
-    // const [productState, productDispatch] = useReducer(productReducer, {
-    //     wishlist: []
-    // });
+    const { token } = useAuth();
+    const productReducer = (state, action) => {
+        switch (action.type) {
+            case "GET_PRODUCTS":
+                return { ...state, allProducts: [...action.payload] }
+            case "GET_WISHLIST":
+                return { ...state, wishlist: [...action.payload] }
+            default:
+                return { ...state }
+        }
+    }
+    const [prodState, prodDispatch] = useReducer(productReducer, {
+        allProducts: [],
+        wishlist: []
+    })
+    const getProduct = (productId) => prodState.allProducts.find((el) => el._id === productId) || {};
 
     useEffect(() => {
+
         (async () => {
             try {
+                const resProd = await GetAllProducts();
+                if (resProd.status === 200 || resProd.status === 201) {
 
-                if (token) {
-
-                    const res = await GetWishlist({ encodedToken: token });
-                    if (res === 200 || res === 201) {
-                        console.log(res);
-                    }
-
+                    prodDispatch({ type: "GET_PRODUCTS", payload: resProd.data.products })
                 }
+                
+                const resWishlist = await GetWishList({ token });
+                if (resWishlist.status === 200 || resWishlist.status === 201) {
+                    prodDispatch({ type: "GET_WISHLIST", payload: resWishlist.data.wishlist })
+                }
+
             }
             catch (error) {
                 console.log(error);
             }
-        })()
-    }, [token])
 
-    return <ProductContext.Provider value={{}}>
+
+        })()
+
+    }, [])
+
+    return <ProductContext.Provider value={{ prodState, getProduct }}>
         {children}
     </ProductContext.Provider>
 }

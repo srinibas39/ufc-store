@@ -1,0 +1,36 @@
+.toast-container {
+  position: absolute;
+  bottom: 3rem;
+  right: 3rem;
+}
+.toast {
+  background-color: lightgreen;
+  height: 4.5rem;
+  width: 16rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader-element {
+  height: 5px;
+  width: 100%;
+  background-color: antiquewhite;
+  position: absolute;
+  bottom: 0px;
+}
+
+.loader-element:before {
+  content: "";
+  display: block;
+  height: 5px;
+  width: 0;
+  background-color: red;
+  animation: getWidth 3s ease-in infinite;
+}
+
+@keyframes getWidth {
+  100% {
+    width: 100%;
+  }
+}
