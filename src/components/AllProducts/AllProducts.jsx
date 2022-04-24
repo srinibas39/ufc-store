@@ -55,6 +55,7 @@ export const AllProducts = ({ allProducts }) => {
   const rangeData = getRangeData();
 
   const navigate = useNavigate();
+
   return (
     <div className="all-products">
       <h1>
@@ -65,9 +66,9 @@ export const AllProducts = ({ allProducts }) => {
       </h1>
       <div className="all-products-div">
         {rangeData &&
-          rangeData.map((el) => {
+          rangeData.map((el, idx) => {
             return (
-              <div key={el._id} className="item-container">
+              <div key={idx} className="item-container">
                 <div className="item-img">
                   <img src={el.image} alt="loading" />
                   <AddToWishList el={el} />

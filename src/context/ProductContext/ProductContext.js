@@ -1,7 +1,9 @@
 import { createContext, useContext, useState, useEffect, useReducer } from "react";
+import { AddWishlist } from "../../services/AddWishlist";
 
 import { GetAllProducts } from "../../services/GetAllProducts";
 import { GetWishList } from "../../services/GetWishlist";
+import { RemoveWishlist } from "../../services/RemoveWishlist";
 import { useAuth } from "../AuthContext/AuthContext";
 
 
@@ -15,13 +17,16 @@ export const ProductProvider = ({ children }) => {
                 return { ...state, allProducts: [...action.payload] }
             case "GET_WISHLIST":
                 return { ...state, wishlist: [...action.payload] }
+            case "ADD_REMOVE_WISHLIST":
+                return { ...state, wishlistItems: [...action.payload] }
             default:
                 return { ...state }
         }
     }
     const [prodState, prodDispatch] = useReducer(productReducer, {
         allProducts: [],
-        wishlist: []
+        wishlist: [],
+        wishlistItems: []
     })
     const getProduct = (productId) => prodState.allProducts.find((el) => el._id === productId) || {};
 
@@ -34,7 +39,7 @@ export const ProductProvider = ({ children }) => {
 
                     prodDispatch({ type: "GET_PRODUCTS", payload: resProd.data.products })
                 }
-                
+
                 const resWishlist = await GetWishList({ token });
                 if (resWishlist.status === 200 || resWishlist.status === 201) {
                     prodDispatch({ type: "GET_WISHLIST", payload: resWishlist.data.wishlist })
@@ -49,8 +54,29 @@ export const ProductProvider = ({ children }) => {
         })()
 
     }, [])
+    const addWishlist = async (token, product) => {
+        try {
+            const res = await AddWishlist({ token, product });
 
-    return <ProductContext.Provider value={{ prodState, getProduct }}>
+            prodDispatch({ type: "ADD_REMOVE_WISHLIST", payload: res.data.wishlist })
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+    const removeWishlist = async (token, id) => {
+        try {
+            const res = await RemoveWishlist({ token, id });
+            if (res.status === 200 || res.status === 201) {
+                prodDispatch({ type: "ADD_REMOVE_WISHLIST", payload: res.data.wishlist })
+            }
+
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+    return <ProductContext.Provider value={{ prodState, getProduct, addWishlist, removeWishlist }}>
         {children}
     </ProductContext.Provider>
 }
