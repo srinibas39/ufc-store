@@ -1,16 +1,19 @@
 .toast-container {
-  position: absolute;
-  bottom: 3rem;
-  right: 3rem;
+  position: sticky;
+  left: 61rem;
+  bottom: 1rem;
+  height: 4.5rem;
+  width: 16rem;
+  z-index: 1;
 }
 .toast {
   background-color: #fff;
-  height: 4.5rem;
-  width: 16rem;
+  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid red;
+  border: 1px solid var(--primary-color);
 }
 
 .loader-element {
@@ -26,8 +29,8 @@
   display: block;
   height: 5px;
   width: 0;
-  background-color: red;
-  animation: getWidth 3s ease-in infinite;
+  background-color: var(--primary-color);
+  animation: getWidth 1s ease-in infinite;
 }
 
 @keyframes getWidth {

@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext/AuthContext";
 import { useProduct } from "../../context/ProductContext/ProductContext";
+
 export const AddToWishList = ({ el }) => {
     // const { state, dispatch } = useFilter()
 
@@ -26,7 +27,9 @@ export const AddToWishList = ({ el }) => {
                 <span className="material-icons"> favorite </span>
             </div>
 
+
     }
+
 
     </>
 

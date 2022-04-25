@@ -11,6 +11,8 @@ export const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
     const { token } = useAuth();
+    const [toastLoading, setToastLoading] = useState(false);
+    const [toastText, setToastText] = useState("");
     const productReducer = (state, action) => {
         switch (action.type) {
             case "GET_PRODUCTS":
@@ -55,10 +57,15 @@ export const ProductProvider = ({ children }) => {
 
     }, [])
     const addWishlist = async (token, product) => {
+        
         try {
+            setToastLoading(true);
             const res = await AddWishlist({ token, product });
+            if (res.status === 200 || res.status === 201) {
+                setToastText("Item is getting added to wishlist")
+                prodDispatch({ type: "ADD_REMOVE_WISHLIST", payload: res.data.wishlist })
+            }
 
-            prodDispatch({ type: "ADD_REMOVE_WISHLIST", payload: res.data.wishlist })
         }
         catch (error) {
             console.log(error);
@@ -76,7 +83,7 @@ export const ProductProvider = ({ children }) => {
             console.log(error);
         }
     }
-    return <ProductContext.Provider value={{ prodState, getProduct, addWishlist, removeWishlist }}>
+    return <ProductContext.Provider value={{ prodState, getProduct, addWishlist, removeWishlist, toastLoading, setToastLoading, toastText }}>
         {children}
     </ProductContext.Provider>
 }
