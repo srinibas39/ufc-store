@@ -12,7 +12,7 @@ export const Signup = () => {
         email: "",
         password: ""
     });
-    const { handleSignup, handleLogout } = useAuth();
+    const { handleSignup } = useAuth();
     const handleSubmit = () => {
         handleSignup(form.firstName, form.lastName, form.email, form.password)
     }
@@ -46,10 +46,6 @@ export const Signup = () => {
                 <p>Already have an account</p>
                 <span className="material-icons"> arrow_forward_ios </span>
             </div>
-        </div>
-        <div>
-            <button onClick={() => handleLogout()}>Logout</button>
-
         </div>
     </div>
 }

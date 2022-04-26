@@ -8,6 +8,7 @@ import { PreviewPage } from "./pages/PreviewPage";
 import { Products } from "./pages/Products";
 import { WishListPage } from "./pages/WishListPage";
 import { Toast } from "./components/Toast/Toast";
+import { Profile } from "./components/Profile/Profile";
 
 
 export const App = () => {
@@ -21,6 +22,7 @@ export const App = () => {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/toast" element={<Toast />} />
+      <Route path="/profile" element={<Profile />} />
 
     </Routes>
   </>
