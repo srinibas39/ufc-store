@@ -57,7 +57,7 @@ export const ProductProvider = ({ children }) => {
 
     }, [])
     const addWishlist = async (token, product) => {
-        
+
         try {
             setToastLoading(true);
             const res = await AddWishlist({ token, product });

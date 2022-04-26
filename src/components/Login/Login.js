@@ -1,22 +1,34 @@
-import { useNavigate } from "react-router-dom"
-import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom"
+import { useState, useEffect } from "react";
 import { useAuth } from "../../context/AuthContext/AuthContext";
 import "./Login.css"
+    ;
 
 export const Login = () => {
     const navigate = useNavigate();
     const [form, setForm] = useState({
         email: "", password: ""
     })
-   
 
-    const { handleLogin } = useAuth();
+
+    const { handleLogin, loggedIn, token } = useAuth();
+    const location = useLocation();
+
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        handleLogin(form.email,form.password);
+
+        handleLogin(form.email, form.password);
+
+
     }
+
+    useEffect(() => {
+        if (token) {
+            navigate(`${location?.state?.from?.pathname}`)
+        }
+    }, [loggedIn])
 
     return <div className="login-container">
         <div className="login">
