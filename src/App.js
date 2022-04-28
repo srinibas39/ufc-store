@@ -8,9 +8,9 @@ import { PreviewPage } from "./pages/PreviewPage";
 import { Products } from "./pages/Products";
 import { WishListPage } from "./pages/WishListPage";
 import { Toast } from "./components/Toast/Toast";
-import { Profile } from "./components/Profile/Profile";
 import { RequiresAuth } from "./RequiresAuth/RequiresAuth";
 import { useAuth } from "./context/AuthContext/AuthContext";
+import { ProfilePage } from "./pages/ProfilePage";
 
 
 export const App = () => {
@@ -29,7 +29,11 @@ export const App = () => {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/toast" element={<Toast />} />
-      <Route path="/profile" element={<Profile />} />
+      <Route path="/profile" element={
+        <RequiresAuth token={token}>
+          <ProfilePage />
+        </RequiresAuth>
+      } />
 
     </Routes>
   </>

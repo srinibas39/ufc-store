@@ -28,7 +28,7 @@ export const Navbar = () => {
                 <input type="search" placeholder="search" />
                 <span className="material-icons-outlined"> search </span>
             </div>
-            <div onClick={() => navigate("/login")}>
+            <div onClick={() => navigate("/profile")}>
 
                 <span className="material-icons-outlined"> person </span>
             </div>

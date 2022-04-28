@@ -42,10 +42,7 @@ export const ProductProvider = ({ children }) => {
                     prodDispatch({ type: "GET_PRODUCTS", payload: resProd.data.products })
                 }
 
-                const resWishlist = await GetWishList({ token });
-                if (resWishlist.status === 200 || resWishlist.status === 201) {
-                    prodDispatch({ type: "GET_WISHLIST", payload: resWishlist.data.wishlist })
-                }
+
 
             }
             catch (error) {
@@ -83,7 +80,13 @@ export const ProductProvider = ({ children }) => {
             console.log(error);
         }
     }
-    return <ProductContext.Provider value={{ prodState, getProduct, addWishlist, removeWishlist, toastLoading, setToastLoading, toastText }}>
+    const getWishlist = async (token) => {
+        const resWishlist = await GetWishList({ token });
+        if (resWishlist.status === 200 || resWishlist.status === 201) {
+            return resWishlist.data.wishlist;
+        }
+    }
+    return <ProductContext.Provider value={{ prodState, getProduct, addWishlist, removeWishlist, toastLoading, setToastLoading, toastText ,getWishlist}}>
         {children}
     </ProductContext.Provider>
 }
