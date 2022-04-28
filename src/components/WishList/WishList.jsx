@@ -17,6 +17,7 @@ export const WishList = () => {
 
   return (
     <>
+      <h1 className="wishList-header">My Wishlist({wishlistData.length})</h1>
       <div className="wishList">
         {wishlistData.length > 0 ? (
           wishlistData.map((el) => {
@@ -42,7 +43,7 @@ export const WishList = () => {
           })
         ) : (
           <img
-            style={{ height: "80%", width: "50%" }}
+            style={{ height: "80%", width: "44%" }}
             src={require("../../images/empty-cart.png")}
           />
         )}
