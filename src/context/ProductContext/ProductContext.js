@@ -57,9 +57,9 @@ export const ProductProvider = ({ children }) => {
 
         try {
             setToastLoading(true);
+            setToastText("Item is getting added to wishlist")
             const res = await AddWishlist({ token, product });
             if (res.status === 200 || res.status === 201) {
-                setToastText("Item is getting added to wishlist")
                 prodDispatch({ type: "ADD_REMOVE_WISHLIST", payload: res.data.wishlist })
             }
 
@@ -70,6 +70,8 @@ export const ProductProvider = ({ children }) => {
     }
     const removeWishlist = async (token, id) => {
         try {
+            setToastLoading(true);
+            setToastText("Item is getting removed from wishlist")
             const res = await RemoveWishlist({ token, id });
             if (res.status === 200 || res.status === 201) {
                 prodDispatch({ type: "ADD_REMOVE_WISHLIST", payload: res.data.wishlist })
@@ -86,7 +88,7 @@ export const ProductProvider = ({ children }) => {
             return resWishlist.data.wishlist;
         }
     }
-    return <ProductContext.Provider value={{ prodState, getProduct, addWishlist, removeWishlist, toastLoading, setToastLoading, toastText ,getWishlist}}>
+    return <ProductContext.Provider value={{ prodState, getProduct, addWishlist, removeWishlist, toastLoading, setToastLoading, toastText, getWishlist }}>
         {children}
     </ProductContext.Provider>
 }

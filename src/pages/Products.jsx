@@ -7,10 +7,11 @@ import { Toast } from "../components/Toast/Toast";
 import { useProduct } from "../context/ProductContext/ProductContext";
 
 export const Products = () => {
-  const { toastLoading, setToastLoading, toastText } = useProduct();
+  const { toastLoading, setToastLoading, toastText} = useProduct();
 
   useEffect(() => {
     const timer = setTimeout(() => setToastLoading(false), 500);
+  
 
     return () => clearTimeout(timer);
   });

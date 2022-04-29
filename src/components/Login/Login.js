@@ -20,6 +20,7 @@ export const Login = () => {
         e.preventDefault();
 
         handleLogin(form.email, form.password);
+        navigate("/products")
 
 
     }
