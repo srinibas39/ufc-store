@@ -25,7 +25,11 @@ export const App = () => {
           <WishListPage />
         </RequiresAuth>
       } />
-      <Route path="/cart" element={<CartPage />} />
+      <Route path="/cart" element={
+        <RequiresAuth token={token}>
+          <CartPage />
+        </RequiresAuth>
+      } />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/toast" element={<Toast />} />
