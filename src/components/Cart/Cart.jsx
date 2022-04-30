@@ -1,11 +1,12 @@
-import { useEffect } from "react/cjs/react.production.min";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext/AuthContext";
 import { useProduct } from "../../context/ProductContext/ProductContext";
 
 export const Cart = () => {
-  const { prodState, removeCart, inDecCart, addWishlist } = useProduct();
+  const { prodState, removeCart, inDecCart, addWishlist, getCart } =
+    useProduct();
   const { token } = useAuth();
-
+  const [cartData, setCartData] = useState([]);
   const discountPrice = (price, discount) => {
     const newD = discount.split("%")[0];
     const nPrice = price * (newD / 100);
@@ -43,14 +44,21 @@ export const Cart = () => {
     return qty;
   };
 
+  useEffect(() => {
+    (async () => {
+      const cartData = await getCart(token);
+      setCartData(cartData);
+    })();
+  }, [prodState.cartItems]);
+
   return (
     <>
-      <h1 className="cart-header">My Cart({prodState.cartItems.length})</h1>
+      <h1 className="cart-header">My Cart({cartData.length})</h1>
 
       <div className="cart-box">
-        {prodState.cartItems.length > 0 ? (
+        {cartData.length > 0 ? (
           <div className="carts-container">
-            {prodState.cartItems.map((el) => {
+            {cartData.map((el) => {
               return (
                 <div key={el._id} className="cartItem-container">
                   <div className="cartItem-img">
@@ -112,7 +120,7 @@ export const Cart = () => {
             src={require("../../images/empty-cart.png")}
           />
         )}
-        {prodState.cartItems.length > 0 && (
+        {cartData.length > 0 && (
           <div className="priceDetail-container">
             <h2>PRICE DETAILS</h2>
             <hr />

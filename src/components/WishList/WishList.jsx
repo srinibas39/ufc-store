@@ -3,9 +3,8 @@ import { useAuth } from "../../context/AuthContext/AuthContext";
 import { useProduct } from "../../context/ProductContext/ProductContext";
 
 export const WishList = () => {
-  
   const { token } = useAuth();
-  const { getWishlist } = useProduct();
+  const { getWishlist, removeWishlist, addCart, prodState } = useProduct();
   const [wishlistData, setWishlistData] = useState([]);
 
   useEffect(() => {
@@ -13,7 +12,7 @@ export const WishList = () => {
       const wishlistData = await getWishlist(token);
       setWishlistData(wishlistData);
     })();
-  }, []);
+  }, [prodState.wishlistItems]);
 
   return (
     <>
@@ -32,10 +31,13 @@ export const WishList = () => {
                 <div className="product-list">
                   <p>{el.title}</p>
                   <h2>&#8377; {el.price}</h2>
-                  <button className="background">
-                    <a className="link" href="../pages/Cart.html">
-                      Move to cart
-                    </a>
+                  <button
+                    className="background"
+                    onClick={() => (
+                      addCart(token, el), removeWishlist(token, el._id)
+                    )}
+                  >
+                    Move to cart
                   </button>
                 </div>
               </div>
