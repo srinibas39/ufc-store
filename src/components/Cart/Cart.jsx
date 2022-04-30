@@ -2,7 +2,7 @@ import { useAuth } from "../../context/AuthContext/AuthContext";
 import { useProduct } from "../../context/ProductContext/ProductContext";
 
 export const Cart = () => {
-  const { prodState, removeCart } = useProduct();
+  const { prodState, removeCart, inDecCart } = useProduct();
   const { token } = useAuth();
 
   const discountPrice = (price, discount) => {
@@ -69,9 +69,7 @@ export const Cart = () => {
 
                       <span
                         className="material-icons"
-                        // onClick={() =>
-                        //   dispatch({ type: "DEC_QTY", payload: el })
-                        // }
+                        onClick={() => inDecCart(token, el._id, "decrement")}
                       >
                         {" "}
                         remove_circle_outline{" "}
@@ -79,9 +77,7 @@ export const Cart = () => {
                       <div className="qty-value">{el.qty}</div>
                       <span
                         className="material-icons"
-                        // onClick={() =>
-                        //   dispatch({ type: "INC_QTY", payload: el })
-                        // }
+                        onClick={() => inDecCart(token, el._id, "increment")}
                       >
                         {" "}
                         add_circle_outline{" "}

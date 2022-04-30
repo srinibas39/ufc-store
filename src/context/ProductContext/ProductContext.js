@@ -4,6 +4,7 @@ import { AddWishlist } from "../../services/AddWishlist";
 import { GetAllProducts } from "../../services/GetAllProducts";
 import { GetCart } from "../../services/GetCart";
 import { GetWishList } from "../../services/GetWishlist";
+import { InDecCart } from "../../services/InDecCart";
 import { RemoveCart } from "../../services/RemoveCart";
 import { RemoveWishlist } from "../../services/RemoveWishlist";
 import { useAuth } from "../AuthContext/AuthContext";
@@ -134,7 +135,26 @@ export const ProductProvider = ({ children }) => {
             console.log(error);
         }
     }
-    return <ProductContext.Provider value={{ prodState, getProduct, addWishlist, removeWishlist, toastLoading, setToastLoading, toastText, getWishlist, addCart, getCart, removeCart }}>
+    const inDecCart = async (token, id, type) => {
+        try {
+            setToastLoading(true);
+            if (type === "increment") {
+                setToastText("Incrementing the item from the cart");
+            }
+            else if (type === "decrement") {
+                setToastText("Decrementing the item from the cart ")
+            }
+            const res = await InDecCart({ token, id, type });
+            if (res.status === 200 || res.status === 201) {
+                prodDispatch({ type: "ADD_REMOVE_CART", payload: res.data.cart })
+            }
+
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+    return <ProductContext.Provider value={{ prodState, getProduct, addWishlist, removeWishlist, toastLoading, setToastLoading, toastText, getWishlist, addCart, getCart, removeCart, inDecCart }}>
         {children}
     </ProductContext.Provider>
 }
