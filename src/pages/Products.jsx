@@ -11,8 +11,6 @@ export const Products = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => setToastLoading(false), 500);
-  
-
     return () => clearTimeout(timer);
   });
 

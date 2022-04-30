@@ -6,7 +6,7 @@ export const AddCart = ({ token, product }) => {
         { product },
         {
             headers: {
-                authoriztion: token
+                authorization: token
             }
         })
 }

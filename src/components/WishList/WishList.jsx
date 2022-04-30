@@ -3,7 +3,7 @@ import { useAuth } from "../../context/AuthContext/AuthContext";
 import { useProduct } from "../../context/ProductContext/ProductContext";
 
 export const WishList = () => {
-  // const {state}=useFilter()
+  
   const { token } = useAuth();
   const { getWishlist } = useProduct();
   const [wishlistData, setWishlistData] = useState([]);
@@ -43,8 +43,8 @@ export const WishList = () => {
           })
         ) : (
           <img
-            style={{ height: "80%", width: "44%" }}
-            src={require("../../images/empty-cart.png")}
+            style={{ height: "80%", width: "50%" }}
+            src={require("../../images/empty-wishlist.png")}
           />
         )}
       </div>

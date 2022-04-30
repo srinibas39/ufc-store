@@ -1,21 +1,26 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext/AuthContext";
 
-import { useFilter } from "../../context/FilterContext/FilterContext";
+
+import { useProduct } from "../../context/ProductContext/ProductContext";
 
 
 export const AddToCartButton = ({ el }) => {
-    const { state, dispatch } = useFilter()
-    const item = state.cart.find((ele) => el._id === ele._id);
+    const { prodState, addCart } = useProduct();
+    const { token } = useAuth();
+    const [cartItem, setCartItem] = useState({})
 
     const navigate = useNavigate();
+    useEffect(() => {
+        const item = prodState.cartItems.find((ele) => el._id === ele._id);
+        setCartItem(item);
 
+    }, [prodState.cartItems])
     return <>
         {
-            item && item.qty > 0 ? <button onClick={() => navigate("/cart")}>GO TO CART</button> :
-                <button onClick={() => (dispatch({ type: "ADD_TO_CART", payload: el }))}>
-                    ADD TO CART
-                </button>
+            cartItem ? <button onClick={() => token ? navigate("/cart") : navigate("/profile")}>GO TO CART</button> :
+                <button onClick={() => token ? addCart(token, el) : navigate("/profile")}> ADD TO CART</button>
         }
     </>
 }

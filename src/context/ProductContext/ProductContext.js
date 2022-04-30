@@ -100,7 +100,7 @@ export const ProductProvider = ({ children }) => {
         try {
             setToastLoading(true);
             setToastText("Item is getting added in the cart")
-            const res = await AddCart(token, product);
+            const res = await AddCart({ token, product });
             if (res.status === 200 || res.status === 201) {
                 prodDispatch({ type: "ADD_REMOVE_CART", payload: res.data.cart })
             }
@@ -109,7 +109,7 @@ export const ProductProvider = ({ children }) => {
             console.log(error);
         }
     }
-    const removeCart = async(token, id) => {
+    const removeCart = async (token, id) => {
         try {
             setToastLoading(true);
             setToastText("Item is getting removed from cart")
@@ -122,7 +122,7 @@ export const ProductProvider = ({ children }) => {
             console.log(error);
         }
     }
-    const getCart = async(token) => {
+    const getCart = async (token) => {
         try {
             const res = await GetCart({ token });
             if (res.status === 200 || res.status === 201) {

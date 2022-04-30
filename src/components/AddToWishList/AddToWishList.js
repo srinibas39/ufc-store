@@ -11,18 +11,18 @@ export const AddToWishList = ({ el }) => {
 
     const { removeWishlist, addWishlist, prodState } = useProduct();
     const { token } = useAuth();
-    const [item, setItem] = useState(false);
+    const [item, setItem] = useState({});
     const navigate = useNavigate()
     useEffect(() => {
-        if (token) {
+        
             const item = prodState.wishlistItems.find((ele) => ele._id === el._id);
             setItem(item)
 
-        }
+        
 
     }, [prodState.wishlistItems])
     return <>{
-        item && item ? <div className='product-like pink' onClick={() => token ? removeWishlist(token, el._id) : navigate("/login")}>
+        item ? <div className='product-like pink' onClick={() => token ? removeWishlist(token, el._id) : navigate("/login")}>
             <span className="material-icons"> favorite </span>
         </div> :
             <div className={`product-like`} onClick={() => token ? addWishlist(token, el) : navigate("/login")}>
