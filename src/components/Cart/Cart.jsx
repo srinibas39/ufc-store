@@ -1,8 +1,9 @@
+import { useEffect } from "react/cjs/react.production.min";
 import { useAuth } from "../../context/AuthContext/AuthContext";
 import { useProduct } from "../../context/ProductContext/ProductContext";
 
 export const Cart = () => {
-  const { prodState, removeCart, inDecCart } = useProduct();
+  const { prodState, removeCart, inDecCart, addWishlist } = useProduct();
   const { token } = useAuth();
 
   const discountPrice = (price, discount) => {
@@ -41,59 +42,70 @@ export const Cart = () => {
     });
     return qty;
   };
+
   return (
     <>
       <h1 className="cart-header">My Cart({prodState.cartItems.length})</h1>
+
       <div className="cart-box">
         {prodState.cartItems.length > 0 ? (
-          prodState.cartItems.map((el) => {
-            return (
-              <div key={el._id} className="cartItem-container">
-                <div className="cartItem-img">
-                  <img src={el.image} alt="loading..." />
-                </div>
-                <div className="cartItem-list">
-                  <div className="cartItem-content">
-                    <p>{el.title}</p>
-                    <div className="item-price">
-                      <h2>&#8377; {el.price}</h2>
-                      <h3>
-                        <del>
-                          &#8377; {discountPrice(el.price, el.discount)}
-                        </del>
-                      </h3>
-                    </div>
-                    <h4>{el.discount}</h4>
-                    <div className="qty">
-                      <p>Quantity :</p>
+          <div className="carts-container">
+            {prodState.cartItems.map((el) => {
+              return (
+                <div key={el._id} className="cartItem-container">
+                  <div className="cartItem-img">
+                    <img src={el.image} alt="loading..." />
+                  </div>
+                  <div className="cartItem-list">
+                    <div className="cartItem-content">
+                      <p>{el.title}</p>
+                      <div className="item-price">
+                        <h2>&#8377; {el.price}</h2>
+                        <h3>
+                          <del>
+                            &#8377; {discountPrice(el.price, el.discount)}
+                          </del>
+                        </h3>
+                      </div>
+                      <h4>{el.discount}</h4>
+                      <div className="qty">
+                        <p>Quantity :</p>
 
-                      <span
-                        className="material-icons"
-                        onClick={() => inDecCart(token, el._id, "decrement")}
+                        <span
+                          className="material-icons"
+                          onClick={() => inDecCart(token, el._id, "decrement")}
+                        >
+                          {" "}
+                          remove_circle_outline{" "}
+                        </span>
+                        <div className="qty-value">{el.qty}</div>
+                        <span
+                          className="material-icons"
+                          onClick={() => inDecCart(token, el._id, "increment")}
+                        >
+                          {" "}
+                          add_circle_outline{" "}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="cartItem-buttons">
+                      <button
+                        className="background"
+                        onClick={() => (
+                          addWishlist(token, el), removeCart(token, el._id)
+                        )}
                       >
-                        {" "}
-                        remove_circle_outline{" "}
-                      </span>
-                      <div className="qty-value">{el.qty}</div>
-                      <span
-                        className="material-icons"
-                        onClick={() => inDecCart(token, el._id, "increment")}
-                      >
-                        {" "}
-                        add_circle_outline{" "}
-                      </span>
+                        SAVE FOR LATER
+                      </button>
+                      <button onClick={() => removeCart(token, el._id)}>
+                        REMOVE
+                      </button>
                     </div>
                   </div>
-                  <div className="cartItem-buttons">
-                    <button className="background">SAVE FOR LATER</button>
-                    <button onClick={() => removeCart(token, el._id)}>
-                      REMOVE
-                    </button>
-                  </div>
                 </div>
-              </div>
-            );
-          })
+              );
+            })}
+          </div>
         ) : (
           <img
             style={{ height: "80%", width: "44%" }}
