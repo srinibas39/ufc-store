@@ -11,6 +11,7 @@ import { Toast } from "./components/Toast/Toast";
 import { RequiresAuth } from "./RequiresAuth/RequiresAuth";
 import { useAuth } from "./context/AuthContext/AuthContext";
 import { ProfilePage } from "./pages/ProfilePage";
+import { Address } from "./components/Address/Address";
 
 
 export const App = () => {
@@ -38,6 +39,7 @@ export const App = () => {
           <ProfilePage />
         </RequiresAuth>
       } />
+      <Route path="/address" element={<Address />} />
 
     </Routes>
   </>
