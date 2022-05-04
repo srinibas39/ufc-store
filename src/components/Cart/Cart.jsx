@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext/AuthContext";
 import { useProduct } from "../../context/ProductContext/ProductContext";
+import { PriceDetail } from "../PriceDetails/PriceDetail";
 
 export const Cart = () => {
   const { prodState, removeCart, inDecCart, addWishlist, getCart } =
@@ -121,30 +122,12 @@ export const Cart = () => {
           />
         )}
         {cartData.length > 0 && (
-          <div className="priceDetail-container">
-            <h2>PRICE DETAILS</h2>
-            <hr />
-            <div className="priceDetail-price">
-              <p>Price({totalQty()})</p>
-              <p>&#8377;{totalDiscountPrice()}</p>
-            </div>
-            <div className="priceDetail-discount">
-              <p>Discount</p>
-              <p>- &#8377;{discount()}</p>
-            </div>
-            <div className="priceDetail-DC">
-              <p>Delivery Charges</p>
-              <p>+ &#8377;500</p>
-            </div>
-            <hr />
-            <div className="priceDetail-total">
-              <h2>TOTAL AMOUNT</h2>
-              <h2>&#8377;{calculateTotalPrice()}</h2>
-            </div>
-            <hr />
-            <p>You will save &#8377;1999 on this order</p>
-            <button className="background">PLACE ORDER</button>
-          </div>
+          <PriceDetail
+            totalQty={totalQty}
+            totalDiscountPrice={totalDiscountPrice}
+            discount={discount}
+            calculateTotalPrice={calculateTotalPrice}
+          />
         )}
       </div>
     </>

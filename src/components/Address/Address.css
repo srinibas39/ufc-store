@@ -1,37 +1,47 @@
-.new-address-container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  margin: 1rem;
+
+.address-container{
+    padding: 1rem;  
 }
-.new-address-container h2 {
-  text-align: center;
+.address-container h2{
+    text-align: center;
+}
+.address{
+    margin: 1rem;
+    padding: 1rem;
+    box-shadow: var(--box-shadow1);
 }
 
-.new-address-input {
-  display: flex;
-  flex-direction: column;
-  height: 60%;
-  justify-content: space-evenly;
-  padding: 1rem;
-  align-items: center;
-}
-.new-address-input input {
-  height: 5vh;
-  width: 70vw;
-  padding: 10px;
-}
-.new-address-button {
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  align-items: center;
+.address div{
+    display: flex;
+    justify-content: center;
 }
 
-.new-address-button button {
-  height: 2rem;
-  padding: 0 1rem;
-  border: none;
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
+.address div input{
+    margin: 1rem;
 }
+
+.address div div{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+}
+
+.address div div button{
+    height: 2rem;
+    padding: 0 1rem;
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    margin:0 1rem;
+    cursor: pointer;
+}
+
+.add-new-address{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+

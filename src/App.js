@@ -11,6 +11,7 @@ import { Toast } from "./components/Toast/Toast";
 import { RequiresAuth } from "./RequiresAuth/RequiresAuth";
 import { useAuth } from "./context/AuthContext/AuthContext";
 import { ProfilePage } from "./pages/ProfilePage";
+import { AddressForm } from "./components/AddressForm/AddressFrom";
 import { Address } from "./components/Address/Address";
 
 
@@ -39,7 +40,9 @@ export const App = () => {
           <ProfilePage />
         </RequiresAuth>
       } />
-      <Route path="/address" element={<Address />} />
+      <Route path="/address" element={<AddressForm/>} />
+      <Route path="/add" element={<Address/>} />
+
 
     </Routes>
   </>

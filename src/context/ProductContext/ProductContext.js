@@ -24,6 +24,12 @@ export const ProductProvider = ({ children }) => {
                 return { ...state, wishlistItems: [...action.payload] }
             case "ADD_REMOVE_CART":
                 return { ...state, cartItems: [...action.payload] }
+            case "ADDRESS":
+                return { ...state, addresses: [...state.addresses, action.payload] }
+            case "ADDRESS_REMOVE":
+                return { ...state, addresses: state.addresses.filter((el) => el.id !== action.payload.id) }
+            case "ADDRESS_EDIT":
+                return { ...state, addressEdit: action.payload }
             default:
                 return { ...state }
         }
@@ -31,7 +37,9 @@ export const ProductProvider = ({ children }) => {
     const [prodState, prodDispatch] = useReducer(productReducer, {
         allProducts: [],
         wishlistItems: [],
-        cartItems: []
+        cartItems: [],
+        addresses: [],
+        addressEdit: {}
     })
     const getProduct = (productId) => prodState.allProducts.find((el) => el._id === productId) || {};
 
@@ -154,7 +162,7 @@ export const ProductProvider = ({ children }) => {
             console.log(error);
         }
     }
-    return <ProductContext.Provider value={{ prodState, getProduct, addWishlist, removeWishlist, toastLoading, setToastLoading, toastText, getWishlist, addCart, getCart, removeCart, inDecCart }}>
+    return <ProductContext.Provider value={{ prodState, prodDispatch, getProduct, addWishlist, removeWishlist, toastLoading, setToastLoading, toastText, getWishlist, addCart, getCart, removeCart, inDecCart }}>
         {children}
     </ProductContext.Provider>
 }
