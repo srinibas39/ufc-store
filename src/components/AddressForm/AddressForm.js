@@ -16,7 +16,9 @@ export const AddressForm = () => {
         zipcode: "",
         phn: "",
     })
-    // console.log(addressForm);
+
+    
+
 
     const { prodState, prodDispatch } = useProduct();
 
@@ -25,7 +27,6 @@ export const AddressForm = () => {
     useEffect(() => {
         prodState.addressEdit && setAddressForm(() => prodState.addressEdit)
     }, [prodState.addressEdit])
-
 
     return <>
         <div className="new-address-container">
@@ -49,8 +50,8 @@ export const AddressForm = () => {
             </div>
             <div className="new-address-button">
                 <button onClick={() => (prodDispatch({ type: "ADDRESS", payload: addressForm }), navigate("/add"))}>SAVE</button>
-                <button>Fill with dummy Address</button>
-                <button onClick={() => (prodDispatch({ type: "ADDRESS", payload: addressForm }), navigate("/add"))}>Close</button>
+                <button onClick={() => setAddressForm(() => prodState.addressDummy)}>Fill with dummy Address</button>
+                <button onClick={() => (navigate("/add"))}>Close</button>
             </div>
         </div>
     </>

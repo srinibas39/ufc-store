@@ -27,7 +27,7 @@ export const ProductProvider = ({ children }) => {
             case "ADDRESS":
                 return { ...state, addresses: [...state.addresses, action.payload] }
             case "ADDRESS_REMOVE":
-                return { ...state, addresses: state.addresses.filter((el) => el.id !== action.payload.id) }
+                return { ...state, addresses: state.addresses.filter((el) => el !== action.payload) }
             case "ADDRESS_EDIT":
                 return { ...state, addressEdit: action.payload }
             default:
@@ -38,8 +38,26 @@ export const ProductProvider = ({ children }) => {
         allProducts: [],
         wishlistItems: [],
         cartItems: [],
-        addresses: [],
-        addressEdit: {}
+        addresses: [{
+            country: "India",
+            name: "Adarsh Ballika",
+            house: "#1/4 , 100ft Ring Road, Jp Nagar - 4 Phase, Dollars Colony",
+            city: "Banglore",
+            state: "Maharashtra ",
+            zipcode: "853008",
+            phn: "5719801234",
+        }],
+        addressEdit: {},
+        addressDummy: {
+            country: "India",
+            name: "Adarsh Ballika",
+            house: "#1/4 , 100ft Ring Road, Jp Nagar - 4 Phase, Dollars Colony",
+            city: "Banglore",
+            state: "Maharashtra ",
+            zipcode: "853008",
+            phn: "5719801234",
+        }
+        
     })
     const getProduct = (productId) => prodState.allProducts.find((el) => el._id === productId) || {};
 
