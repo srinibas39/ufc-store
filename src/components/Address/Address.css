@@ -1,66 +1,68 @@
-
-.address-container{
-    padding: 1rem;  
+.address-container {
+  padding: 1rem;
 }
-.address-container h2{
-    text-align: center;
+.address-container h2 {
+  text-align: center;
 }
-.address{
-    margin: 1rem;
-    padding: 1rem;
-    box-shadow: var(--box-shadow1);
-}
-
-.address div{
-    display: flex;
-    justify-content: start;
+.address {
+  margin: 1rem;
+  padding: 1rem;
+  box-shadow: var(--box-shadow1);
 }
 
-.address div input{
-    margin: 1rem;
-    cursor: pointer;
+.address div {
+  display: flex;
+  justify-content: start;
 }
 
-.address div div{
-    margin-top: 1rem;
+.address div input {
+  margin: 1rem;
+  cursor: pointer;
 }
 
-.address div div button{
-    height: 2rem;
-    padding: 0 1rem;
-    border: none;
-    background-color: var(--primary-color);
+.address div div {
+  margin-top: 1rem;
+}
+
+.address div div button {
+  height: 2rem;
+  padding: 0 1rem;
+  border: none;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.add-new-address {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.remove-btn {
+  margin-left: 1rem;
+}
+
+.pay {
+  display: block;
+  margin: auto;
+}
+
+.pay-btn {
+  display: block;
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 10px 10px;
+  width: 12rem;
+  border: 4px solid var(--primary-color);
+  background-color: #fff;
+  cursor: pointer;
+  color: var(--primary-color);
+}
+
+.pay-btn:hover {
+    background-color: var(--primary-color);;
     color: var(--secondary-color);
-    cursor: pointer;
 }
-
-.add-new-address{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
-
-.remove-btn{
-    margin-left: 1rem;
-}
-
-.pay{
-    display: block;
-    margin: auto;
-}
-
-.pay-btn{
-    display: block;
-    margin: auto;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    padding: 10px 10px;
-    width: 12rem;
-    border: 4px solid var(--primary-color);
-    background-color: #FFF;
-    cursor: pointer;
-}
-
-
-

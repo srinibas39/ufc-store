@@ -41,8 +41,16 @@ export const App = () => {
           <ProfilePage />
         </RequiresAuth>
       } />
-      <Route path="/address" element={<AddressFormPage/>} />
-      <Route path="/add" element={<AddressPage />} />
+      <Route path="/address" element={
+        <RequiresAuth token={token}>
+          <AddressFormPage />
+        </RequiresAuth>
+      } />
+      <Route path="/add" element={
+        <RequiresAuth token={token}>
+          <AddressPage />
+        </RequiresAuth>
+      } />
     </Routes>
   </>
 }

@@ -30,6 +30,8 @@ export const ProductProvider = ({ children }) => {
                 return { ...state, addresses: state.addresses.filter((el) => el !== action.payload) }
             case "ADDRESS_EDIT":
                 return { ...state, addressEdit: action.payload }
+            case "ADDRESS_SELECTED":
+                return { ...state, addressSelected: action.payload }
             default:
                 return { ...state }
         }
@@ -56,8 +58,9 @@ export const ProductProvider = ({ children }) => {
             state: "Maharashtra ",
             zipcode: "853008",
             phn: "5719801234",
-        }
-        
+        },
+        addressSelected: null
+
     })
     const getProduct = (productId) => prodState.allProducts.find((el) => el._id === productId) || {};
 

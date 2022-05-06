@@ -1,4 +1,7 @@
-export const PriceDetail = ({totalQty,totalDiscountPrice,discount,calculateTotalPrice}) => {
+import { useNavigate } from "react-router-dom"
+
+export const PriceDetail = ({ totalQty, totalDiscountPrice, discount, calculateTotalPrice }) => {
+    const navigate = useNavigate();
     return <div className="priceDetail-container">
         <h2>PRICE DETAILS</h2>
         <hr />
@@ -21,6 +24,6 @@ export const PriceDetail = ({totalQty,totalDiscountPrice,discount,calculateTotal
         </div>
         <hr />
         <p>You will save &#8377;1999 on this order</p>
-        <button className="background">PLACE ORDER</button>
+        <button className="background" onClick={() => navigate("/add")}>PLACE ORDER</button>
     </div>
 }
