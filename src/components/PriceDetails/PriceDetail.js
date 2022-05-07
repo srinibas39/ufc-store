@@ -68,7 +68,7 @@ export const PriceDetail = ({ totalQty, totalDiscountPrice, discount, calculateT
 
 
         <hr />
-        <p>You will save &#8377;{discount()} on this order</p>
+        <p>You will save &#8377;{discount() + couponDiscount} on this order</p>
         <button className="background" onClick={() => navigate("/add")}>PLACE ORDER</button>
     </div>
 }
