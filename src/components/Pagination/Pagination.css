@@ -1,0 +1,20 @@
+.pagination-container {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.pagination-container button {
+  height: 35px;
+  padding: 9px;
+  color: var(--primary-color);
+  box-shadow: var(--box-shadow2);
+  background: var(--secondary-color);
+  border: none;
+  cursor: pointer;
+}
+
+.pagination-container button:hover {
+  background-color: #f1f5f9;
+}

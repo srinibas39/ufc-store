@@ -13,6 +13,7 @@ import { useAuth } from "./context/AuthContext/AuthContext";
 import { ProfilePage } from "./pages/ProfilePage";
 import { AddressFormPage } from "./pages/AddressFormPage";
 import { AddressPage } from "./pages/AddressPage";
+import { Pagination } from "./components/Pagination/Pagination";
 
 
 
@@ -51,6 +52,7 @@ export const App = () => {
           <AddressPage />
         </RequiresAuth>
       } />
+      <Route path="/p" element={<Pagination/>}/>
     </Routes>
   </>
 }
