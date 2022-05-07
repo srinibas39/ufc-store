@@ -59,7 +59,8 @@ export const ProductProvider = ({ children }) => {
             zipcode: "853008",
             phn: "5719801234",
         },
-        addressSelected: null
+        addressSelected: null,
+        coupons: ["CART@10","CART@20","CART@30"]
 
     })
     const getProduct = (productId) => prodState.allProducts.find((el) => el._id === productId) || {};

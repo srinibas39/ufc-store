@@ -55,7 +55,7 @@ export const Address = () => {
             <button className="pay-btn" onClick={() => handlePay()}>PAY NOW</button>
         </div>
         {
-            payError && <p style={{color:"red"}}>*Please select a delivery address.</p>
+            payError && <p style={{ color: "red", textAlign: "center" }}>*Please select a delivery address.</p>
         }
 
     </div>

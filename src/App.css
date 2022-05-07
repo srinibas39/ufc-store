@@ -296,6 +296,20 @@
   cursor: pointer;
 }
 
+.coupons input{
+  width: 75%;
+  height: 100%;
+  padding: 5px;
+  outline: none;
+}
+
+.coupons button{
+  width: 25%;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border: none;
+}
+
 /* Filter */
 
 .filter-container {
@@ -570,7 +584,6 @@ footer {
 .cart-box {
   display: flex;
   justify-content: center;
-  width: 82.5rem;
   margin: 1rem;
   box-shadow: var(--box-shadow2);
   flex-wrap: wrap;
