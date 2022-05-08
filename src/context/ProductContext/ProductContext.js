@@ -3,6 +3,7 @@ import { AddCart } from "../../services/AddCart";
 import { AddWishlist } from "../../services/AddWishlist";
 import { GetAllProducts } from "../../services/GetAllProducts";
 import { GetCart } from "../../services/GetCart";
+import { GetProduct } from "../../services/GetProduct";
 import { GetWishList } from "../../services/GetWishlist";
 import { InDecCart } from "../../services/InDecCart";
 import { RemoveCart } from "../../services/RemoveCart";
@@ -60,7 +61,7 @@ export const ProductProvider = ({ children }) => {
             phn: "5719801234",
         },
         addressSelected: null,
-        coupons: ["CART@10","CART@20","CART@30"]
+        coupons: ["CART@10", "CART@20", "CART@30"]
 
     })
     const getProduct = (productId) => prodState.allProducts.find((el) => el._id === productId) || {};
@@ -157,6 +158,7 @@ export const ProductProvider = ({ children }) => {
         try {
             const res = await GetCart({ token });
             if (res.status === 200 || res.status === 201) {
+                console.log(res.data.cart);
                 return res.data.cart
             }
 
@@ -184,6 +186,7 @@ export const ProductProvider = ({ children }) => {
             console.log(error);
         }
     }
+
     return <ProductContext.Provider value={{ prodState, prodDispatch, getProduct, addWishlist, removeWishlist, toastLoading, setToastLoading, toastText, getWishlist, addCart, getCart, removeCart, inDecCart }}>
         {children}
     </ProductContext.Provider>

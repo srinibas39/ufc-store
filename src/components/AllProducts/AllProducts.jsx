@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useFilter } from "../../context/FilterContext/FilterContext";
 import { AddToCartButton } from "../AddToCartButton/AddToCartButton";
 import { AddToWishList } from "../AddToWishList/AddToWishList";
@@ -79,6 +79,7 @@ export const AllProducts = ({ allProducts }) => {
   };
   const pageData = getPageData();
   
+ 
 
   return (
     <>

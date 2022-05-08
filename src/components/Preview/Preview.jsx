@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 import { useProduct } from "../../context/ProductContext/ProductContext";
-import { useState, useEffect } from "react";
+
 export const Preview = () => {
   const { productId } = useParams();
   const { getProduct } = useProduct();

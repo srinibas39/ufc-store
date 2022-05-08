@@ -7,7 +7,7 @@ import { v4 as uuid } from "uuid";
 
 export const products = [
   {
-    _id: uuid(),
+    _id: "3d3ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "Men's UFC Ticket T-shirt - Orang...",
     price: "3000",
     categoryName: "T-shirt",
@@ -16,10 +16,10 @@ export const products = [
     discount: "10% off",
     stock: true,
     qty: 0
- 
- 
+
+
   }, {
-    _id: uuid(),
+    _id: "4d3ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "Men's UFC Strategy Buzz T-shirt ...",
     price: "3200",
     categoryName: "T-shirt",
@@ -28,10 +28,10 @@ export const products = [
     discount: "12% off",
     stock: true,
     qty: 0
- 
- 
+
+
   }, {
-    _id: uuid(),
+    _id: "5d3ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "Men's UFC Tonal Long Sleeve T-Sh...",
     price: "4500",
     categoryName: "T-shirt",
@@ -41,7 +41,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "6d3ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Urban Dress Socks",
     price: "1500",
     categoryName: "Socks",
@@ -51,7 +51,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "7d3ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "omen's UFC Pastel Tie Dye T-Shi...",
     price: "1000",
     categoryName: "T-shirt",
@@ -61,7 +61,7 @@ export const products = [
     stock: false,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "8d3ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC VENUM Authentic Fight Night ...",
     price: "1200",
     categoryName: "Cap",
@@ -71,7 +71,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "9d3ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC VENUM Authentic Fight Night ...",
     price: "1300",
     categoryName: "Cap",
@@ -81,7 +81,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "103ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC VENUM Replica Men's Hoodie",
     price: "2700",
     categoryName: "Hoodie",
@@ -91,7 +91,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "113ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC VENUM Authentic Fight Night Men's Walkout Pant.",
     price: "2100",
     categoryName: "Pant",
@@ -101,7 +101,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "123ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC VENUM Authentic Fight Night Men's Walkout Pant.",
     price: "2300",
     categoryName: "Pant",
@@ -111,7 +111,7 @@ export const products = [
     stock: false,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "133ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC VENUM Replica Men's Hoodie",
     price: "3200",
     categoryName: "Hoodie",
@@ -121,9 +121,9 @@ export const products = [
     stock: true,
     qty: 0
   },
- 
+
   {
-    _id: uuid(),
+    _id: "143ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "OPROBlack/Red/Gold UFC Platinum ...",
     price: "2500",
     categoryName: "Mouthguard",
@@ -133,7 +133,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "153ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "OPRORed/Black/Silver UFC Platinu...",
     price: "2600",
     categoryName: "Mouthguard",
@@ -143,7 +143,7 @@ export const products = [
     stock: false,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "163ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "OPRO Black/Gold UFC Gold Mouth G...",
     price: "2750",
     categoryName: "Mouthguard",
@@ -153,7 +153,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "173ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "OPRO Red/Black UFC Silver Mouth ...",
     price: "3020",
     categoryName: "Mouthguard",
@@ -163,7 +163,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "183ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC 180 Black Hand Wraps",
     price: "1299",
     categoryName: "Handwraps",
@@ -173,7 +173,7 @@ export const products = [
     stock: false,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "193ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC 180 Red Hand Wraps",
     price: "1399",
     categoryName: "Handwraps",
@@ -183,7 +183,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "203ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC 180  White Hand Wraps",
     price: "1499",
     categoryName: "Handwraps",
@@ -193,7 +193,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "213ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC 180 Blue Hand Wraps",
     price: "1599",
     categoryName: "Handwraps",
@@ -203,7 +203,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "223ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC 5 oz MMA Red Gloves",
     price: "3099",
     categoryName: "Gloves",
@@ -213,7 +213,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "233ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC 5 oz MMA White Gloves",
     price: "3199",
     categoryName: "Gloves",
@@ -223,7 +223,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "243ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC 5 oz MMA Blue Gloves",
     price: "3299",
     categoryName: "Gloves",
@@ -233,7 +233,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "253ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC 5 oz MMA Black Gloves",
     price: "3399",
     categoryName: "Gloves",
@@ -243,7 +243,7 @@ export const products = [
     stock: false,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "263ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC MMA Heavy Bag 80 lbs.",
     price: "4399",
     categoryName: "Heavy Bags",
@@ -253,7 +253,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "273ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Standard Heavy Bag 70 lbs.",
     price: "4499",
     categoryName: "Heavy Bags",
@@ -263,7 +263,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "283ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Pro Leather Speed Bag",
     price: "4599",
     categoryName: "Heavy Bags",
@@ -273,7 +273,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "293ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Strike Shield",
     price: "4699",
     categoryName: "Heavy Bags",
@@ -283,7 +283,7 @@ export const products = [
     stock: false,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "303ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "Body Action System Standard",
     price: "4999",
     categoryName: "Body Action System",
@@ -293,7 +293,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "313ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "Body Action System X2 Model",
     price: "4999",
     categoryName: "Body Action System",
@@ -303,7 +303,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "323ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Strike Shield",
     price: "4999",
     categoryName: "Body Action System",
@@ -313,7 +313,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "333ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Legacy Championship Replica ...",
     price: "2199",
     categoryName: "Championship Belt",
@@ -323,7 +323,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "343ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "BMF Replica Belt",
     price: "2299",
     categoryName: "Championship Belt",
@@ -333,7 +333,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "353ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Classic Championship Replica...",
     price: "2399",
     categoryName: "Championship Belt",
@@ -343,7 +343,7 @@ export const products = [
     stock: false,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "363ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "Pride Replica Belt",
     price: "2899",
     categoryName: "Championship Belt",
@@ -353,7 +353,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "373ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Ultimate Series Limited Edit...",
     price: "1200",
     categoryName: "Action Figure",
@@ -363,7 +363,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "383ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Ultimate Series Limited Edit...",
     price: "1300",
     categoryName: "Action Figure",
@@ -373,7 +373,7 @@ export const products = [
     stock: false,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "393ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Ultimate Series Limited Edit...",
     price: "1700",
     categoryName: "Action Figure",
@@ -383,7 +383,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "403ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Collectible Octagon",
     price: "1900",
     categoryName: "Action Figure",
@@ -393,7 +393,7 @@ export const products = [
     stock: false,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "413ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC 2021 Panini Chronicles Tradi...",
     price: "1199",
     categoryName: "Training Cards",
@@ -403,7 +403,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "423ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Ulti-Man Bobblehead",
     price: "1599",
     categoryName: "Bobble Head",
@@ -413,7 +413,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "433ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "Conor McGregor Bobblehead.",
     price: "2599",
     categoryName: "Bobble Head",
@@ -423,7 +423,7 @@ export const products = [
     stock: false,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "443ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "Jon Jones Bobblehead..",
     price: "3599",
     categoryName: "Bobble Head",
@@ -433,7 +433,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "453ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "Daniel Cormier Bobblehead",
     price: "4570",
     categoryName: "Bobble Head",
@@ -443,7 +443,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "463ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Amanda Nunes Big Shots Pillo...",
     price: "1430",
     categoryName: "Plushes",
@@ -453,7 +453,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "473ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Conor McGregor Big Shots Pil...",
     price: "1440",
     categoryName: "Plushes",
@@ -463,7 +463,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "483ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Daniel Cormier Big Shots Pil...",
     price: "1450",
     categoryName: "Plushes",
@@ -473,7 +473,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "493ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Chuck Liddell Big Shots Pill...",
     price: "2400",
     categoryName: "Plushes",
@@ -483,7 +483,7 @@ export const products = [
     stock: false,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "503ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Gloves Flag",
     price: "2400",
     categoryName: "Poster",
@@ -493,7 +493,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "513ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Ultimate Fighting Championsh...",
     price: "2400",
     categoryName: "Poster",
@@ -503,7 +503,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "523ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Pin Collectors Banner",
     price: "2400",
     categoryName: "Poster",
@@ -513,7 +513,7 @@ export const products = [
     stock: false,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "533ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Urban Scrawl Global Flag",
     price: "2400",
     categoryName: "Poster",
@@ -523,7 +523,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "543ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC X DFNS Apparel Launder FLIGH...",
     price: "1000",
     categoryName: "Body Refresher",
@@ -533,7 +533,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "553ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC X DFNS All-Purpose Hygiene S...",
     price: "1000",
     categoryName: "Body Refresher",
@@ -543,7 +543,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "563ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC X DFNS Sport Gear Refresher ...",
     price: "1000",
     categoryName: "Body Refresher",
@@ -553,7 +553,7 @@ export const products = [
     stock: false,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "573ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC X DFNS Sport Gear Refresher ...",
     price: "1000",
     categoryName: "Body Refresher",
@@ -563,7 +563,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "583ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC VENUM Authentic Fight Night ...",
     price: "2400",
     categoryName: "Cap",
@@ -573,7 +573,7 @@ export const products = [
     stock: false,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "593ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC White Lapel Pin",
     price: "600",
     categoryName: "Pin",
@@ -583,7 +583,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "603ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Octagon Pin",
     price: "700",
     categoryName: "Pin",
@@ -593,7 +593,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "613ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Black Glove Octagon Lapel Pi...",
     price: "800",
     categoryName: "Pin",
@@ -603,7 +603,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "623ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC White Glove Octagon Lapel Pi...",
     price: "900",
     categoryName: "Pin",
@@ -613,7 +613,7 @@ export const products = [
     stock: false,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "633ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Diecut Logo Keychain",
     price: "100",
     categoryName: "Key Chain",
@@ -623,7 +623,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "643ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Logo Keychain",
     price: "200",
     categoryName: "Key Chain",
@@ -633,7 +633,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "653ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Bottle Opener Keychain.",
     price: "300",
     categoryName: "Key Chain",
@@ -643,7 +643,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "663ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC SPinner Keychain",
     price: "400",
     categoryName: "Key Chain",
@@ -653,7 +653,7 @@ export const products = [
     stock: false,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "673ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC VENUM Authentic Fight Week B...",
     price: "120",
     categoryName: "Towel",
@@ -663,7 +663,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "683ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Ulti-Man Towel",
     price: "130",
     categoryName: "Towel",
@@ -673,7 +673,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "693ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Flask and Shot Glass Set",
     price: "250",
     categoryName: "Glassware",
@@ -683,7 +683,7 @@ export const products = [
     stock: false,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "703ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Shot Glass 4 Pack",
     price: "250",
     categoryName: "Glassware",
@@ -693,7 +693,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "713ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Camp Mug",
     price: "150",
     categoryName: "Glassware",
@@ -703,7 +703,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "723ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Stainless Steel Water Bottle...",
     price: "400",
     categoryName: "Glassware",
@@ -713,7 +713,7 @@ export const products = [
     stock: false,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "733ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Premium Octagon 14K Yellow G...",
     price: "685",
     categoryName: "Earings",
@@ -723,7 +723,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "743ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "Deluxe UFC Octagon Black Diamond...",
     price: "185",
     categoryName: "Earings",
@@ -733,7 +733,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "753ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Conor The Notorious McGreg...",
     price: "985",
     categoryName: "Earings",
@@ -743,7 +743,7 @@ export const products = [
     stock: false,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "763ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Khabib The Eagle Nurmagome...",
     price: "985",
     categoryName: "Earings",
@@ -753,7 +753,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "773ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Retro Pager - Black",
     price: "1250",
     categoryName: "Retro Pager",
@@ -763,7 +763,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "783ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Retro Pager - White",
     price: "1250",
     categoryName: "Retro Pager",
@@ -773,7 +773,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "793ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Flare 8 Speaker",
     price: "3999",
     categoryName: "Retro Pager",
@@ -783,7 +783,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "803ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Elements Red & White Enamel ...",
     price: "2000",
     categoryName: "Necklace",
@@ -793,7 +793,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "813ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Premium Octagon 14K Yellow G...",
     price: "1110",
     categoryName: "Necklace",
@@ -803,7 +803,7 @@ export const products = [
     stock: false,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "823ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "Deluxe UFC Octagon Beaded Dog Ta...",
     price: "1550",
     categoryName: "Necklace",
@@ -813,7 +813,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "833ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Ulti-Man Octagon Pendant in ...",
     price: "1850",
     categoryName: "Necklace",
@@ -823,7 +823,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "843ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Pub Chair with Back",
     price: "3500",
     categoryName: "Chair",
@@ -833,7 +833,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "853ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Black Pub Table",
     price: "4600",
     categoryName: "Table",
@@ -843,7 +843,7 @@ export const products = [
     stock: false,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "863ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Bar Stool",
     price: "4300",
     categoryName: "Table",
@@ -853,7 +853,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "873ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Chrome Pub Table",
     price: "4650",
     categoryName: "Table",
@@ -863,7 +863,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "883ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Graphic Slides",
     price: "1300",
     categoryName: "Slipper",
@@ -873,7 +873,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "893ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Ulti-Man Whiteout Lanyard",
     price: "180",
     categoryName: "Lanyard",
@@ -883,7 +883,7 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: uuid(),
+    _id: "903ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Charcoal Lanyard",
     price: "180",
     categoryName: "Lanyard",
@@ -893,9 +893,9 @@ export const products = [
     stock: true,
     qty: 0
   },
- 
+
   {
-    _id: uuid(),
+    _id: "913ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC White Lanyard",
     price: "180",
     categoryName: "Lanyard",
@@ -905,9 +905,9 @@ export const products = [
     stock: true,
     qty: 0
   },
- 
+
   {
-    _id: uuid(),
+    _id: "923ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Blackout Lanyard",
     price: "190",
     categoryName: "Lanyard",
