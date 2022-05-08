@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { useFilter } from "../../context/FilterContext/FilterContext";
 import { AddToCartButton } from "../AddToCartButton/AddToCartButton";
 import { AddToWishList } from "../AddToWishList/AddToWishList";
+import { useState } from "react";
+import { Pagination } from "../Pagination/Pagination";
 
 export const AllProducts = ({ allProducts }) => {
   const discountPrice = (price, discount) => {
@@ -56,47 +58,74 @@ export const AllProducts = ({ allProducts }) => {
 
   const navigate = useNavigate();
 
-  return (
-    <div className="all-products">
-      <h1>
-        Showing all products
-        <small className="lighter">
-          (showing {rangeData && rangeData.length} products)
-        </small>
-      </h1>
-      <div className="all-products-div">
-        {rangeData &&
-          rangeData.map((el, idx) => {
-            return (
-              <div key={idx} className="item-container">
-                <div className="item-img">
-                  <img src={el.image} alt="loading" />
-                  <AddToWishList el={el} />
-                </div>
-                <div className="item-list">
-                  <p>{el.title}</p>
-                  <div className="price">
-                    <h2>&#8377; {el.price}</h2>
-                    <h3>
-                      <del>&#8377; {discountPrice(el.price, el.discount)}</del>
-                    </h3>
-                  </div>
-                  <h4>{el.discount}</h4>
-                  <div className="item-buttons">
-                    <button
-                      className="background"
-                      onClick={() => navigate(`/preview/${el._id}`)}
-                    >
-                      PREVIEW
-                    </button>
+  // Implementation of pagination.
 
-                    <AddToCartButton el={el} />
+  const [currPage, setCurrPage] = useState(1);
+
+  let pagesArr = [];
+  let limit = 10;
+
+  let noOfPages = rangeData.length / limit;
+
+  for (let i = 1; i <= noOfPages; i++) {
+    pagesArr.push(i);
+  }
+
+  let si = (currPage - 1) * limit;
+  let ei = si + limit;
+
+  const getPageData = () => {
+    return rangeData.slice(si, ei);
+  };
+  const pageData = getPageData();
+  
+
+  return (
+    <>
+      <div className="all-products">
+        <h1>
+          Showing all products
+          <small className="lighter">
+            (showing {rangeData && rangeData.length} products)
+          </small>
+        </h1>
+        <div className="all-products-div">
+          {pageData &&
+            pageData.map((el, idx) => {
+              return (
+                <div key={idx} className="item-container">
+                  <div className="item-img">
+                    <img src={el.image} alt="loading" />
+                    <AddToWishList el={el} />
+                  </div>
+                  <div className="item-list">
+                    <p>{el.title}</p>
+                    <div className="price">
+                      <h2>&#8377; {el.price}</h2>
+                      <h3>
+                        <del>
+                          &#8377; {discountPrice(el.price, el.discount)}
+                        </del>
+                      </h3>
+                    </div>
+                    <h4>{el.discount}</h4>
+                    <div className="item-buttons">
+                      <button
+                        className="background"
+                        onClick={() => navigate(`/preview/${el._id}`)}
+                      >
+                        PREVIEW
+                      </button>
+
+                      <AddToCartButton el={el} />
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+        </div>
+        <Pagination setCurrPage={setCurrPage} pagesArr={pagesArr} />
       </div>
-    </div>
+    </>
   );
 };

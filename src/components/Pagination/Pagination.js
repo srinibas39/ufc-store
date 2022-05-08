@@ -1,13 +1,13 @@
 
 import "./Pagination.css"
-export const Pagination = () => {
+export const Pagination = ({ setCurrPage, pagesArr }) => {
     return <>
         <ul className="pagination-container">
-            <li><button>Previous</button></li>
-            <li><button>1</button></li>
-            <li><button>2</button></li>
-            <li><button>2</button></li>
-            <li><button>Next</button></li>
+            {
+                pagesArr.map((el, idx) => {
+                    return <li key={idx} onClick={() => setCurrPage(el)}><button>{el}</button></li>
+                })
+            }
         </ul>
     </>
 
