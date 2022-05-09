@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext/AuthContext";
 import { useProduct } from "../../context/ProductContext/ProductContext";
 import { AddToCartButton } from "../AddToCartButton/AddToCartButton";
 import { AddToWishList } from "../AddToWishList/AddToWishList";
@@ -31,6 +32,7 @@ export const Preview = () => {
               Laborum quisquam, cupiditate sapiente necessitatibus debitis
               doloremque veritatis?
             </p>
+            <p style={{marginTop:"1rem",fontWeight:"bold"}}>{product.stock ? "Item is in stock.":"Item is not in stock."}</p>
           </div>
           <AddToCartButton el={product} />
         </div>

@@ -14,7 +14,6 @@ import { useAuth } from "../AuthContext/AuthContext";
 export const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
-    const { token } = useAuth();
     const [toastLoading, setToastLoading] = useState(false);
     const [toastText, setToastText] = useState("");
     const productReducer = (state, action) => {
@@ -159,8 +158,7 @@ export const ProductProvider = ({ children }) => {
         try {
             const res = await GetCart({ token });
             if (res.status === 200 || res.status === 201) {
-                console.log(res.data.cart);
-                return res.data.cart
+                return res.data.cart;
             }
 
         }

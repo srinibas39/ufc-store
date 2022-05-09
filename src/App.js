@@ -13,7 +13,8 @@ import { useAuth } from "./context/AuthContext/AuthContext";
 import { ProfilePage } from "./pages/ProfilePage";
 import { AddressFormPage } from "./pages/AddressFormPage";
 import { AddressPage } from "./pages/AddressPage";
-import { Pagination } from "./components/Pagination/Pagination";
+import { Error } from "./components/Error/Error";
+
 
 
 
@@ -21,6 +22,7 @@ export const App = () => {
   const { token } = useAuth()
   return <>
     <Routes>
+      <Route path="*" element={<Error/>}/>
       <Route path="/" element={<Home />} />
       <Route path="/products" element={<Products />} />
       <Route path="/preview/:productId" element={<PreviewPage />} />
@@ -52,7 +54,6 @@ export const App = () => {
           <AddressPage />
         </RequiresAuth>
       } />
-      <Route path="/p" element={<Pagination/>}/>
     </Routes>
   </>
 }
