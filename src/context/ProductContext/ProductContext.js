@@ -103,6 +103,7 @@ export const ProductProvider = ({ children }) => {
         }
     }
     const removeWishlist = async (token, id) => {
+
         try {
             setToastLoading(true);
             setToastText("Item is getting removed from wishlist")
@@ -110,7 +111,6 @@ export const ProductProvider = ({ children }) => {
             if (res.status === 200 || res.status === 201) {
                 prodDispatch({ type: "ADD_REMOVE_WISHLIST", payload: res.data.wishlist })
             }
-
         }
         catch (error) {
             console.log(error);
@@ -142,6 +142,7 @@ export const ProductProvider = ({ children }) => {
         }
     }
     const removeCart = async (token, id) => {
+
         try {
             setToastLoading(true);
             setToastText("Item is getting removed from cart")

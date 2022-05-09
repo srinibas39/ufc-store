@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext/AuthContext";
 import { useProduct } from "../../context/ProductContext/ProductContext";
+import { AddToWishList } from "../AddToWishList/AddToWishList";
 
 export const WishList = () => {
   const { token } = useAuth();
@@ -24,9 +25,7 @@ export const WishList = () => {
               <div key={el._id} className="product-container">
                 <div className="product-img">
                   <img src={el.image} alt="loading..." />
-                  <div className="product-like pink">
-                    <span className="material-icons"> favorite </span>
-                  </div>
+                  <AddToWishList el={el}/>
                 </div>
                 <div className="product-list">
                   <p>{el.title}</p>

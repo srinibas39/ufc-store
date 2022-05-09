@@ -117,7 +117,6 @@ export const AllProducts = ({ allProducts }) => {
                       >
                         PREVIEW
                       </button>
-
                       <AddToCartButton el={el} />
                     </div>
                   </div>

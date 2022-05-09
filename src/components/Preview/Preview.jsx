@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
 import { useProduct } from "../../context/ProductContext/ProductContext";
+import { AddToCartButton } from "../AddToCartButton/AddToCartButton";
+import { AddToWishList } from "../AddToWishList/AddToWishList";
 
 export const Preview = () => {
   const { productId } = useParams();
@@ -13,12 +14,11 @@ export const Preview = () => {
       <div className="preview">
         <div className="preview-img">
           <img src={product.image} alt="loading..." />
+          <AddToWishList el={product} />
         </div>
         <div className="preview-description">
-          <h1 className="Preview-header">
-            UFC VENUM MAGOMED FIGHT NIGHT MEN'S WALKOUT JERSEY
-          </h1>
-          <h2>&#8377; 2000</h2>
+          <h1 className="Preview-header">{product.title}</h1>
+          <h2>&#8377; {product.price}</h2>
           <div className="description">
             <h2>Description</h2>
             <p>
@@ -32,11 +32,7 @@ export const Preview = () => {
               doloremque veritatis?
             </p>
           </div>
-          <button>
-            <a href="./Cart.html" className="link">
-              ADD TO CART
-            </a>
-          </button>
+          <AddToCartButton el={product} />
         </div>
       </div>
     )

@@ -436,6 +436,7 @@ footer {
 }
 .preview-img {
   width: 40%;
+  position: relative;
 }
 .preview-img img {
   height: 100%;
@@ -454,6 +455,7 @@ footer {
   color: var(--secondary-color);
   border: none;
   border-radius: 13rem;
+  cursor: pointer;
 }
 
 /* Navbar */
