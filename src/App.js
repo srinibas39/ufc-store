@@ -14,10 +14,6 @@ import { ProfilePage } from "./pages/ProfilePage";
 import { AddressFormPage } from "./pages/AddressFormPage";
 import { AddressPage } from "./pages/AddressPage";
 import { Error } from "./components/Error/Error";
-import { AutoComplete } from "./components/AutoComplete/AutoComplete";
-
-
-
 
 export const App = () => {
   const { token } = useAuth()
@@ -55,18 +51,6 @@ export const App = () => {
           <AddressPage />
         </RequiresAuth>
       } />
-      <Route path="/search" element={<AutoComplete suggestion={[
-        "Alligator",
-        "Bask",
-        "Crocodilian",
-        "Death Roll",
-        "Eggs",
-        "Jaws",
-        "Reptile",
-        "Solitary",
-        "Tail",
-        "Wetlands"
-      ]} />} />
     </Routes>
   </>
 }

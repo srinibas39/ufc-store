@@ -1,9 +1,13 @@
 import { useState } from "react"
+import { useEffect } from "react";
+import { useProduct } from "../../context/ProductContext/ProductContext";
 
 import "./AutoComplete.css"
 
-export const AutoComplete = ({ suggestion }) => {
+export const AutoComplete = () => {
 
+    const { prodState } = useProduct();
+    const suggestion = prodState.suggestion;
     const [filteredSuggestionList, setFilteredSuggestionList] = useState([]);
     const [showSuggestion, setShowSuggestion] = useState(false);
     const [input, setInput] = useState("");
@@ -21,6 +25,8 @@ export const AutoComplete = ({ suggestion }) => {
         setInput(e.target.innerText);
         setShowSuggestion(false);
     }
+
+
     return <div className="search-con">
         <input type="search" value={input} onChange={(e) => handleChange(e)} placeholder={"Type To search"} />
         <span className="material-icons-outlined"> search </span>

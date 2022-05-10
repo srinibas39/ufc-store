@@ -29,6 +29,8 @@
   list-style: none;
   box-shadow: var(--box-shadow2);
   margin-top: 7px;
+  max-height: 14rem;
+  overflow: auto;
 }
 .search-con ul > * {
   padding: 5px;

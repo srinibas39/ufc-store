@@ -3,12 +3,11 @@ import { AddCart } from "../../services/AddCart";
 import { AddWishlist } from "../../services/AddWishlist";
 import { GetAllProducts } from "../../services/GetAllProducts";
 import { GetCart } from "../../services/GetCart";
-import { GetProduct } from "../../services/GetProduct";
 import { GetWishList } from "../../services/GetWishlist";
 import { InDecCart } from "../../services/InDecCart";
 import { RemoveCart } from "../../services/RemoveCart";
 import { RemoveWishlist } from "../../services/RemoveWishlist";
-import { useAuth } from "../AuthContext/AuthContext";
+
 
 
 export const ProductContext = createContext();
@@ -32,6 +31,8 @@ export const ProductProvider = ({ children }) => {
                 return { ...state, addressEdit: action.payload }
             case "ADDRESS_SELECTED":
                 return { ...state, addressSelected: action.payload }
+            case "AUTO_SUGGEST":
+                return { ...state, suggestion: action.payload }
             default:
                 return { ...state }
         }
@@ -60,7 +61,8 @@ export const ProductProvider = ({ children }) => {
             phn: "5719801234",
         },
         addressSelected: null,
-        coupons: ["CART@10", "CART@20", "CART@30"]
+        coupons: ["CART@10", "CART@20", "CART@30"],
+        suggestion: []
 
     })
     const getProduct = (productId) => prodState.allProducts.find((el) => el._id === productId) || {};
@@ -73,6 +75,9 @@ export const ProductProvider = ({ children }) => {
                 if (resProd.status === 200 || resProd.status === 201) {
 
                     prodDispatch({ type: "GET_PRODUCTS", payload: resProd.data.products })
+                    const suggestions = resProd.data.products.map((el) => el.title);
+                    prodDispatch({ type: "AUTO_SUGGEST", payload: suggestions })
+
                 }
 
 
@@ -185,6 +190,8 @@ export const ProductProvider = ({ children }) => {
             console.log(error);
         }
     }
+
+
 
     return <ProductContext.Provider value={{ prodState, prodDispatch, getProduct, addWishlist, removeWishlist, toastLoading, setToastLoading, toastText, getWishlist, addCart, getCart, removeCart, inDecCart }}>
         {children}
