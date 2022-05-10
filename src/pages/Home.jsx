@@ -9,20 +9,7 @@ export const Home = () => {
   return (
     <>
       <Navbar />
-      <AutoComplete
-        suggestion={[
-          "Alligator",
-          "Bask",
-          "Crocodilian",
-          "Death Roll",
-          "Eggs",
-          "Jaws",
-          "Reptile",
-          "Solitary",
-          "Tail",
-          "Wetlands",
-        ]}
-      />
+      <AutoComplete />
       <Hero />
       <FighterCategory />
       <EquipmentCategory />

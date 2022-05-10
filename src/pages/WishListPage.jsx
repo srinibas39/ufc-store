@@ -4,6 +4,7 @@ import { WishList } from "../components/WishList/WishList";
 import { useProduct } from "../context/ProductContext/ProductContext";
 import { useEffect } from "react";
 import { Toast } from "../components/Toast/Toast";
+import { AutoComplete } from "../components/AutoComplete/AutoComplete";
 
 export const WishListPage = () => {
   const { toastLoading, setToastLoading, toastText } = useProduct();
@@ -15,6 +16,7 @@ export const WishListPage = () => {
   return (
     <>
       <Navbar />
+      <AutoComplete />
       <WishList />
       <Footer />
       {toastLoading ? <Toast text={toastText} /> : ""}

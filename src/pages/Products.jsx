@@ -18,20 +18,7 @@ export const Products = () => {
   return (
     <>
       <Navbar />
-      <AutoComplete
-        suggestion={[
-          "Alligator",
-          "Bask",
-          "Crocodilian",
-          "Death Roll",
-          "Eggs",
-          "Jaws",
-          "Reptile",
-          "Solitary",
-          "Tail",
-          "Wetlands",
-        ]}
-      />
+      <AutoComplete/>
       <Hero />
       <ProductSection />
       <Footer />
