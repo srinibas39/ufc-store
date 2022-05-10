@@ -24,10 +24,10 @@ export const Navbar = () => {
             </svg>
         </div>
         <div className="navBar-content">
-            <div className="searchBox">
+            {/* <div className="searchBox">
                 <input type="search" placeholder="search" />
                 <span className="material-icons-outlined"> search </span>
-            </div>
+            </div> */}
             <div onClick={() => navigate("/profile")}>
 
                 <span className="material-icons-outlined"> person </span>
