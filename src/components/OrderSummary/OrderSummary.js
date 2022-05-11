@@ -57,7 +57,7 @@ export const OrderSummary = () => {
                 </tr>
             </table>
         </div>
-        <button>CHECKOUT</button>
-        <button>DOWNLOAD INVOICE</button>
+        <button className="btn-checkout">CHECKOUT</button>
+        <button className="btn-invoice">DOWNLOAD INVOICE AS PDF</button>
     </>
 }

@@ -1,34 +1,63 @@
-
-
-.order-summary-container table{
-    width: 96%;
-    margin: 1rem;
-    padding: 1rem;
-    box-shadow: var(--box-shadow2);
+.order-summary-container table {
+  width: 96%;
+  margin: 1rem;
+  padding: 1rem;
+  box-shadow: var(--box-shadow2);
 }
 
-.order-summary-container td{
-    text-align: center;
-    height: 2rem;
+.order-summary-container td {
+  text-align: center;
+  height: 2rem;
 }
-.tr-header{
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-    height: 2rem;
-}
-
-.tr-data{
-    background-color: var(--secondary-color2);
+.tr-header {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  height: 2rem;
 }
 
-.order-summary-container p{
-    text-align: center;
-}
-.order-summary-container h2{
-    text-align: center;
-    margin: 1rem;
+.tr-data {
+  background-color: var(--secondary-color2);
 }
 
-.bold{
-    font-weight: bold;
+.order-summary-container p {
+  text-align: center;
+}
+.order-summary-container h2 {
+  text-align: center;
+  margin: 1rem;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.btn-checkout {
+  display: block;
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 10px 10px;
+  width: 12rem;
+  border: 4px solid var(--primary-color);
+  background-color: #fff;
+  cursor: pointer;
+  color: var(--primary-color);
+}
+.btn-invoice {
+  display: block;
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 10px 10px;
+  width: 20rem;
+  border: 4px solid var(--primary-color);
+  background-color: #fff;
+  cursor: pointer;
+  color: var(--primary-color);
+}
+
+.btn-checkout:hover,
+.btn-invoice:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
 }
