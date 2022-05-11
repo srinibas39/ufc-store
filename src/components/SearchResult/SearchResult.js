@@ -19,6 +19,7 @@ export const SearchResult = () => {
         return Number(nPrice) + Number(price);
     };
 
+
     return <div className="search-result">
         <h2>{searchProducts.length ?
             `Search results for "${prodState.selectedSuggestion}" - ${searchProducts.length} ${searchProducts.length === 1 ? "item" : "items"}` :

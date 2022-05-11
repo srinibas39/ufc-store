@@ -21,10 +21,13 @@ export const PriceDetail = ({ totalQty, totalDiscountPrice, discount, calculateT
             setCouponDiscount(couponDiscount);
             setCoupon("Coupon successfully set.");
             setCouponColor(true);
+            prodDispatch({ type: "COUPON_APPLIED", payload: couponDiscount })
+
         }
         else {
             setCoupon("You have entered invalid coupon.");
             setCouponColor(false);
+            prodDispatch({ type: "COUPON_APPLIED", payload: 0 })
         }
 
     }

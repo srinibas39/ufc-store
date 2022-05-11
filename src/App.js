@@ -15,7 +15,7 @@ import { AddressFormPage } from "./pages/AddressFormPage";
 import { AddressPage } from "./pages/AddressPage";
 import { Error } from "./components/Error/Error";
 import { SearchPage } from "./pages/SearchPage";
-import { OrderSummary } from "./components/OrderSummary/OrderSummary";
+import { OrderSummaryPage } from "./pages/OrderSummaryPage";
 
 
 export const App = () => {
@@ -55,7 +55,11 @@ export const App = () => {
         </RequiresAuth>
       } />
       <Route path="search" element={<SearchPage />} />
-      <Route path="summary" element={<OrderSummary />} />
+      <Route path="summary" element={
+        <RequiresAuth token={token}>
+          <OrderSummaryPage />
+        </RequiresAuth>
+      } />
     </Routes>
   </>
 }

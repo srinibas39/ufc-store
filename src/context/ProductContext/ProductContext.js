@@ -35,9 +35,11 @@ export const ProductProvider = ({ children }) => {
                 return { ...state, suggestion: action.payload }
             case "SEARCH_TEXT":
                 return { ...state, selectedSuggestion: action.payload }
+            case "COUPON_APPLIED":
+                return { ...state, coupon: action.payload }
             default:
                 return { ...state }
-        }   
+        }
     }
     const [prodState, prodDispatch] = useReducer(productReducer, {
         allProducts: [],
@@ -65,7 +67,8 @@ export const ProductProvider = ({ children }) => {
         addressSelected: null,
         coupons: ["CART@10", "CART@20", "CART@30"],
         suggestion: [],
-        selectedSuggestion: ""
+        selectedSuggestion: "",
+        coupon: 0
 
     })
     const getProduct = (productId) => prodState.allProducts.find((el) => el._id === productId) || {};
