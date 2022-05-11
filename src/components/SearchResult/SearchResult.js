@@ -13,7 +13,6 @@ export const SearchResult = () => {
 
     const navigate = useNavigate();
 
-
     const discountPrice = (price, discount) => {
         const newD = discount.split("%")[0];
         const nPrice = price * (newD / 100);
@@ -21,10 +20,12 @@ export const SearchResult = () => {
     };
 
     return <div className="search-result">
-        <h2>Search results for "{prodState.selectedSuggestion}" - {searchProducts.length} items</h2>
+        <h2>{searchProducts.length ?
+            `Search results for "${prodState.selectedSuggestion}" - ${searchProducts.length} ${searchProducts.length === 1 ? "item" : "items"}` :
+            `No Search results for "${prodState.selectedSuggestion}"`}  </h2>
         <div className="search-item-container">
             {
-                searchProducts ? searchProducts.map((el, idx) => {
+                searchProducts.length ? searchProducts.map((el, idx) => {
                     return <div key={idx} className="item-container">
                         <div className="item-img">
                             <img src={el.image} alt="loading" />
@@ -54,7 +55,12 @@ export const SearchResult = () => {
                     </div>
 
 
-                }) : <h2>Not found</h2>
+                }) : <img
+                    style={{ height: "80%", width: "44%" }}
+                    src={require("../../images/nodata.png")}
+                />
+
+
             }
         </div>
 

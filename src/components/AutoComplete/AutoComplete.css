@@ -23,6 +23,7 @@
   position: absolute;
   top: 4px;
   left: 10px;
+  cursor: pointer;
 }
 
 .search-con ul {

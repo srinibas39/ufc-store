@@ -31,11 +31,29 @@ export const AutoComplete = () => {
         prodDispatch({ type: "SEARCH_TEXT", payload: e.target.innerText });
         navigate("/search")
     }
+    const handleKeyDown = (e) => {
 
+        if (e.keyCode === 13 && input.trim().length) {
+            prodDispatch({ type: "SEARCH_TEXT", payload: e.target.value });
+            navigate("/search")
+        }
+
+    }
+
+    const handleSearch = (e) => {
+        if (input.trim().length) {
+
+            prodDispatch({ type: "SEARCH_TEXT", payload: input });
+            navigate("/search")
+        }
+    }
 
     return <div className="search-con">
-        <input type="search" value={input} onChange={(e) => handleChange(e)} placeholder={"Type To search"} />
-        <span className="material-icons-outlined"> search </span>
+        <input type="search" value={input} onChange={(e) => handleChange(e)}
+            onKeyDown={(e) => handleKeyDown(e)}
+            placeholder={"Type To search"} />
+
+        <span className="material-icons-outlined" onClick={() => handleSearch()}> search </span>
         {
             showSuggestion && input && <>
                 {
