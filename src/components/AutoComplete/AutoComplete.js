@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useProduct } from "../../context/ProductContext/ProductContext";
 
 import "./AutoComplete.css"
@@ -11,6 +12,9 @@ export const AutoComplete = () => {
     const [filteredSuggestionList, setFilteredSuggestionList] = useState([]);
     const [showSuggestion, setShowSuggestion] = useState(false);
     const [input, setInput] = useState("");
+
+    const { prodDispatch } = useProduct();
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const userInput = e.target.value;
@@ -24,6 +28,8 @@ export const AutoComplete = () => {
         setFilteredSuggestionList([])
         setInput(e.target.innerText);
         setShowSuggestion(false);
+        prodDispatch({ type: "SEARCH_TEXT", payload: e.target.innerText });
+        navigate("/search")
     }
 
 

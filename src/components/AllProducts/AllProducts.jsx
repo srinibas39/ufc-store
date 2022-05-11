@@ -78,8 +78,6 @@ export const AllProducts = ({ allProducts }) => {
     return rangeData.slice(si, ei);
   };
   const pageData = getPageData();
-  
- 
 
   return (
     <>

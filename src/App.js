@@ -14,6 +14,8 @@ import { ProfilePage } from "./pages/ProfilePage";
 import { AddressFormPage } from "./pages/AddressFormPage";
 import { AddressPage } from "./pages/AddressPage";
 import { Error } from "./components/Error/Error";
+import { SearchPage } from "./pages/SearchPage";
+
 
 export const App = () => {
   const { token } = useAuth()
@@ -51,6 +53,7 @@ export const App = () => {
           <AddressPage />
         </RequiresAuth>
       } />
+      <Route path="search" element={<SearchPage/>} />
     </Routes>
   </>
 }
