@@ -19,8 +19,10 @@ export const Address = () => {
 
     const handlePay = () => {
         prodState.addressSelected !== null ? setPayError("") : setPayError("Please select a delivery address");
-        navigate("/summary");
+        prodState.addressSelected !== null && navigate("/summary");
+
     }
+
 
     return <div className="address-container">
         <h2>My addresses(2)</h2>
