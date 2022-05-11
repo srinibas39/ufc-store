@@ -1,0 +1,34 @@
+
+
+.order-summary-container table{
+    width: 96%;
+    margin: 1rem;
+    padding: 1rem;
+    box-shadow: var(--box-shadow2);
+}
+
+.order-summary-container td{
+    text-align: center;
+    height: 2rem;
+}
+.tr-header{
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    height: 2rem;
+}
+
+.tr-data{
+    background-color: var(--secondary-color2);
+}
+
+.order-summary-container p{
+    text-align: center;
+}
+.order-summary-container h2{
+    text-align: center;
+    margin: 1rem;
+}
+
+.bold{
+    font-weight: bold;
+}

@@ -15,6 +15,7 @@ import { AddressFormPage } from "./pages/AddressFormPage";
 import { AddressPage } from "./pages/AddressPage";
 import { Error } from "./components/Error/Error";
 import { SearchPage } from "./pages/SearchPage";
+import { OrderSummary } from "./components/OrderSummary/OrderSummary";
 
 
 export const App = () => {
@@ -53,7 +54,8 @@ export const App = () => {
           <AddressPage />
         </RequiresAuth>
       } />
-      <Route path="search" element={<SearchPage/>} />
+      <Route path="search" element={<SearchPage />} />
+      <Route path="summary" element={<OrderSummary />} />
     </Routes>
   </>
 }

@@ -7,6 +7,7 @@
 :root {
   --primary-color: #d20a0a;
   --secondary-color: #fff;
+  --secondary-color2: #f1f5f9;
   --primary-font-family: "Klavika", Arial, sans-serif;
   --product-like: deeppink;
   --footer-color: #18181b;
@@ -296,14 +297,14 @@
   cursor: pointer;
 }
 
-.coupons input{
+.coupons input {
   width: 75%;
   height: 100%;
   padding: 5px;
   outline: none;
 }
 
-.coupons button{
+.coupons button {
   width: 25%;
   background-color: var(--primary-color);
   color: var(--secondary-color);
