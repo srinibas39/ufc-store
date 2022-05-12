@@ -14,15 +14,10 @@ export const Login = () => {
     const { handleLogin, loggedIn, token } = useAuth();
     const location = useLocation();
 
-
-
     const handleSubmit = (e) => {
         e.preventDefault();
-
         handleLogin(form.email, form.password);
-        navigate("/products")
-
-
+        navigate("/products");
     }
 
     useEffect(() => {
@@ -30,6 +25,10 @@ export const Login = () => {
             navigate(`${location?.state?.from?.pathname}`)
         }
     }, [loggedIn])
+
+    const handleGuest = () => {
+        setForm({ ...form, email: "adarshbalika@gmail.com", password: "adarshbalika" })
+    }
 
     return <div className="login-container">
         <div className="login">
@@ -51,6 +50,7 @@ export const Login = () => {
                 <a href="#">Forgot Your Password ?</a>
             </div>
             <button className="btn-logins" onClick={(e) => handleSubmit(e)} >Login</button>
+            <button onClick={() => handleGuest()}>Login as a Guest</button>
             <div className="create-new" onClick={() => navigate("/signup")}>
                 <p>Create new Account</p>
                 <span className="material-icons"> arrow_forward_ios </span>
