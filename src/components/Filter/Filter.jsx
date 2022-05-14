@@ -1,10 +1,51 @@
-import { useReducer, useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useFilter } from "../../context/FilterContext/FilterContext";
+import { useProduct } from "../../context/ProductContext/ProductContext";
 
 export const Filter = ({ allProducts }) => {
   const [categories, setCategories] = useState([]);
   const stars = ["5", "4", "3", "2", "1"];
   const [clear, setClear] = useState(false);
+
+  const { state } = useFilter();
+  const { prodState, prodDispatch } = useProduct();
+  const categoryRef = useRef([]);
+  const sortLowRef = useRef(null);
+  const sortHighRef = useRef(null);
+  const ratingRef = useRef([]);
+
+  useEffect(() => {
+    handleClear();
+    setTimeout(() => {
+      const allCategory = categoryRef.current;
+      const lowSort = sortLowRef.current;
+      const highSort = sortHighRef.current;
+      const ratingSort = ratingRef.current;
+
+      // category
+      for (let i = 0; i < allCategory.length; i++) {
+        if (
+          prodState.category.includes(allCategory[i].el) ||
+          state.filterCategory.includes(allCategory[i].el)
+        ) {
+          allCategory[i].ele.click();
+        }
+      }
+      //sort
+      if (state.sort === "LOW_TO_HIGH") {
+        lowSort.click();
+      } else if (state.sort === "HIGH_TO_LOW") {
+        highSort.click();
+      }
+      // rating
+      for (let i = 0; i < ratingSort.length; i++) {
+        if (state.stars === ratingSort[i].el) {
+          ratingSort[i].ele.click();
+        }
+      }
+    }, 500);
+  }, []);
+
   useEffect(() => {
     const catName = allProducts.reduce(
       (a, c) => (a.includes(c.categoryName) ? [...a] : [...a, c.categoryName]),
@@ -17,7 +58,8 @@ export const Filter = ({ allProducts }) => {
   const { dispatch } = useFilter();
 
   const handleClear = () => {
-    dispatch({type: "CLEAR"});
+    dispatch({ type: "CLEAR" });
+    prodDispatch({ type: "CATEGORY", payload: [] });
     setClear(false);
   };
 
@@ -31,17 +73,23 @@ export const Filter = ({ allProducts }) => {
 
         <h2>Price</h2>
         <div className="range">
-          <p>50</p>
-          <p>150</p>
-          <p>200</p>
+          <p>&#8377; 100</p>
+          <p>&#8377; 2500</p>
+          <p>&#8377; 5000</p>
         </div>
         <input
           type="range"
           id="filter-price"
           min="100"
           max="5000"
+          value={state.range ? state.range : 5000}
           onChange={(e) => dispatch({ type: "RANGE", payload: e.target.value })}
         />
+        <div
+          style={{ marginLeft: "auto", border: "1px solid", padding: "2px" }}
+        >
+          &#8377; {state.range ? state.range : 5000}
+        </div>
 
         <h2>Category</h2>
         {categories.map((el, id) => {
@@ -51,6 +99,7 @@ export const Filter = ({ allProducts }) => {
                 type="checkbox"
                 name="category"
                 id="filter-category"
+                ref={(ele) => (categoryRef.current[id] = { el, ele })}
                 onChange={() => dispatch({ type: "CATEGORY", payload: el })}
               />
               <label for="#filter-category">{el}</label>
@@ -67,6 +116,7 @@ export const Filter = ({ allProducts }) => {
                 name="rating"
                 id="filter-rating"
                 onClick={() => dispatch({ type: "STARS", payload: el })}
+                ref={(ele) => (ratingRef.current[idx] = { el, ele })}
               />
               <label for="#filter-rating">{el} star</label>
             </div>
@@ -78,8 +128,9 @@ export const Filter = ({ allProducts }) => {
           <input
             type="radio"
             name="sort"
-            id="filter-sort"
+            id="filter-sort-low"
             onClick={() => dispatch({ type: "SORT", payload: "LOW_TO_HIGH" })}
+            ref={sortLowRef}
           />
           <label for="#filter-sort">Price-Low to High</label>
         </div>
@@ -87,8 +138,9 @@ export const Filter = ({ allProducts }) => {
           <input
             type="radio"
             name="sort"
-            id="filter-sort"
+            id="filter-sort-high"
             onClick={() => dispatch({ type: "SORT", payload: "HIGH_TO_LOW" })}
+            ref={sortHighRef}
           />
           <label for="#filter-sort">Price-High to Low</label>
         </div>

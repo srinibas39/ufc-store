@@ -11,8 +11,8 @@ export const Home = () => {
       <Navbar />
       <AutoComplete />
       <Hero />
-      <FighterCategory />
       <EquipmentCategory />
+      <FighterCategory />
       <Footer />
     </>
   );

@@ -12,7 +12,7 @@ export const AllProducts = ({ allProducts }) => {
     return Number(nPrice) + Number(price);
   };
 
-  const { state, dispatch } = useFilter();
+  const { state } = useFilter();
 
   const getCategoryData = () => {
     if (state.filterCategory.length !== 0) {

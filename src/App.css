@@ -6,7 +6,7 @@
 }
 :root {
   --primary-color: #d20a0a;
-  --primary-color2:#9e0808;
+  --primary-color2: #9e0808;
   --secondary-color: #fff;
   --secondary-color2: #f1f5f9;
   --primary-font-family: "Klavika", Arial, sans-serif;
@@ -332,6 +332,7 @@
 }
 .filter-container input {
   cursor: pointer;
+  margin-right: 5px;
 }
 .filter p {
   text-decoration: underline;
@@ -514,7 +515,6 @@ footer {
 /* Categories */
 
 .card {
-  height: 70vh;
   position: relative;
   margin: 3rem;
   width: 22rem;

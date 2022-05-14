@@ -37,6 +37,8 @@ export const ProductProvider = ({ children }) => {
                 return { ...state, selectedSuggestion: action.payload }
             case "COUPON_APPLIED":
                 return { ...state, coupon: action.payload }
+            case "CATEGORY":
+                return { ...state, category: action.payload }
             default:
                 return { ...state }
         }
@@ -68,7 +70,8 @@ export const ProductProvider = ({ children }) => {
         coupons: ["CART@10", "CART@20", "CART@30"],
         suggestion: [],
         selectedSuggestion: "",
-        coupon: 0
+        coupon: 0,
+        category: []
 
     })
     const getProduct = (productId) => prodState.allProducts.find((el) => el._id === productId) || {};

@@ -1,5 +1,4 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
+
 import { useProduct } from "../../context/ProductContext/ProductContext";
 import { AllProducts } from "../AllProducts/AllProducts";
 import { Filter } from "../Filter/Filter";
