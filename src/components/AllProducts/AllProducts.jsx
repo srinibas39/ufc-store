@@ -12,7 +12,9 @@ export const AllProducts = ({ allProducts }) => {
     return Number(nPrice) + Number(price);
   };
 
+
   const { state } = useFilter();
+
 
   const getCategoryData = () => {
     if (state.filterCategory.length !== 0) {
@@ -27,7 +29,9 @@ export const AllProducts = ({ allProducts }) => {
     }
   };
 
+
   const categoryData = getCategoryData();
+
 
   const getSortedData = () => {
     if (state.sort === "LOW_TO_HIGH") {
@@ -55,6 +59,7 @@ export const AllProducts = ({ allProducts }) => {
     return starData;
   };
   const rangeData = getRangeData();
+
 
   const navigate = useNavigate();
 
@@ -96,6 +101,7 @@ export const AllProducts = ({ allProducts }) => {
                   <div className="item-img">
                     <img src={el.image} alt="loading" />
                     <AddToWishList el={el} />
+
                   </div>
                   <div className="item-list">
                     <p>{el.title}</p>
@@ -114,9 +120,11 @@ export const AllProducts = ({ allProducts }) => {
                         onClick={() => navigate(`/preview/${el._id}`)}
                       >
                         PREVIEW
+
                       </button>
                       <AddToCartButton el={el} />
                     </div>
+
                   </div>
                 </div>
               );
