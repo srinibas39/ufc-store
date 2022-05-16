@@ -1,27 +1,17 @@
-import axios from "axios";
-import { useState ,useEffect } from "react"
-import { AllProducts } from "../AllProducts/AllProducts"
-import { Filter } from "../Filter/Filter"
 
-export const ProductSection=()=>{
-    const [allProducts,setAllProducts]=useState([]);
-   
-    useEffect(()=>{
-      (async()=>{
-          try{
-            const res=await axios.get("/api/products",{
-                method:"GET"
-            })
-            setAllProducts(res.data.products);
+import { useProduct } from "../../context/ProductContext/ProductContext";
+import { AllProducts } from "../AllProducts/AllProducts";
+import { Filter } from "../Filter/Filter";
 
-          }
-          catch(error){
-             console.log(error);
-          }
-       })()
-    },[])
-    return  <section className="product-section">
-        <Filter allProducts={allProducts}/>
-        <AllProducts allProducts={allProducts}/>
+export const ProductSection = () => {
+
+  const { prodState } = useProduct();
+  
+ 
+  return (
+    <section className="product-section">
+      <Filter allProducts={ prodState.allProducts} />
+      <AllProducts allProducts={ prodState.allProducts} />
     </section>
-}
+  );
+};

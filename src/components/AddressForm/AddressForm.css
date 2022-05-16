@@ -1,0 +1,38 @@
+.new-address-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 1rem;
+}
+.new-address-container h2 {
+  text-align: center;
+}
+
+.new-address-input {
+  display: flex;
+  flex-direction: column;
+  height: 60%;
+  justify-content: space-evenly;
+  padding: 1rem;
+  align-items: center;
+}
+.new-address-input input {
+  height: 5vh;
+  width: 70vw;
+  padding: 10px;
+}
+.new-address-button {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.new-address-button button {
+  height: 2rem;
+  padding: 0 1rem;
+  border: none;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  cursor: pointer;
+}

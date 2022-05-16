@@ -1,3 +1,4 @@
+import { AutoComplete } from "../components/AutoComplete/AutoComplete";
 import { EquipmentCategory } from "../components/EquipmentCategory/EquipmentCategory";
 import { FighterCategory } from "../components/FighterCategory/FighterCategory";
 import { Footer } from "../components/Footer/Footer";
@@ -8,9 +9,10 @@ export const Home = () => {
   return (
     <>
       <Navbar />
+      <AutoComplete />
       <Hero />
-      <FighterCategory />
       <EquipmentCategory />
+      <FighterCategory />
       <Footer />
     </>
   );

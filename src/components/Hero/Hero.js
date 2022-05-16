@@ -1,4 +1,4 @@
-import { requiresAuth } from "../../backend/utils/authUtils"
+
 
 
 export const Hero=()=>{

@@ -1,19 +1,35 @@
-import { useFilter } from "../../context/FilterContext/FilterContext"
 
+import { useEffect } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext/AuthContext";
+import { useProduct } from "../../context/ProductContext/ProductContext";
 
 export const AddToWishList = ({ el }) => {
-    const { state, dispatch } = useFilter()
-    const item = state.wishList.find((ele) => el._id === ele._id);
-    console.log(item);
+
+    const { removeWishlist, addWishlist, prodState } = useProduct();
+    const { token } = useAuth();
+    const [item, setItem] = useState({});
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const item = prodState.wishlistItems.find((ele) => el._id === ele._id);
+        setItem(item);
+    }, [prodState.wishlistItems])
+
     return <>{
-        item && item ? <div className='product-like pink' onClick={() => dispatch({ type: "REMOVE_FROM_WISHLIST", payload: el })} >
+
+        item ? <div className='product-like pink' onClick={() => token ? removeWishlist(token, el._id) : navigate("/login")}>
+
             <span className="material-icons"> favorite </span>
         </div> :
-            <div className='product-like' onClick={() => dispatch({ type: "ADD_TO_WISHLIST", payload: el })}>
+            <div className={`product-like`} onClick={() => token ? addWishlist(token, el) : navigate("/login")}>
                 <span className="material-icons"> favorite </span>
             </div>
 
+
     }
+
 
     </>
 
