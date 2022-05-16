@@ -18,7 +18,9 @@ export const AddToWishList = ({ el }) => {
     }, [prodState.wishlistItems])
 
     return <>{
+
         item ? <div className='product-like pink' onClick={() => token ? removeWishlist(token, el._id) : navigate("/login")}>
+
             <span className="material-icons"> favorite </span>
         </div> :
             <div className={`product-like`} onClick={() => token ? addWishlist(token, el) : navigate("/login")}>
