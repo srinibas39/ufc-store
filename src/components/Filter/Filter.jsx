@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useFilter } from "../../context/FilterContext/FilterContext";
 import { useProduct } from "../../context/ProductContext/ProductContext";
+import { v4 as uuid } from "uuid";
 
 export const Filter = ({ allProducts }) => {
   const [categories, setCategories] = useState([]);
@@ -15,7 +16,6 @@ export const Filter = ({ allProducts }) => {
   const ratingRef = useRef([]);
 
   useEffect(() => {
-    handleClear();
     setTimeout(() => {
       const allCategory = categoryRef.current;
       const lowSort = sortLowRef.current;
@@ -59,7 +59,7 @@ export const Filter = ({ allProducts }) => {
 
   const handleClear = () => {
     dispatch({ type: "CLEAR" });
-    prodDispatch({ type: "CATEGORY", payload: [] });
+
     setClear(false);
   };
 
@@ -82,7 +82,7 @@ export const Filter = ({ allProducts }) => {
           id="filter-price"
           min="100"
           max="5000"
-          value={state.range ? state.range : 5000}
+          value={state.range !== null ? state.range : 5000}
           onChange={(e) => dispatch({ type: "RANGE", payload: e.target.value })}
         />
         <div
@@ -102,7 +102,7 @@ export const Filter = ({ allProducts }) => {
                 ref={(ele) => (categoryRef.current[id] = { el, ele })}
                 onChange={() => dispatch({ type: "CATEGORY", payload: el })}
               />
-              <label for="#filter-category">{el}</label>
+              <label htmlFor="#filter-category">{el}</label>
             </div>
           );
         })}
@@ -118,7 +118,7 @@ export const Filter = ({ allProducts }) => {
                 onClick={() => dispatch({ type: "STARS", payload: el })}
                 ref={(ele) => (ratingRef.current[idx] = { el, ele })}
               />
-              <label for="#filter-rating">{el} star</label>
+              <label htmlFor="#filter-rating">{el} star</label>
             </div>
           );
         })}
@@ -132,7 +132,7 @@ export const Filter = ({ allProducts }) => {
             onClick={() => dispatch({ type: "SORT", payload: "LOW_TO_HIGH" })}
             ref={sortLowRef}
           />
-          <label for="#filter-sort">Price-Low to High</label>
+          <label htmlFor="#filter-sort">Price-Low to High</label>
         </div>
         <div className="filter-sort">
           <input
@@ -142,7 +142,7 @@ export const Filter = ({ allProducts }) => {
             onClick={() => dispatch({ type: "SORT", payload: "HIGH_TO_LOW" })}
             ref={sortHighRef}
           />
-          <label for="#filter-sort">Price-High to Low</label>
+          <label htmlFor="#filter-sort">Price-High to Low</label>
         </div>
       </div>
     )

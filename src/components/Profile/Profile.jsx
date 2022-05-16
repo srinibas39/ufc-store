@@ -21,7 +21,7 @@ export const Profile = () => {
           Srinibas khuntia
         </p>
         <p>
-          <span class="material-symbols-outlined">mail</span>
+          <span className="material-symbols-outlined">mail</span>
           srinibaskhuntia39@gmail.com
         </p>
         <button onClick={logoutHandler}>Logout</button>

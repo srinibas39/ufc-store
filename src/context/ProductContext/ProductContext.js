@@ -23,14 +23,6 @@ export const ProductProvider = ({ children }) => {
                 return { ...state, wishlistItems: [...action.payload] }
             case "ADD_REMOVE_CART":
                 return { ...state, cartItems: [...action.payload] }
-            case "ADDRESS":
-                return { ...state, addresses: [...state.addresses, action.payload] }
-            case "ADDRESS_REMOVE":
-                return { ...state, addresses: state.addresses.filter((el) => el !== action.payload) }
-            case "ADDRESS_EDIT":
-                return { ...state, addressEdit: action.payload }
-            case "ADDRESS_SELECTED":
-                return { ...state, addressSelected: action.payload }
             case "AUTO_SUGGEST":
                 return { ...state, suggestion: action.payload }
             case "SEARCH_TEXT":
@@ -47,26 +39,6 @@ export const ProductProvider = ({ children }) => {
         allProducts: [],
         wishlistItems: [],
         cartItems: [],
-        addresses: [{
-            country: "India",
-            name: "Adarsh Ballika",
-            house: "#1/4 , 100ft Ring Road, Jp Nagar - 4 Phase, Dollars Colony",
-            city: "Banglore",
-            state: "Maharashtra ",
-            zipcode: "853008",
-            phn: "5719801234",
-        }],
-        addressEdit: {},
-        addressDummy: {
-            country: "India",
-            name: "Adarsh Ballika",
-            house: "#1/4 , 100ft Ring Road, Jp Nagar - 4 Phase, Dollars Colony",
-            city: "Banglore",
-            state: "Maharashtra ",
-            zipcode: "853008",
-            phn: "5719801234",
-        },
-        addressSelected: null,
         coupons: ["CART@10", "CART@20", "CART@30"],
         suggestion: [],
         selectedSuggestion: "",

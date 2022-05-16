@@ -7,9 +7,9 @@ import { useProduct } from "../../context/ProductContext/ProductContext"
 
 export const EquipmentCategory = () => {
     const { prodDispatch } = useProduct();
-    const shopApparel = ["T-shirt", "Socks", "Cap", "Hoodie", "Pant"];
+    const shopApparel = ["T-shirt", "Socks", "Cap", "Hoodie", "Pant", "Mouthguard", "Necklace"];
     const shopAccessories = ["MouthGuard", "Handwraps", "Gloves", "Body Refresher", "Key Chain", "Towel", "Glassware", "Earings"];
-    const ShopEquipment = ["Heavy Bags", "Body Action System", "Training Cards", "Pin", "Chair", "Table", "Slipper", "Lanyard"];
+    const ShopEquipment = ["Heavy Bags", "Body Action System", "Training Cards", "Pin", "Chair", "Table", "Slipper", "Lanyard", "Retro Pager"];
     const ShopReplicaBelts = ["Championship Belt", "Action Figure", "Bobble Head", "Plushes", "Poster"];
     const navigate = useNavigate();
 

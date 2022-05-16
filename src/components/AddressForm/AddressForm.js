@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react";
 import "./AddressForm.css"
-import { useProduct } from "../../context/ProductContext/ProductContext";
+import { useAddress } from "../../context/AddressContext/AddressContext";
 
 
 export const AddressForm = () => {
@@ -20,7 +20,7 @@ export const AddressForm = () => {
 
 
 
-    const { prodState, prodDispatch } = useProduct();
+    const { addressState, addressDispatch } = useAddress();
     const [addressError, setAddressError] = useState({
         countryError: "",
         nameError: "",
@@ -33,8 +33,8 @@ export const AddressForm = () => {
 
 
     useEffect(() => {
-        prodState.addressEdit && setAddressForm(() => prodState.addressEdit)
-    }, [prodState.addressEdit])
+        addressState.addressEdit && setAddressForm(() => addressState.addressEdit)
+    }, [addressState.addressEdit])
 
     const handleSave = () => {
 
@@ -52,7 +52,7 @@ export const AddressForm = () => {
 
         }
         else {
-            prodDispatch({ type: "ADDRESS", payload: addressForm });
+            addressDispatch({ type: "ADDRESS", payload: addressForm });
             navigate("/add");
         }
 
@@ -94,7 +94,7 @@ export const AddressForm = () => {
             </div>
             <div className="new-address-button">
                 <button onClick={() => handleSave()}>SAVE</button>
-                <button onClick={() => setAddressForm(() => prodState.addressDummy)}>Fill with dummy Address</button>
+                <button onClick={() => setAddressForm(() => addressState.addressDummy)}>Fill with dummy Address</button>
                 <button onClick={() => (navigate("/add"))}>Close</button>
             </div>
         </div>
