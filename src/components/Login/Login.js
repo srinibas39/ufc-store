@@ -1,8 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react";
 import { useAuth } from "../../context/AuthContext/AuthContext";
-import "./Login.css"
-    ;
+import "./Login.css";
 
 export const Login = () => {
     const navigate = useNavigate();
@@ -27,7 +26,9 @@ export const Login = () => {
     }, [loggedIn])
 
     const handleGuest = () => {
-        setForm({ ...form, email: "adarshbalika@gmail.com", password: "adarshbalika" });
+        
+        handleLogin("adarshbalika@gmail.com","adarshbalika");
+        navigate("/products")
     }
 
     return <div className="login-container">
