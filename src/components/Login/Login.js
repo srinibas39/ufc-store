@@ -14,8 +14,8 @@ export const Login = () => {
     const { handleLogin, loggedIn, token } = useAuth();
     const location = useLocation();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleSubmit = () => {
+
         handleLogin(form.email, form.password);
         navigate("/products");
     }
@@ -27,7 +27,7 @@ export const Login = () => {
     }, [loggedIn])
 
     const handleGuest = () => {
-        setForm({ ...form, email: "adarshbalika@gmail.com", password: "adarshbalika" })
+        setForm({ ...form, email: "adarshbalika@gmail.com", password: "adarshbalika" });
     }
 
     return <div className="login-container">
