@@ -11,7 +11,7 @@ export const Cart = () => {
   const discountPrice = (price, discount) => {
     const newD = discount.split("%")[0];
     const nPrice = price * (newD / 100);
-    return Number(nPrice) + Number(price);
+    return Math.round(Number(nPrice) + Number(price));
   };
   const calculateTotalPrice = () => {
     let tp = 0;
@@ -20,7 +20,7 @@ export const Cart = () => {
       tp += Number(el.price) * el.qty;
     });
     tp += deliveryCharges;
-    return tp;
+    return Math.round(tp);
   };
 
   const totalDiscountPrice = () => {
@@ -29,12 +29,12 @@ export const Cart = () => {
     prodState.cartItems.forEach((el) => {
       dprice += discountPrice(el.price, el.discount) * el.qty;
     });
-    return dprice;
+    return Math.round(dprice);
   };
 
   const discount = () => {
     let discount = totalDiscountPrice() - calculateTotalPrice() + 500; //delivery charges=500
-    return discount;
+    return Math.round(discount);
   };
 
   const totalQty = () => {
