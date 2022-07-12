@@ -44,7 +44,7 @@ type addressStateType = {
 };
 
 type addressAction = {
-  type: string;
+  type: "ADDRESS" | "ADDRESS_REMOVE" | "ADDRESS_EDIT" | "ADDRESS_SELECTED";
   payload: {
     country: string;
     name: string;
