@@ -1,4 +1,4 @@
-import { useState } from "react"
+import React, { useState } from "react"
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useProduct } from "../../context/ProductContext/ProductContext";
@@ -9,14 +9,14 @@ export const AutoComplete = () => {
 
     const { prodState } = useProduct();
     const suggestion = prodState.suggestion;
-    const [filteredSuggestionList, setFilteredSuggestionList] = useState([]);
+    const [filteredSuggestionList, setFilteredSuggestionList] = useState<string[]>([]);
     const [showSuggestion, setShowSuggestion] = useState(false);
     const [input, setInput] = useState("");
 
     const { prodDispatch } = useProduct();
     const navigate = useNavigate();
 
-    const handleChange = (e) => {
+    const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
         const userInput = e.target.value;
         const unlinked = suggestion.filter((el) => el.toLowerCase().indexOf(userInput.toLowerCase()) > -1);
 
@@ -24,23 +24,24 @@ export const AutoComplete = () => {
         setInput(userInput);
         setShowSuggestion(true);
     }
-    const handleClick = (e) => {
+    const handleClick = (e:React.MouseEvent) => {
+        const input=e.target as HTMLElement
         setFilteredSuggestionList([])
-        setInput(e.target.innerText);
+        setInput(input.innerText);
         setShowSuggestion(false);
-        prodDispatch({ type: "SEARCH_TEXT", payload: e.target.innerText });
+        prodDispatch({ type: "SEARCH_TEXT", payload: input.innerText });
         navigate("/search")
     }
-    const handleKeyDown = (e) => {
-
+    const handleKeyDown = (e: React.KeyboardEvent) => {
+         const target=e.target as HTMLInputElement
         if (e.keyCode === 13 && input.trim().length) {
-            prodDispatch({ type: "SEARCH_TEXT", payload: e.target.value });
+            prodDispatch({ type: "SEARCH_TEXT", payload: target.value });
             navigate("/search")
         }
 
     }
 
-    const handleSearch = (e) => {
+    const handleSearch = () => {
         if (input.trim().length) {
 
             prodDispatch({ type: "SEARCH_TEXT", payload: input });
