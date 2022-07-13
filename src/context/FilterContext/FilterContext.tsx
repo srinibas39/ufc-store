@@ -1,9 +1,10 @@
 import { createContext, useContext, useReducer } from "react";
-import { filterAction, filterProviderType, filterState } from "./FilterContext.types";
+import { filterAction, filterProviderType, filterProviderValue, filterState } from "./FilterContext.types";
 
 
 
-export const FilterContext = createContext({});
+
+export const FilterContext = createContext({} as filterProviderValue);
 
 export const FilterProvider = ({ children }:filterProviderType) => {
   const reducerFn = (state:filterState, action:filterAction) => {

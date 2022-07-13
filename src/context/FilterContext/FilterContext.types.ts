@@ -19,3 +19,8 @@ export type  filterClearAction={
  }
  
 export type filterAction=filterOperationAction | filterClearAction
+
+export type filterProviderValue={
+    state:filterState,
+    dispatch:React.Dispatch<filterAction>
+ }

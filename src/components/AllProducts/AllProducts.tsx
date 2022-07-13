@@ -4,17 +4,17 @@ import { AddToCartButton } from "../AddToCartButton/AddToCartButton";
 import { AddToWishList } from "../AddToWishList/AddToWishList";
 import { useState } from "react";
 import { Pagination } from "../Pagination/Pagination";
+import { AllProductProps } from "./AllProducts.types";
+import { allProductType } from "../../context/ProductContext/ProductContext.types";
 
-export const AllProducts = ({ allProducts }) => {
-  const discountPrice = (price, discount) => {
-    const newD = discount.split("%")[0];
-    const nPrice = price * (newD / 100);
+export const AllProducts = ({ allProducts }:AllProductProps) => {
+  const discountPrice = (price: string, discount: string) => {
+    const newD = Number(discount.split("%")[0]);
+    const nPrice = Number(price) * (newD / 100);
     return Number(nPrice) + Number(price);
   };
 
-
   const { state } = useFilter();
-
 
   const getCategoryData = () => {
     if (state.filterCategory.length !== 0) {
@@ -29,16 +29,14 @@ export const AllProducts = ({ allProducts }) => {
     }
   };
 
-
   const categoryData = getCategoryData();
-
 
   const getSortedData = () => {
     if (state.sort === "LOW_TO_HIGH") {
-      return categoryData.sort((a, b) => a.price - b.price);
+      return categoryData.sort((a:allProductType, b:allProductType) => Number(a.price)- Number(b.price))
     }
     if (state.sort === "HIGH_TO_LOW") {
-      return categoryData.sort((a, b) => b.price - a.price);
+      return categoryData.sort((a:allProductType, b:allProductType) => Number(b.price)- Number(a.price))
     }
     return categoryData;
   };
@@ -59,7 +57,6 @@ export const AllProducts = ({ allProducts }) => {
     return starData;
   };
   const rangeData = getRangeData();
-
 
   const navigate = useNavigate();
 
@@ -101,7 +98,6 @@ export const AllProducts = ({ allProducts }) => {
                   <div className="item-img">
                     <img src={el.image} alt="loading" />
                     <AddToWishList el={el} />
-
                   </div>
                   <div className="item-list">
                     <p>{el.title}</p>
@@ -120,11 +116,9 @@ export const AllProducts = ({ allProducts }) => {
                         onClick={() => navigate(`/preview/${el._id}`)}
                       >
                         PREVIEW
-
                       </button>
                       <AddToCartButton el={el} />
                     </div>
-
                   </div>
                 </div>
               );
