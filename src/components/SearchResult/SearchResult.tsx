@@ -13,11 +13,11 @@ export const SearchResult = () => {
 
     const navigate = useNavigate();
 
-    const discountPrice = (price, discount) => {
-        const newD = discount.split("%")[0];
-        const nPrice = price * (newD / 100);
+    const discountPrice = (price: string, discount: string) => {
+        const newD = Number(discount.split("%")[0]);
+        const nPrice = Number(price) * (newD / 100);
         return Number(nPrice) + Number(price);
-    };
+      };
 
 
     return <div className="search-result">

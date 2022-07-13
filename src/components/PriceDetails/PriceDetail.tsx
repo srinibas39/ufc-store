@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom"
 import { useState } from "react";
 import { useProduct } from "../../context/ProductContext/ProductContext";
+import { priceDetailsProps } from "./priceDetails.types";
 
-export const PriceDetail = ({ totalQty, totalDiscountPrice, discount, calculateTotalPrice }) => {
+export const PriceDetail = ({ totalQty, totalDiscountPrice, discount, calculateTotalPrice }:priceDetailsProps) => {
     const navigate = useNavigate();
     const { prodState, prodDispatch } = useProduct();
     const [finalPrice, setFinalPrice] = useState("");
@@ -10,6 +11,7 @@ export const PriceDetail = ({ totalQty, totalDiscountPrice, discount, calculateT
     const [coupon, setCoupon] = useState("");
     const [couponColor, setCouponColor] = useState(false);
     const [couponText, setCouponText] = useState("")
+    // @ts-ignore
     const handleCoupon = (coupon) => {
         setFinalPrice("");
         setCouponDiscount("");
@@ -17,8 +19,8 @@ export const PriceDetail = ({ totalQty, totalDiscountPrice, discount, calculateT
             let discountPercentage = Number(coupon.split("@")[1]) / 100;
             let couponDiscount = (calculateTotalPrice() * discountPercentage);
             const finalPrice = calculateTotalPrice() - couponDiscount;
-            setFinalPrice(finalPrice);
-            setCouponDiscount(couponDiscount);
+            setFinalPrice(finalPrice+"");
+            setCouponDiscount(couponDiscount+"");
             setCoupon("Coupon successfully set.");
             setCouponColor(true);
             prodDispatch({ type: "COUPON_APPLIED", payload: couponDiscount })
@@ -71,7 +73,7 @@ export const PriceDetail = ({ totalQty, totalDiscountPrice, discount, calculateT
 
 
         <hr />
-        <p>You will save &#8377;{discount() + couponDiscount} on this order</p>
+        <p>You will save &#8377;{Number(discount()) + Number(couponDiscount)} on this order</p>
         <button className="background" onClick={() => navigate("/add")}>PLACE ORDER</button>
     </div>
 }

@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { useFilter } from "../../context/FilterContext/FilterContext";
 import { useProduct } from "../../context/ProductContext/ProductContext"
 
 

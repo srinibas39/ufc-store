@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 
 export const FighterCategory = () => {
-    const navigate = useNavigate("");
+    const navigate = useNavigate();
     return <>
         <h2 className="text-center">SHOP BY FIGHTERS</h2>
         <div className="fighters">

@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext/AuthContext";
 import { useProduct } from "../../context/ProductContext/ProductContext";
+import { allProductType } from "../../context/ProductContext/ProductContext.types";
 import { PriceDetail } from "../PriceDetails/PriceDetail";
 
 export const Cart = () => {
   const { prodState, removeCart, inDecCart, addWishlist, getCart } =
     useProduct();
   const { token } = useAuth();
-  const [cartData, setCartData] = useState([]);
-  const discountPrice = (price, discount) => {
-    const newD = discount.split("%")[0];
-    const nPrice = price * (newD / 100);
-    return Math.round(Number(nPrice) + Number(price));
+  const [cartData, setCartData] = useState([] as allProductType[]);
+
+  const discountPrice = (price: string, discount: string) => {
+    const newD = Number(discount.split("%")[0]);
+    const nPrice = Number(price) * (newD / 100);
+    return Number(nPrice) + Number(price);
   };
+
   const calculateTotalPrice = () => {
     let tp = 0;
     let deliveryCharges = 500;
@@ -48,6 +51,7 @@ export const Cart = () => {
   useEffect(() => {
     (async () => {
       const cartData = await getCart(token);
+      // @ts-ignore
       setCartData(cartData);
     })();
   }, [prodState.cartItems]);

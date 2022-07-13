@@ -17,7 +17,7 @@ export const Profile = () => {
       </div>
       <div className="profile-body">
         <p>
-          <span class="material-symbols-outlined">account_circle</span>
+          <span className="material-symbols-outlined">account_circle</span>
           Srinibas khuntia
         </p>
         <p>

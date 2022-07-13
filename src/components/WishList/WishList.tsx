@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext/AuthContext";
 import { useProduct } from "../../context/ProductContext/ProductContext";
+import { allProductType } from "../../context/ProductContext/ProductContext.types";
 import { AddToWishList } from "../AddToWishList/AddToWishList";
 
 export const WishList = () => {
   const { token } = useAuth();
   const { getWishlist, removeWishlist, addCart, prodState } = useProduct();
-  const [wishlistData, setWishlistData] = useState([]);
+  const [wishlistData, setWishlistData] = useState([] as allProductType[]);
 
   useEffect(() => {
     (async () => {
@@ -20,7 +21,7 @@ export const WishList = () => {
       <h1 className="wishList-header">My Wishlist({wishlistData.length})</h1>
       <div className="wishList">
         {wishlistData.length > 0 ? (
-          wishlistData.map((el) => {
+          wishlistData.map((el:allProductType) => {
             return (
               <div key={el._id} className="product-container">
                 <div className="product-img">

@@ -54,7 +54,7 @@ export const ProductProvider = ({ children }:ProductProviderType) => {
     coupon: 0,
     category: [],
   });
-  const getProduct = (productId:string) =>
+  const getProduct = (productId:string|undefined) =>
     prodState.allProducts.find((el) => el._id === productId) || {};
 
   useEffect(() => {

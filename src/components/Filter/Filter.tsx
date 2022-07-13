@@ -1,18 +1,18 @@
 import { useEffect, useState, useRef } from "react";
 import { useFilter } from "../../context/FilterContext/FilterContext";
 import { useProduct } from "../../context/ProductContext/ProductContext";
-import { v4 as uuid } from "uuid";
+import { FilterProps } from "./Filter.types";
 
-export const Filter = ({ allProducts }) => {
+export const Filter = ({ allProducts }: FilterProps) => {
   const [categories, setCategories] = useState([]);
   const stars = ["5", "4", "3", "2", "1"];
   const [clear, setClear] = useState(false);
 
   const { state } = useFilter();
-  const { prodState, prodDispatch } = useProduct();
+  const { prodState } = useProduct();
   const categoryRef = useRef([]);
-  const sortLowRef = useRef(null);
-  const sortHighRef = useRef(null);
+  const sortLowRef = useRef<HTMLInputElement>(null!);
+  const sortHighRef = useRef<HTMLInputElement>(null!);
   const ratingRef = useRef([]);
 
   useEffect(() => {
@@ -25,9 +25,12 @@ export const Filter = ({ allProducts }) => {
       // category
       for (let i = 0; i < allCategory.length; i++) {
         if (
+          // @ts-ignore
           prodState.category.includes(allCategory[i].el) ||
+          // @ts-ignore
           state.filterCategory.includes(allCategory[i].el)
         ) {
+          // @ts-ignore
           allCategory[i].ele.click();
         }
       }
@@ -39,7 +42,9 @@ export const Filter = ({ allProducts }) => {
       }
       // rating
       for (let i = 0; i < ratingSort.length; i++) {
+        // @ts-ignore
         if (state.stars === ratingSort[i].el) {
+          // @ts-ignore
           ratingSort[i].ele.click();
         }
       }
@@ -48,9 +53,11 @@ export const Filter = ({ allProducts }) => {
 
   useEffect(() => {
     const catName = allProducts.reduce(
+      // @ts-ignore
       (a, c) => (a.includes(c.categoryName) ? [...a] : [...a, c.categoryName]),
       []
     );
+    // @ts-ignore
     setCategories(catName);
     setClear(true);
   }, [allProducts, clear]);
@@ -99,6 +106,7 @@ export const Filter = ({ allProducts }) => {
                 type="checkbox"
                 name="category"
                 id="filter-category"
+                // @ts-ignore
                 ref={(ele) => (categoryRef.current[id] = { el, ele })}
                 onChange={() => dispatch({ type: "CATEGORY", payload: el })}
               />
@@ -116,6 +124,7 @@ export const Filter = ({ allProducts }) => {
                 name="rating"
                 id="filter-rating"
                 onClick={() => dispatch({ type: "STARS", payload: el })}
+                // @ts-ignore
                 ref={(ele) => (ratingRef.current[idx] = { el, ele })}
               />
               <label htmlFor="#filter-rating">{el} star</label>

@@ -10,6 +10,7 @@ export const ProductSection = () => {
  
   return (
     <section className="product-section">
+      {/* @ts-ignore */}
       <Filter allProducts={ prodState.allProducts} />
       <AllProducts allProducts={ prodState.allProducts} />
     </section>

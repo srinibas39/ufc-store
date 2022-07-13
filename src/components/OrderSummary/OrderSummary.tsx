@@ -16,7 +16,7 @@ export const OrderSummary = () => {
 
     const downloadResume = () => {
         const input = document.querySelector(".order-summary-container");
-        html2canvas(input).then((canvas) => {
+        html2canvas(input as HTMLElement).then((canvas) => {
             const imgData = canvas.toDataURL("image/png");
             const pdf = new jsPDF({
                 orientation: "landscape"
@@ -49,7 +49,7 @@ export const OrderSummary = () => {
                             return <tr className="tr-data" key={el._id}>
                                 <td>{el.title}(&#8377;{el.price})</td>
                                 <td>{el.qty}</td>
-                                <td> &#8377;{el.price * el.qty}</td>
+                                <td> &#8377;{Number(el.price) * el.qty}</td>
                             </tr>
                         })
                     }

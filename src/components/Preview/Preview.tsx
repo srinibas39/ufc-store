@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext/AuthContext";
 import { useProduct } from "../../context/ProductContext/ProductContext";
+import { allProductType } from "../../context/ProductContext/ProductContext.types";
 import { AddToCartButton } from "../AddToCartButton/AddToCartButton";
 import { AddToWishList } from "../AddToWishList/AddToWishList";
 
@@ -8,7 +8,7 @@ export const Preview = () => {
   const { productId } = useParams();
   const { getProduct } = useProduct();
 
-  const product = getProduct(productId);
+  const product= getProduct(productId);
 
   return (
     product && (

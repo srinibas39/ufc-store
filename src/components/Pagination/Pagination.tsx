@@ -1,6 +1,7 @@
 
 import "./Pagination.css"
-export const Pagination = ({ setCurrPage, pagesArr }) => {
+import { PaginationProps } from "./Pagination.types"
+export const Pagination = ({ setCurrPage, pagesArr }:PaginationProps) => {
     return <>
         <ul className="pagination-container">
             {

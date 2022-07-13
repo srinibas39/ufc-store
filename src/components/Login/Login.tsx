@@ -21,6 +21,7 @@ export const Login = () => {
 
     useEffect(() => {
         if (token) {
+            // @ts-ignore
             navigate(`${location?.state?.from?.pathname}`)
         }
     }, [loggedIn])
@@ -50,7 +51,7 @@ export const Login = () => {
                 </div>
                 <a href="#">Forgot Your Password ?</a>
             </div>
-            <button className="btn-logins" onClick={(e) => handleSubmit(e)} >Login</button>
+            <button className="btn-logins" onClick={() => handleSubmit()} >Login</button>
             <button onClick={() => handleGuest()}>Login as a Guest</button>
             <div className="create-new" onClick={() => navigate("/signup")}>
                 <p>Create new Account</p>
