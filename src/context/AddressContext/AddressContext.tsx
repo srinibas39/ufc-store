@@ -1,59 +1,27 @@
-import { type } from "os";
-import React, { Children, createContext, useContext } from "react";
+
+import React, { createContext, useContext } from "react";
 import { useReducer } from "react";
 
+type addressType = {
+  country: string;
+  name: string;
+  house: string;
+  city: string;
+  state: string;
+  zipcode: string;
+  phn: string;
+};
+
 type addressStateType = {
-  addresses: {
-    country: string;
-    name: string;
-    house: string;
-    city: string;
-    state: string;
-    zipcode: string;
-    phn: string;
-  }[];
-  addressEdit:
-    | {}
-    | {
-        country: string;
-        name: string;
-        house: string;
-        city: string;
-        state: string;
-        zipcode: string;
-        phn: string;
-      };
-  addressDummy: {
-    country: string;
-    name: string;
-    house: string;
-    city: string;
-    state: string;
-    zipcode: string;
-    phn: string;
-  };
-  addressSelected: null | {
-    country: string;
-    name: string;
-    house: string;
-    city: string;
-    state: string;
-    zipcode: string;
-    phn: string;
-  };
+  addresses: addressType[];
+  addressEdit: {} | addressType;
+  addressDummy: addressType;
+  addressSelected: null | addressType;
 };
 
 type addressAction = {
-  type: "ADDRESS" | "ADDRESS_REMOVE" | "ADDRESS_EDIT" | "ADDRESS_SELECTED";
-  payload: {
-    country: string;
-    name: string;
-    house: string;
-    city: string;
-    state: string;
-    zipcode: string;
-    phn: string;
-  };
+  type: "ADDRESS" | "ADDRESS_REMOVE" | "ADDRESS_EDIT" | "ADDRESS_SELECTED"
+  payload: addressType
 };
 
 type AddressProviderType = {
