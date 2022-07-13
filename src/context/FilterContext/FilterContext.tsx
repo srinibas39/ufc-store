@@ -1,26 +1,7 @@
 import { createContext, useContext, useReducer } from "react";
+import { filterAction, filterProviderType, filterState } from "./FilterContext.types";
 
-type filterProviderType={
-   children:React.ReactNode
-}
 
-type filterState = {
-  sort: string | null;
-  filterCategory: string[];
-  stars:string | null;
-  range: string | null;
-};
-
-type filterOperationAction={
-   type:"SORT"|"STARS"|"CATEGORY"|"RANGE"
-   payload:string
-}
-
-type  filterClearAction={
-   type:"CLEAR"
-}
-
-type filterAction=filterOperationAction | filterClearAction
 
 export const FilterContext = createContext({});
 

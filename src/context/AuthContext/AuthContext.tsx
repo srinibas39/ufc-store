@@ -1,37 +1,10 @@
 import { createContext, useContext } from "react";
 import { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
 import { LoginService } from "../../services/LoginService";
 import { SignupServices } from "../../services/SignupServices";
-
-type AuthProviderType = {
-  children: React.ReactNode;
-};
-
-type userType={
-        _id: string;
-        firstName: string;
-        lastName: string;
-        email: string;
-        password: string;
-        createdAt: string;
-        updatedAt: string;
-      } 
+import { AuthContextType, AuthProviderType } from "./AuthContext.types";
 
 
-type AuthContextType = {
-  token: string;
-  user: userType | null;
-  handleLogin: (email: string, password: string) => void;
-  handleSignup: (
-    firstName: string,
-    lastName: string,
-    email: string,
-    password: string
-  ) => void;
-  handleLogout: () => void;
-  loggedIn: boolean;
-};
 
 
 export const AuthContext = createContext({} as AuthContextType);

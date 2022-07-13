@@ -1,32 +1,9 @@
 
 import React, { createContext, useContext } from "react";
 import { useReducer } from "react";
+import { addressAction, AddressProviderType, addressStateType } from "./AddressContext.types";
 
-type addressType = {
-  country: string;
-  name: string;
-  house: string;
-  city: string;
-  state: string;
-  zipcode: string;
-  phn: string;
-};
 
-type addressStateType = {
-  addresses: addressType[];
-  addressEdit: {} | addressType;
-  addressDummy: addressType;
-  addressSelected: null | addressType;
-};
-
-type addressAction = {
-  type: "ADDRESS" | "ADDRESS_REMOVE" | "ADDRESS_EDIT" | "ADDRESS_SELECTED"
-  payload: addressType
-};
-
-type AddressProviderType = {
-  children: React.ReactNode;
-};
 
 export const AddressContext = createContext({});
 

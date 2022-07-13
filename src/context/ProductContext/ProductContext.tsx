@@ -13,60 +13,9 @@ import { GetWishList } from "../../services/GetWishlist";
 import { InDecCart } from "../../services/InDecCart";
 import { RemoveCart } from "../../services/RemoveCart";
 import { RemoveWishlist } from "../../services/RemoveWishlist";
-
-type ProductProviderType={
-    children:React.ReactNode
-}
-
-type allProductType = {
-  _id: string;
-  title: string;
-  price: string;
-  categoryName: string;
-  rating: string;
-  image: string;
-  discount: string;
-  stock: boolean;
-  qty: number;
-};
-
-type productStateType = {
-  allProducts: allProductType[];
-  wishlistItems: allProductType[];
-  cartItems: allProductType[];
-  coupons: string[];
-  suggestion: string[];
-  selectedSuggestion: string;
-  coupon: number;
-  category: string[];
-};
+import { allProductType, productActionType, ProductProviderType, productStateType } from "./ProductContext.types";
 
 
-
-type addRemoveActionType = {
-  type: "GET_PRODUCTS" | "ADD_REMOVE_WISHLIST" | "ADD_REMOVE_CART";
-  payload: allProductType[];
-};
-
-type addRemoveStringArrayActionType = {
-  type: "CATEGORY" | "AUTO_SUGGEST";
-  payload: string[];
-};
-
-type addRemoveStringActionType = {
-  type: "SEARCH_TEXT";
-  payload: string;
-};
-
-type addRemoveNumberActionType = {
-  type: "COUPON_APPLIED";
-  payload: number;
-};
-
-type productActionType =| addRemoveActionType
-| addRemoveStringArrayActionType
-| addRemoveStringActionType
-| addRemoveNumberActionType
   
 
 
