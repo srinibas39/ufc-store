@@ -1,4 +1,9 @@
 
+export type AddressProviderValueType = {
+    addressState: addressStateType;
+    addressDispatch:React.Dispatch<addressAction>
+  };
+
  export type addressType = {
     country: string;
     name: string;

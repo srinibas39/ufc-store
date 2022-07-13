@@ -1,11 +1,15 @@
-
 import React, { createContext, useContext } from "react";
 import { useReducer } from "react";
-import { addressAction, AddressProviderType, addressStateType } from "./AddressContext.types";
+import {
+  addressAction,
+  AddressProviderType,
+  AddressProviderValueType,
+  addressStateType,
+} from "./AddressContext.types";
 
 
 
-export const AddressContext = createContext({});
+export const AddressContext = createContext({} as AddressProviderValueType);
 
 export const AddressProvider = ({ children }: AddressProviderType) => {
   const AddressReducer = (state: addressStateType, action: addressAction) => {
