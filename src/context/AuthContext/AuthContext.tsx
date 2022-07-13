@@ -21,15 +21,7 @@ type userType={
 
 type AuthContextType = {
   token: string;
-  user: {
-    _id: string;
-    firstName: string;
-    lastName: string;
-    email: string;
-    password: string;
-    createdAt: string;
-    updatedAt: string;
-  } | null;
+  user: userType | null;
   handleLogin: (email: string, password: string) => void;
   handleSignup: (
     firstName: string,
