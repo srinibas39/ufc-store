@@ -13,13 +13,10 @@ import { GetWishList } from "../../services/GetWishlist";
 import { InDecCart } from "../../services/InDecCart";
 import { RemoveCart } from "../../services/RemoveCart";
 import { RemoveWishlist } from "../../services/RemoveWishlist";
-import { allProductType, productActionType, ProductProviderType, productStateType } from "./ProductContext.types";
+import { allProductType, productActionType, ProductContextValueType, ProductProviderType, productStateType } from "./ProductContext.types";
 
 
-  
-
-
-export const ProductContext = createContext({});
+export const ProductContext = createContext({} as ProductContextValueType);
 
 export const ProductProvider = ({ children }:ProductProviderType) => {
   const [toastLoading, setToastLoading] = useState(false);

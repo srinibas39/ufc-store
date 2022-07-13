@@ -51,3 +51,19 @@ export type productActionType =| addRemoveActionType
 | addRemoveStringArrayActionType
 | addRemoveStringActionType
 | addRemoveNumberActionType
+
+export type ProductContextValueType={
+    prodState:productStateType
+    prodDispatch:React.Dispatch<productActionType>
+    getProduct:(productId:string)=>void
+    addWishlist:(token:string, product:allProductType) =>void
+    removeWishlist:(token:string, id:string)=>void
+    toastLoading:boolean
+    setToastLoading:React.Dispatch<React.SetStateAction<boolean>>
+    toastText:string
+    getWishlist:(token:string) =>void
+    addCart:(token:string, product:allProductType)=>void
+    getCart:(token:string) =>void
+    removeCart:(token:string, id:string) =>void
+    inDecCart:(token:string, id:string, type:string) => void
+  }

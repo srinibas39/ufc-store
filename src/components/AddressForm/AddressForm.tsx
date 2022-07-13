@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react";
 import "./AddressForm.css"
 import { useAddress } from "../../context/AddressContext/AddressContext";
+import { addressErrorType } from "./AddressForm.types";
 
 
 export const AddressForm = () => {
@@ -18,10 +19,8 @@ export const AddressForm = () => {
     })
 
 
-
-
     const { addressState, addressDispatch } = useAddress();
-    const [addressError, setAddressError] = useState({
+    const [addressError, setAddressError] = useState<addressErrorType>({
         countryError: "",
         nameError: "",
         houseError: "",
@@ -33,7 +32,8 @@ export const AddressForm = () => {
 
 
     useEffect(() => {
-        addressState.addressEdit && setAddressForm(() => addressState.addressEdit)
+        // @ts-ignore
+        addressState.addressEdit && setAddressForm(addressState.addressEdit)
     }, [addressState.addressEdit])
 
     const handleSave = () => {
