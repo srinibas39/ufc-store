@@ -1,6 +1,10 @@
 import axios from "axios"
 
-export const GetWishList = ({ token }) => {
+type GetWishListProps={
+    token:string
+}
+
+export const GetWishList = ({ token }:GetWishListProps) => {
     return axios.get("/api/user/wishlist",
         {
             headers: {
