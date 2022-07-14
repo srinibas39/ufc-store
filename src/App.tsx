@@ -38,7 +38,7 @@ export const App = () => {
       } />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />
-      <Route path="/toast" element={<Toast />} />
+      <Route path="/toast" element={<Toast text="" />} />
       <Route path="/profile" element={
         <RequiresAuth token={token}>
           <ProfilePage />
