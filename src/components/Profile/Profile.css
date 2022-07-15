@@ -14,14 +14,15 @@
   align-items: center;
   color: var(--secondary-color);
 }
-.profile-body {
+.profile-body{
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   height: 82%;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
+
 .profile-body span {
   font-size: 2rem;
 }
@@ -39,8 +40,16 @@
   color: var(--secondary-color);
   border: none;
   cursor: pointer;
+  border-radius: 4px;
 }
 
-.profile-body button:hover{
-    
+@media (min-width:30rem){
+  .profile-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 82%;
+    font-size: 1.5rem;
+  }
 }
