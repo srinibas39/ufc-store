@@ -7,7 +7,7 @@ import { Pagination } from "../Pagination/Pagination";
 import { AllProductProps } from "./AllProducts.types";
 import { allProductType } from "../../context/ProductContext/ProductContext.types";
 
-export const AllProducts = ({ allProducts }:AllProductProps) => {
+export const AllProducts = ({ allProducts }: AllProductProps) => {
   const discountPrice = (price: string, discount: string) => {
     const newD = Number(discount.split("%")[0]);
     const nPrice = Number(price) * (newD / 100);
@@ -33,10 +33,16 @@ export const AllProducts = ({ allProducts }:AllProductProps) => {
 
   const getSortedData = () => {
     if (state.sort === "LOW_TO_HIGH") {
-      return categoryData.sort((a:allProductType, b:allProductType) => Number(a.price)- Number(b.price))
+      return categoryData.sort(
+        (a: allProductType, b: allProductType) =>
+          Number(a.price) - Number(b.price)
+      );
     }
     if (state.sort === "HIGH_TO_LOW") {
-      return categoryData.sort((a:allProductType, b:allProductType) => Number(b.price)- Number(a.price))
+      return categoryData.sort(
+        (a: allProductType, b: allProductType) =>
+          Number(b.price) - Number(a.price)
+      );
     }
     return categoryData;
   };
@@ -102,7 +108,9 @@ export const AllProducts = ({ allProducts }:AllProductProps) => {
                   <div className="item-list">
                     <p>{el.title}</p>
                     <div className="price">
-                      <h2>&#8377; {el.price}</h2>
+                      <h2 style={{ marginRight: "1rem" }}>
+                        &#8377; {el.price}
+                      </h2>
                       <h3>
                         <del>
                           &#8377; {discountPrice(el.price, el.discount)}
