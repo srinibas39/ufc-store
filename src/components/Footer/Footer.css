@@ -18,12 +18,18 @@ footer {
 }
 
 .bold {
+ 
   font-weight: bold;
+  margin: 10px;
 }
 .footer-icons {
   display: flex;
   justify-content: space-between;
   cursor: pointer;
+}
+
+.footer-list li{
+    margin: 4px;
 }
 
 @media (min-width: 40rem) {
