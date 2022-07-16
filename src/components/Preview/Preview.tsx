@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useProduct } from "../../context/ProductContext/ProductContext";
-import { allProductType } from "../../context/ProductContext/ProductContext.types";
 import { AddToCartButton } from "../AddToCartButton/AddToCartButton";
 import { AddToWishList } from "../AddToWishList/AddToWishList";
+import "./Preview.css"
 
 export const Preview = () => {
   const { productId } = useParams();

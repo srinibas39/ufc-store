@@ -383,38 +383,7 @@
   transform: scale(1.1, 1.2);
 }
 
-/* Preview */
-.preview {
-  height: 80vh;
-  padding: 2rem;
-  display: flex;
-  width: 82.5rem;
-  margin: 1rem;
-  box-shadow: var(--box-shadow2);
-}
-.preview-img {
-  width: 40%;
-  position: relative;
-}
-.preview-img img {
-  height: 100%;
-  width: 100%;
-}
-.preview-description {
-  width: 60%;
-  padding: 0 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.preview-description button {
-  padding: 1rem;
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
-  border: none;
-  border-radius: 13rem;
-  cursor: pointer;
-}
+
 
 /* Categories */
 
