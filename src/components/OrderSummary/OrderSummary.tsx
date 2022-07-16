@@ -6,8 +6,8 @@ import { useAuth } from "../../context/AuthContext/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 export const OrderSummary = () => {
-  const { prodState } = useProduct();
-  const { user } = useAuth();
+  const { prodState, removeCart } = useProduct();
+  const { user, token } = useAuth();
   const navigate = useNavigate();
 
   const calculateTotalPrice = () => {
@@ -49,6 +49,12 @@ export const OrderSummary = () => {
     });
   };
 
+  const removeAllCartItems = () => {
+    for (let i = 0; i < prodState.cartItems.length; i++) {
+      removeCart(token, prodState.cartItems[i]._id);
+    }
+  };
+
   const displayRazorpay = async () => {
     const res = await loadScript(
       "https://checkout.razorpay.com/v1/checkout.js"
@@ -62,6 +68,7 @@ export const OrderSummary = () => {
       image: require("../../images/ufc-logo.jpg"),
       //   @ts-ignore
       order_id: res.id,
+      handler: removeAllCartItems(),
       callback_url: navigate("/products"),
       prefill: {
         name: user?.firstName + " " + user?.lastName,

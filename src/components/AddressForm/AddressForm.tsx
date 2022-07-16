@@ -3,11 +3,13 @@ import { useState, useEffect } from "react";
 import "./AddressForm.css"
 import { useAddress } from "../../context/AddressContext/AddressContext";
 import { addressErrorType } from "./AddressForm.types";
+import { useMode } from "../../context/ModeContext/ModeContext";
 
 
 export const AddressForm = () => {
 
     const navigate = useNavigate();
+    const { mode} = useMode();
     const [addressForm, setAddressForm] = useState({
         country: "",
         name: "",
@@ -61,9 +63,9 @@ export const AddressForm = () => {
 
     return <>
         <div className="new-address-container">
-            <h2>ADD NEW ADDRESS</h2>
+            <h2 id={mode?`dark`:""}>ADD NEW ADDRESS</h2>
 
-            <div className="new-address-input">
+            <div className="new-address-input" id={mode?`dark`:""}>
                 {addressError.countryError && <small style={{ color: "red" }}>{addressError.countryError}</small>}
                 <input type="text" placeholder="Enter country" value={addressForm.country}
                     onChange={(e) => setAddressForm({ ...addressForm, country: e.target.value })} />
