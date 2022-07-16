@@ -6,7 +6,8 @@ import "./Profile.css";
 export const Profile = () => {
   const { handleLogout } = useAuth();
   const navigate = useNavigate();
-  const { mode} = useMode();
+  const { mode } = useMode();
+  const { user } = useAuth();
 
   const logoutHandler = () => {
     handleLogout();
@@ -20,11 +21,11 @@ export const Profile = () => {
       <div className="profile-body">
         <p>
           <span className="material-symbols-outlined">account_circle</span>
-          Srinibas khuntia
+          {user?.firstName + " " + user?.lastName}
         </p>
         <p>
           <span className="material-symbols-outlined">mail</span>
-          srinibaskhuntia39@gmail.com
+          {user?.email}
         </p>
         <button onClick={logoutHandler}>Logout</button>
       </div>

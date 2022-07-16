@@ -22,12 +22,14 @@ export const AuthProvider = ({ children }: AuthProviderType) => {
       if (status === 200 || status === 201) {
         localStorage.setItem(
           "login",
-          JSON.stringify({ token: data.encodedToken, user: data.createdUser })
+          JSON.stringify({ token: data.encodedToken, user: data.foundUser })
         );
       }
       setToken(data.encodedToken);
       setUser(data.foundUser);
       console.log("successfully logged in");
+     
+      
       setLoggedIn(true);
     } catch (error) {
       console.log(error);
@@ -61,6 +63,8 @@ export const AuthProvider = ({ children }: AuthProviderType) => {
       }
       setToken(data.encodedToken);
       setUser(data.createdUser);
+      
+      
       console.log("successfully signed in");
     } catch (error) {
       console.log(error);
