@@ -2,9 +2,11 @@ import { useNavigate } from "react-router-dom"
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext/AuthContext";
 import "./Signup.css"
+import { useMode } from "../../context/ModeContext/ModeContext";
 
 export const Signup = () => {
     const navigate = useNavigate();
+    const { mode} = useMode();
 
     const [form, setForm] = useState({
         firstName: "",
@@ -16,7 +18,7 @@ export const Signup = () => {
     const handleSubmit = () => {
         handleSignup(form.firstName, form.lastName, form.email, form.password)
     }
-    return <div className="signup-container">
+    return <div className="signup-container"  id={mode?`dark`:""}>
         <div className="signup">
             <h2>Sign up</h2>
             <div className="firstname-container">

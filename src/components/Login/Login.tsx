@@ -2,9 +2,11 @@ import { useLocation, useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react";
 import { useAuth } from "../../context/AuthContext/AuthContext";
 import "./Login.css";
+import { useMode } from "../../context/ModeContext/ModeContext";
 
 export const Login = () => {
     const navigate = useNavigate();
+    const { mode } = useMode();
     const [form, setForm] = useState({
         email: "", password: ""
     })
@@ -32,7 +34,7 @@ export const Login = () => {
         navigate("/products")
     }
 
-    return <div className="login-container">
+    return <div className="login-container" id={mode?`dark`:""}>
         <div className="login">
             <h2>Login</h2>
 

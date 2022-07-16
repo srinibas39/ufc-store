@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom"
 import { useState } from "react";
 import { useProduct } from "../../context/ProductContext/ProductContext";
 import { priceDetailsProps } from "./priceDetails.types";
+import { useMode } from "../../context/ModeContext/ModeContext";
 
 export const PriceDetail = ({ totalQty, totalDiscountPrice, discount, calculateTotalPrice }:priceDetailsProps) => {
     const navigate = useNavigate();
@@ -10,7 +11,8 @@ export const PriceDetail = ({ totalQty, totalDiscountPrice, discount, calculateT
     const [couponDiscount, setCouponDiscount] = useState("");
     const [coupon, setCoupon] = useState("");
     const [couponColor, setCouponColor] = useState(false);
-    const [couponText, setCouponText] = useState("")
+    const [couponText, setCouponText] = useState("");
+    const {mode}=useMode();
     // @ts-ignore
     const handleCoupon = (coupon) => {
         setFinalPrice("");
@@ -34,7 +36,7 @@ export const PriceDetail = ({ totalQty, totalDiscountPrice, discount, calculateT
 
     }
 
-    return <div className="priceDetail-container">
+    return <div className="priceDetail-container" id={mode?`dark`:""}>
         <h2>PRICE DETAILS</h2>
         <hr />
         <div className="priceDetail-price">

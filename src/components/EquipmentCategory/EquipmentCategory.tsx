@@ -15,7 +15,7 @@ export const EquipmentCategory = () => {
     const navigate = useNavigate();
 
     return <>
-        <h2  id={mode?`dark`:""} className="text-center">SHOP BY CATEGORY</h2>
+        <h2 style={{ margin: "1rem",padding:"1rem" }} id={mode?`dark`:""} className="text-center">SHOP BY CATEGORY</h2>
         <div className="categoryshop" id={mode ? `dark` : ""} >
             <div className="card">
                 <div className="card-img">

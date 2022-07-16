@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext/AuthContext";
+import { useMode } from "../../context/ModeContext/ModeContext";
 import { useProduct } from "../../context/ProductContext/ProductContext";
 import { allProductType } from "../../context/ProductContext/ProductContext.types";
 import { PriceDetail } from "../PriceDetails/PriceDetail";
@@ -8,6 +9,7 @@ export const Cart = () => {
   const { prodState, removeCart, inDecCart, addWishlist, getCart } =
     useProduct();
   const { token } = useAuth();
+  const { mode } = useMode();
   const [cartData, setCartData] = useState([] as allProductType[]);
 
   const discountPrice = (price: string, discount: string) => {
@@ -58,14 +60,16 @@ export const Cart = () => {
 
   return (
     <>
-      <h1 className="cart-header">My Cart({cartData.length})</h1>
+      <h1 className="cart-header" style={{ margin: "1rem",padding:"1rem" }} id={mode?`dark`:""} >
+        My Cart({cartData.length})
+      </h1>
 
-      <div className="cart-box">
+      <div className="cart-box" id={mode?`dark`:""} style={{padding:"1rem"}}>
         {cartData.length > 0 ? (
           <div className="carts-container">
             {cartData.map((el) => {
               return (
-                <div key={el._id} className="cartItem-container">
+                <div key={el._id} className="cartItem-container" >
                   <div className="cartItem-img">
                     <img src={el.image} alt="loading..." />
                   </div>

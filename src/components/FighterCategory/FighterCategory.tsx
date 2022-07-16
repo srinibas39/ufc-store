@@ -6,7 +6,7 @@ export const FighterCategory = () => {
     const navigate = useNavigate();
     const {mode}=useMode()
     return <>
-        <h2  id={mode?`dark`:""} className="text-center">SHOP BY FIGHTERS</h2>
+        <h2  id={mode?`dark`:""} style={{ margin: "1rem",padding:"1rem" }} className="text-center">SHOP BY FIGHTERS</h2>
         <div className="fighters" id={mode ? `dark` : ""}>
             <div className="display-container" onClick={() => navigate("/products")}>
                 <img src={require(`../../images/Amanda.png`)} alt="loading..." />
