@@ -33,12 +33,12 @@ export const Address = () => {
                     <div>
                         <input type="radio" name="address" className="address-input"
                             onClick={() => addressDispatch({ type: "ADDRESS_SELECTED", payload: el })} />
-                        <label htmlFor="address-input">
-                            <p>{el.name}</p>
-                            <p>{el.house}</p>
-                            <p>{el.city} {el.state} {el.zipcode}</p>
-                            <p>{el.country}</p>
-                            <p>Phone number:{el.phn}</p>
+                        <label htmlFor="address-input" >
+                            <p className="address-text">{el.name}</p>
+                            <p className="address-text">{el.house}</p>
+                            <p className="address-text">{el.city} {el.state} {el.zipcode}</p>
+                            <p className="address-text">{el.country}</p>
+                            <p className="address-text">Phone number:{el.phn}</p>
                             <div><button onClick={() => (addressDispatch({ type: "ADDRESS_REMOVE", payload: el }), addressDispatch({ type: "ADDRESS_EDIT", payload: el }), navigate("/address"))}>EDIT</button>
                                 <button className="remove-btn" onClick={() => addressDispatch({ type: "ADDRESS_REMOVE", payload: el })}>REMOVE</button></div>
                         </label>

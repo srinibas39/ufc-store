@@ -16,11 +16,14 @@ import { AddressPage } from "./pages/AddressPage";
 import { Error } from "./components/Error/Error";
 import { SearchPage } from "./pages/SearchPage";
 import { OrderSummaryPage } from "./pages/OrderSummaryPage";
+import { useMode } from "./context/ModeContext/ModeContext";
 
 
 export const App = () => {
   const { token } = useAuth()
-  return <>
+  const {mode}=useMode()
+
+  return <div id={mode?`dark-background`:""}>
     <Routes>
       <Route path="*" element={<Error />} />
       <Route path="/" element={<Home />} />
@@ -61,6 +64,6 @@ export const App = () => {
         </RequiresAuth>
       } />
     </Routes>
-  </>
+  </div>
 }
 

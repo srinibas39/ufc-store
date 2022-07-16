@@ -1,10 +1,13 @@
 import { useNavigate } from "react-router-dom";
+import { useMode } from "../../context/ModeContext/ModeContext";
 import "./Navbar.css";
 
 export const Navbar = () => {
   const navigate = useNavigate();
+  const { mode, setMode } = useMode();
+  const handleMode = () => setMode(!mode);
   return (
-    <nav className="navBar">
+    <nav className="navBar" id={mode?`dark`:""}>
       <div className="navBar-img" onClick={() => navigate("/")}>
         <svg
           className="site-logo"
@@ -36,9 +39,15 @@ export const Navbar = () => {
         <div onClick={() => navigate("/wishlist")}>
           <span className="material-icons-outlined">favorite_border</span>
         </div>
-        <div>
-          <span className="material-symbols-outlined">dark_mode</span>
-        </div>
+        {mode ? (
+          <div onClick={handleMode}>
+            <span className="material-symbols-outlined">light_mode</span>
+          </div>
+        ) : (
+          <div onClick={handleMode}>
+            <span className="material-symbols-outlined">dark_mode</span>
+          </div>
+        )}
       </div>
     </nav>
   );

@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { useFilter } from "../../context/FilterContext/FilterContext";
+import { useMode } from "../../context/ModeContext/ModeContext";
 import { useProduct } from "../../context/ProductContext/ProductContext";
 import { FilterProps } from "./Filter.types";
 
@@ -10,6 +11,7 @@ export const Filter = ({ allProducts }: FilterProps) => {
 
   const { state } = useFilter();
   const { prodState } = useProduct();
+  const { mode } = useMode();
   const categoryRef = useRef([]);
   const sortLowRef = useRef<HTMLInputElement>(null!);
   const sortHighRef = useRef<HTMLInputElement>(null!);
@@ -72,7 +74,7 @@ export const Filter = ({ allProducts }: FilterProps) => {
 
   return (
     clear && (
-      <div className="filter-container">
+      <div className="filter-container"  id={mode?`dark`:""}>
         <div className="filter">
           <h2>Filters</h2>
           <p onClick={() => handleClear()}>Clear</p>
