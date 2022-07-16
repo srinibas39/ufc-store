@@ -6,8 +6,12 @@ import { useState } from "react";
 import { Pagination } from "../Pagination/Pagination";
 import { AllProductProps } from "./AllProducts.types";
 import { allProductType } from "../../context/ProductContext/ProductContext.types";
+import { useMode } from "../../context/ModeContext/ModeContext";
 
 export const AllProducts = ({ allProducts }: AllProductProps) => {
+
+  const {mode}=useMode()
+
   const discountPrice = (price: string, discount: string) => {
     const newD = Number(discount.split("%")[0]);
     const nPrice = Number(price) * (newD / 100);
@@ -89,8 +93,8 @@ export const AllProducts = ({ allProducts }: AllProductProps) => {
 
   return (
     <>
-      <div className="all-products">
-        <h1>
+      <div className="all-products" id={mode?`dark`:""}>
+        <h1 style={{margin:"1rem"}}>
           Showing all products
           <small className="lighter">
             (showing {rangeData && rangeData.length} products)
@@ -100,7 +104,7 @@ export const AllProducts = ({ allProducts }: AllProductProps) => {
           {pageData &&
             pageData.map((el, idx) => {
               return (
-                <div key={idx} className="item-container">
+                <div key={idx} className="item-container" >
                   <div className="item-img">
                     <img src={el.image} alt="loading" />
                     <AddToWishList el={el} />

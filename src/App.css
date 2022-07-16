@@ -16,6 +16,7 @@
   --box-shadow1: 0px 0px 10px 2px #aaa;
   --box-shadow2: 0px 0px 0 0.5px #aaa;
   --background-color: #52525b;
+
 }
 /* Navbar */
 .main-nav {
@@ -504,6 +505,9 @@
 #dark {
   background-color: var(--footer-color);
   color: var(--secondary-color);
+}
+#dark2{
+  background-color: var(--footer-color);
 }
 #dark-background {
   background-color: var(--background-color);
