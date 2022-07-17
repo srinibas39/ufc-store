@@ -4,17 +4,15 @@ import { LoginService } from "../../services/LoginService";
 import { SignupServices } from "../../services/SignupServices";
 import { AuthContextType, AuthProviderType } from "./AuthContext.types";
 
-
-
-
 export const AuthContext = createContext({} as AuthContextType);
 
 export const AuthProvider = ({ children }: AuthProviderType) => {
-   // @ts-ignore
+  // @ts-ignore
   const local = JSON.parse(localStorage?.getItem("login"));
   const [user, setUser] = useState(local?.user);
   const [token, setToken] = useState(local?.token);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [error, setError] = useState("");
 
   const handleLogin = async (email: string, password: string) => {
     try {
@@ -27,16 +25,15 @@ export const AuthProvider = ({ children }: AuthProviderType) => {
       }
       setToken(data.encodedToken);
       setUser(data.foundUser);
-      console.log("successfully logged in");
-     
       
       setLoggedIn(true);
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      setError(error);
     }
   };
 
   const handleLogout = () => {
+    
     localStorage.removeItem("login");
     setUser(null);
     setToken(null);
@@ -64,16 +61,22 @@ export const AuthProvider = ({ children }: AuthProviderType) => {
       setToken(data.encodedToken);
       setUser(data.createdUser);
       
-      
-      console.log("successfully signed in");
-    } catch (error) {
-      console.log(error);
+    } catch (err:any) {
+      setError(err);
     }
   };
 
   return (
     <AuthContext.Provider
-      value={{ token, user, handleLogin, handleSignup, handleLogout, loggedIn }}
+      value={{
+        token,
+        user,
+        handleLogin,
+        handleSignup,
+        handleLogout,
+        loggedIn,
+        error,
+      }}
     >
       {children}
     </AuthContext.Provider>

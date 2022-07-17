@@ -24,4 +24,5 @@ export type AuthContextType = {
   ) => void;
   handleLogout: () => void;
   loggedIn: boolean;
+  error:string
 };
