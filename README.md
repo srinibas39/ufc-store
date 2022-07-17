@@ -23,6 +23,11 @@
 + Apply Coupons
 + Pagination on Product Listing Page
 + Download Invoice
++ Dark mode
++ Responsiveness
++ payment gateway
+
+
 
 
 ## Upcoming features
