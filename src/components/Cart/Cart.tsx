@@ -71,6 +71,13 @@ export const Cart = () => {
     }, 1500);
   };
 
+  // remove item from the cart
+
+  const removeItemFromCart = (el: any) => {
+    handleToast("Removing the item from the cart");
+    setTimeout(() => removeCart(token, el._id), 1500);
+  };
+
   // inc/dec item in the cart
 
   const inDecCartHandler = (el: any, type: string) => {
@@ -78,16 +85,13 @@ export const Cart = () => {
       handleToast("icrementing the item in the cart");
       setTimeout(() => inDecCart(token, el._id, "increment"), 1500);
     } else {
+      if (el.qty === 1) {
+        removeItemFromCart(el);
+      }
+
       handleToast("decrementing the item in the cart");
       setTimeout(() => inDecCart(token, el._id, "decrement"), 1500);
     }
-  };
-
-  // remove item from the cart
-
-  const removeItemFromCart = (el:any) => {
-    handleToast("Removing the item from the cart");
-    setTimeout(() => removeCart(token, el._id), 1500);
   };
 
   return (
