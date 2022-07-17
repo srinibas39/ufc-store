@@ -33,7 +33,6 @@
 ## Upcoming features
 + Forget Password
 + Share your Cart
-+ Payment Integration
 + Remember me while login
 
 ## Tech stack
@@ -43,3 +42,4 @@
 + React
 + Context API
 + API calls using axios
++ Typescript

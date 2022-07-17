@@ -7,7 +7,7 @@ import { Pagination } from "../Pagination/Pagination";
 import { AllProductProps } from "./AllProducts.types";
 import { allProductType } from "../../context/ProductContext/ProductContext.types";
 import { useMode } from "../../context/ModeContext/ModeContext";
-import {  ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useProduct } from "../../context/ProductContext/ProductContext";
 import { handleToastError } from "../../utils/ToastUtils";
@@ -18,21 +18,20 @@ export const AllProducts = ({ allProducts }: AllProductProps) => {
   const { state } = useFilter();
   const navigate = useNavigate();
 
-  useEffect(()=>{
-    if(error){
-      handleToastError(error)
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  useEffect(() => {
+    if (error) {
+      handleToastError(error);
     }
-  },[error])
-
-
+  }, [error]);
 
   const discountPrice = (price: string, discount: string) => {
     const newD = Number(discount.split("%")[0]);
     const nPrice = Number(price) * (newD / 100);
     return Number(nPrice) + Number(price);
   };
-
-  
 
   const getCategoryData = () => {
     if (state.filterCategory.length !== 0) {
@@ -82,8 +81,6 @@ export const AllProducts = ({ allProducts }: AllProductProps) => {
   };
   const rangeData = getRangeData();
 
-  
-
   // Implementation of pagination.
 
   const [currPage, setCurrPage] = useState(1);
@@ -104,9 +101,6 @@ export const AllProducts = ({ allProducts }: AllProductProps) => {
     return rangeData.slice(si, ei);
   };
   const pageData = getPageData();
-
-
-  
 
   return (
     <>
@@ -142,7 +136,7 @@ export const AllProducts = ({ allProducts }: AllProductProps) => {
                     <div className="item-buttons">
                       <button
                         className="background"
-                        onClick={() => (navigate(`/preview/${el._id}`))}
+                        onClick={() => navigate(`/preview/${el._id}`)}
                       >
                         PREVIEW
                       </button>
