@@ -3,9 +3,12 @@
   flex-direction: column;
   height: 100vh;
   margin: 1rem;
+  
 }
 .new-address-container h2 {
   text-align: center;
+  padding: 1rem;
+  margin-top:1rem;
 }
 
 .new-address-input {
@@ -26,6 +29,7 @@
   justify-content: space-evenly;
   flex-wrap: wrap;
   align-items: center;
+  margin-top: 1rem !important;
 }
 
 .new-address-button button {

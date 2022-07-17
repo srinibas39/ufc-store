@@ -21,10 +21,12 @@
 
 .order-summary-container p {
   text-align: center;
+  padding: 1rem;
 }
 .order-summary-container h2 {
   text-align: center;
   margin: 1rem;
+  padding: 1rem;
 }
 
 .bold {
@@ -61,5 +63,7 @@
   background-color: var(--primary-color);
   color: var(--secondary-color);
 }
+
+
 
 
