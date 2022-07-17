@@ -4,6 +4,9 @@ import { useMode } from "../../context/ModeContext/ModeContext";
 import { useProduct } from "../../context/ProductContext/ProductContext";
 import { allProductType } from "../../context/ProductContext/ProductContext.types";
 import { AddToWishList } from "../AddToWishList/AddToWishList";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { handleToast } from "../../utils/ToastUtils";
 
 export const WishList = () => {
   const { token } = useAuth();
@@ -18,6 +21,16 @@ export const WishList = () => {
       setWishlistData(wishlistData);
     })();
   }, [prodState.wishlistItems]);
+
+  // move to cart
+
+  const handleMoveToCart=(el:any)=>{
+    handleToast("Moving this item to cart")
+    setTimeout(()=>{
+      addCart(token, el) 
+      removeWishlist(token, el._id)
+    },1500)
+  }
 
   return (
     <>
@@ -36,9 +49,7 @@ export const WishList = () => {
                   <h2>&#8377; {el.price}</h2>
                   <button
                     className="background"
-                    onClick={() => (
-                      addCart(token, el), removeWishlist(token, el._id)
-                    )}
+                    onClick={() => handleMoveToCart(el)}
                   >
                     Move to cart
                   </button>
@@ -53,6 +64,7 @@ export const WishList = () => {
           />
         )}
       </div>
+      <ToastContainer/>
     </>
   );
 };

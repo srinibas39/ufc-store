@@ -4,10 +4,15 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import { useAuth } from "../../context/AuthContext/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { handleToast } from "../../utils/ToastUtils";
+import { useAddress } from "../../context/AddressContext/AddressContext";
 
 export const OrderSummary = () => {
   const { prodState, removeCart } = useProduct();
   const { user, token } = useAuth();
+  const { addressDispatch } = useAddress();
   const navigate = useNavigate();
 
   const calculateTotalPrice = () => {
@@ -18,20 +23,23 @@ export const OrderSummary = () => {
     return tp;
   };
 
-  const downloadResume = () => {
-    const input = document.querySelector(".order-summary-container");
-    html2canvas(input as HTMLElement)
-      .then((canvas) => {
-        const imgData = canvas.toDataURL("image/png");
-        const pdf = new jsPDF({
-          orientation: "landscape",
+  const downloadInvoice = () => {
+    handleToast("Downloading Invoice");
+    setTimeout(() => {
+      const input = document.querySelector(".order-summary-container");
+      html2canvas(input as HTMLElement)
+        .then((canvas) => {
+          const imgData = canvas.toDataURL("image/png");
+          const pdf = new jsPDF({
+            orientation: "landscape",
+          });
+          pdf.addImage(imgData, "JPEG", 0, 0, 300, 100);
+          pdf.save("invoice.save");
+        })
+        .catch((error) => {
+          console.log(error);
         });
-        pdf.addImage(imgData, "JPEG", 0, 0, 300, 100);
-        pdf.save("invoice.save");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    }, 1500);
   };
   const loadScript = async (url: string) => {
     return new Promise((resolve) => {
@@ -56,33 +64,36 @@ export const OrderSummary = () => {
   };
 
   const displayRazorpay = async () => {
-    const res = await loadScript(
-      "https://checkout.razorpay.com/v1/checkout.js"
-    );
-    const options = {
-      key: "rzp_test_CFt74CaU0MZr0F",
-      amount: calculateTotalPrice() * 100 + 50000 - prodState.coupon * 100,
-      currency: "INR",
-      name: "UFC store",
-      description: "Test Transaction",
-      image: require("../../images/ufc-logo.jpg"),
-      //   @ts-ignore
-      order_id: res.id,
-      handler: removeAllCartItems(),
-      callback_url: navigate("/products"),
-      prefill: {
-        name: user?.firstName + " " + user?.lastName,
-        email: user?.email,
-        contact: "7008091784",
-      },
+    handleToast("loading payment gateway");
+    setTimeout(async () => {
+      const res = await loadScript(
+        "https://checkout.razorpay.com/v1/checkout.js"
+      );
+      const options = {
+        key: "rzp_test_CFt74CaU0MZr0F",
+        amount: calculateTotalPrice() * 100 + 50000 - prodState.coupon * 100,
+        currency: "INR",
+        name: "UFC store",
+        description: "Test Transaction",
+        image: require("../../images/ufc-logo.jpg"),
+        //   @ts-ignore
+        order_id: res.id,
+        handler: () => removeAllCartItems(),
+        callback_url: navigate("/products"),
+        prefill: {
+          name: user?.firstName + " " + user?.lastName,
+          email: user?.email,
+          contact: "7008091784",
+        },
 
-      theme: {
-        color: "#3399cc",
-      },
-    };
-    // @ts-ignore
-    const paymentObject = new window.Razorpay(options);
-    paymentObject.open();
+        theme: {
+          color: "#3399cc",
+        },
+      };
+      // @ts-ignore
+      const paymentObject = new window.Razorpay(options);
+      paymentObject.open();
+    }, 1500);
   };
 
   return (
@@ -142,9 +153,10 @@ export const OrderSummary = () => {
       <button className="btn-checkout" onClick={displayRazorpay}>
         CHECKOUT
       </button>
-      <button className="btn-invoice" onClick={() => downloadResume()}>
+      <button className="btn-invoice" onClick={downloadInvoice}>
         DOWNLOAD INVOICE AS PDF
       </button>
+      <ToastContainer />
     </>
   );
 };

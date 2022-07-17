@@ -20,12 +20,23 @@ export const AddToWishList = ({ el }: AddToWishListProps) => {
     setItem(item);
   }, [prodState.wishlistItems]);
 
-  // handle Wishlist
+  // add Wishlist
 
   const handleWishlist = () => {
-    handleToast("adding item to wishlist");
+    handleToast("Adding item to wishlist");
     if (token) {
       setTimeout(() => addWishlist(token, el), 1500);
+    } else {
+      navigate("/login");
+    }
+  };
+
+  // Remove Wishlist
+
+  const handleRemoveWishlist = () => {
+    handleToast("Removing item from wishlist");
+    if (token) {
+      setTimeout(() => removeWishlist(token, el._id), 1500);
     } else {
       navigate("/login");
     }
@@ -34,12 +45,7 @@ export const AddToWishList = ({ el }: AddToWishListProps) => {
   return (
     <>
       {item ? (
-        <div
-          className="product-like pink"
-          onClick={() =>
-            token ? removeWishlist(token, el._id) : navigate("/login")
-          }
-        >
+        <div className="product-like pink" onClick={handleRemoveWishlist}>
           <span className="material-icons"> favorite </span>
         </div>
       ) : (
