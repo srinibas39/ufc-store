@@ -1,16 +1,28 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useFilter } from "../../context/FilterContext/FilterContext";
 import { AddToCartButton } from "../AddToCartButton/AddToCartButton";
 import { AddToWishList } from "../AddToWishList/AddToWishList";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Pagination } from "../Pagination/Pagination";
 import { AllProductProps } from "./AllProducts.types";
 import { allProductType } from "../../context/ProductContext/ProductContext.types";
 import { useMode } from "../../context/ModeContext/ModeContext";
+import {  ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useProduct } from "../../context/ProductContext/ProductContext";
+import { handleToastError } from "../../utils/ToastUtils";
 
 export const AllProducts = ({ allProducts }: AllProductProps) => {
+  const { mode } = useMode();
+  const { error } = useProduct();
 
-  const {mode}=useMode()
+  useEffect(()=>{
+    if(error){
+      handleToastError(error)
+    }
+  },[error])
+
+
 
   const discountPrice = (price: string, discount: string) => {
     const newD = Number(discount.split("%")[0]);
@@ -91,10 +103,17 @@ export const AllProducts = ({ allProducts }: AllProductProps) => {
   };
   const pageData = getPageData();
 
+
+  // handle preview
+
+  const handlePreview=()=>{
+    
+  }
+
   return (
     <>
-      <div className="all-products" id={mode?`dark`:""}>
-        <h1 style={{margin:"1rem"}}>
+      <div className="all-products" id={mode ? `dark` : ""}>
+        <h1 style={{ margin: "1rem" }}>
           Showing all products
           <small className="lighter">
             (showing {rangeData && rangeData.length} products)
@@ -104,7 +123,7 @@ export const AllProducts = ({ allProducts }: AllProductProps) => {
           {pageData &&
             pageData.map((el, idx) => {
               return (
-                <div key={idx} className="item-container" >
+                <div key={idx} className="item-container">
                   <div className="item-img">
                     <img src={el.image} alt="loading" />
                     <AddToWishList el={el} />
@@ -125,7 +144,7 @@ export const AllProducts = ({ allProducts }: AllProductProps) => {
                     <div className="item-buttons">
                       <button
                         className="background"
-                        onClick={() => navigate(`/preview/${el._id}`)}
+                        onClick={() => (navigate(`/preview/${el._id}`))}
                       >
                         PREVIEW
                       </button>
@@ -138,6 +157,8 @@ export const AllProducts = ({ allProducts }: AllProductProps) => {
         </div>
         <Pagination setCurrPage={setCurrPage} pagesArr={pagesArr} />
       </div>
+
+      <ToastContainer />
     </>
   );
 };

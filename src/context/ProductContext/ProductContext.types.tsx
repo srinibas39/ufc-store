@@ -58,12 +58,10 @@ export type ProductContextValueType={
     getProduct:(productId:string|undefined)=>any
     addWishlist:(token:string, product:allProductType) =>void
     removeWishlist:(token:string, id:string)=>void
-    toastLoading:boolean
-    setToastLoading:React.Dispatch<React.SetStateAction<boolean>>
-    toastText:string
     getWishlist:(token:string) =>any
     addCart:(token:string, product:allProductType)=>void
     getCart:(token:string) =>void
     removeCart:(token:string, id:string) =>void
-    inDecCart:(token:string, id:string, type:string) => void
+    inDecCart:(token:string, id:string, type:string) => void,
+    error:string
   }

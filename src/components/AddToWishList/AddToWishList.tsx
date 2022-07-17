@@ -6,6 +6,7 @@ import { useMode } from "../../context/ModeContext/ModeContext";
 import { useProduct } from "../../context/ProductContext/ProductContext";
 import { allProductType } from "../../context/ProductContext/ProductContext.types";
 import { AddToWishListProps } from "./AddToWishList.types";
+import { handleToast } from "../../utils/ToastUtils";
 
 export const AddToWishList = ({ el }: AddToWishListProps) => {
   const { removeWishlist, addWishlist, prodState } = useProduct();
@@ -18,6 +19,17 @@ export const AddToWishList = ({ el }: AddToWishListProps) => {
     const item = prodState.wishlistItems.find((ele) => el._id === ele._id);
     setItem(item);
   }, [prodState.wishlistItems]);
+
+  // handle Wishlist
+
+  const handleWishlist = () => {
+    handleToast("adding item to wishlist");
+    if (token) {
+      setTimeout(() => addWishlist(token, el), 1500);
+    } else {
+      navigate("/login");
+    }
+  };
 
   return (
     <>
@@ -34,7 +46,7 @@ export const AddToWishList = ({ el }: AddToWishListProps) => {
         <div
           id={mode ? `dark-color` : ""}
           className={`product-like`}
-          onClick={() => (token ? addWishlist(token, el) : navigate("/login"))}
+          onClick={handleWishlist}
         >
           <span className="material-icons"> favorite </span>
         </div>

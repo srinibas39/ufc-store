@@ -1,4 +1,4 @@
-import React, {
+import  {
   createContext,
   useContext,
   useState,
@@ -13,17 +13,23 @@ import { GetWishList } from "../../services/GetWishlist";
 import { InDecCart } from "../../services/InDecCart";
 import { RemoveCart } from "../../services/RemoveCart";
 import { RemoveWishlist } from "../../services/RemoveWishlist";
-import { allProductType, productActionType, ProductContextValueType, ProductProviderType, productStateType } from "./ProductContext.types";
-
+import {
+  allProductType,
+  productActionType,
+  ProductContextValueType,
+  ProductProviderType,
+  productStateType,
+} from "./ProductContext.types";
 
 export const ProductContext = createContext({} as ProductContextValueType);
 
-export const ProductProvider = ({ children }:ProductProviderType) => {
-  const [toastLoading, setToastLoading] = useState(false);
-  const [toastText, setToastText] = useState("");
+export const ProductProvider = ({ children }: ProductProviderType) => {
+
+  const [error, setError] = useState("");
+
   const productReducer = (
     state: productStateType,
-    action:productActionType
+    action: productActionType
   ) => {
     switch (action.type) {
       case "GET_PRODUCTS":
@@ -54,7 +60,7 @@ export const ProductProvider = ({ children }:ProductProviderType) => {
     coupon: 0,
     category: [],
   });
-  const getProduct = (productId:string|undefined) =>
+  const getProduct = (productId: string | undefined) =>
     prodState.allProducts.find((el) => el._id === productId) || {};
 
   useEffect(() => {
@@ -66,18 +72,18 @@ export const ProductProvider = ({ children }:ProductProviderType) => {
             type: "GET_PRODUCTS",
             payload: resProd.data.products,
           });
-          const suggestions = resProd.data.products.map((el:allProductType) => el.title);
+          const suggestions = resProd.data.products.map(
+            (el: allProductType) => el.title
+          );
           prodDispatch({ type: "AUTO_SUGGEST", payload: suggestions });
         }
-      } catch (error) {
-        console.log(error);
+      } catch (error:any) {
+        setError(error);
       }
     })();
   }, []);
-  const addWishlist = async (token:string, product:allProductType) => {
+  const addWishlist = async (token: string, product: allProductType) => {
     try {
-      setToastLoading(true);
-      setToastText("Item is getting added to wishlist");
       const res = await AddWishlist({ token, product });
       if (res.status === 200 || res.status === 201) {
         prodDispatch({
@@ -85,14 +91,12 @@ export const ProductProvider = ({ children }:ProductProviderType) => {
           payload: res.data.wishlist,
         });
       }
-    } catch (error) {
-      console.log(error);
+    } catch (error:any) {
+      setError(error);
     }
   };
-  const removeWishlist = async (token:string, id:string) => {
+  const removeWishlist = async (token: string, id: string) => {
     try {
-      setToastLoading(true);
-      setToastText("Item is getting removed from wishlist");
       const res = await RemoveWishlist({ token, id });
       if (res.status === 200 || res.status === 201) {
         prodDispatch({
@@ -100,68 +104,58 @@ export const ProductProvider = ({ children }:ProductProviderType) => {
           payload: res.data.wishlist,
         });
       }
-    } catch (error) {
-      console.log(error);
+    } catch (error:any) {
+      setError(error);
     }
   };
-  const getWishlist = async (token:string) => {
+  const getWishlist = async (token: string) => {
     try {
       const resWishlist = await GetWishList({ token });
       if (resWishlist.status === 200 || resWishlist.status === 201) {
         return resWishlist.data.wishlist;
       }
-    } catch (error) {
-      console.log(error);
+    } catch (error:any) {
+      setError(error);
     }
   };
-  const addCart = async (token:string, product:allProductType) => {
+  const addCart = async (token: string, product: allProductType) => {
     try {
-      setToastLoading(true);
-      setToastText("Item is getting added in the cart");
       const res = await AddCart({ token, product });
       if (res.status === 200 || res.status === 201) {
         prodDispatch({ type: "ADD_REMOVE_CART", payload: res.data.cart });
       }
-    } catch (error) {
-      console.log(error);
+    } catch (error:any) {
+      setError(error);
     }
   };
-  const removeCart = async (token:string, id:string) => {
+  const removeCart = async (token: string, id: string) => {
     try {
-      setToastLoading(true);
-      setToastText("Item is getting removed from cart");
       const res = await RemoveCart({ token, id });
       if (res.status === 200 || res.status === 201) {
         prodDispatch({ type: "ADD_REMOVE_CART", payload: res.data.cart });
       }
-    } catch (error) {
-      console.log(error);
+    } catch (error:any) {
+      setError(error);
     }
   };
-  const getCart = async (token:string) => {
+  const getCart = async (token: string) => {
     try {
       const res = await GetCart({ token });
       if (res.status === 200 || res.status === 201) {
         return res.data.cart;
       }
-    } catch (error) {
-      console.log(error);
+    } catch (error:any) {
+      setError(error);
     }
   };
-  const inDecCart = async (token:string, id:string, type:string) => {
+  const inDecCart = async (token: string, id: string, type: string) => {
     try {
-      setToastLoading(true);
-      if (type === "increment") {
-        setToastText("Incrementing the item from the cart");
-      } else if (type === "decrement") {
-        setToastText("Decrementing the item from the cart ");
-      }
       const res = await InDecCart({ token, id, type });
       if (res.status === 200 || res.status === 201) {
         prodDispatch({ type: "ADD_REMOVE_CART", payload: res.data.cart });
       }
-    } catch (error) {
-      console.log(error);
+    } catch (error:any) {
+      setError(error);
     }
   };
 
@@ -173,14 +167,12 @@ export const ProductProvider = ({ children }:ProductProviderType) => {
         getProduct,
         addWishlist,
         removeWishlist,
-        toastLoading,
-        setToastLoading,
-        toastText,
         getWishlist,
         addCart,
         getCart,
         removeCart,
         inDecCart,
+        error
       }}
     >
       {children}

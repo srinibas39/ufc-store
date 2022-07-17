@@ -68,9 +68,10 @@ export const Filter = ({ allProducts }: FilterProps) => {
 
   const handleClear = () => {
     dispatch({ type: "CLEAR" });
-
     setClear(false);
   };
+
+  
 
   return (
     clear && (

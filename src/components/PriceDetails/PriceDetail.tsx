@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useProduct } from "../../context/ProductContext/ProductContext";
 import { priceDetailsProps } from "./priceDetails.types";
 import { useMode } from "../../context/ModeContext/ModeContext";
+import { handleToast } from "../../utils/ToastUtils";
 
 export const PriceDetail = ({ totalQty, totalDiscountPrice, discount, calculateTotalPrice }:priceDetailsProps) => {
     const navigate = useNavigate();
@@ -13,26 +14,30 @@ export const PriceDetail = ({ totalQty, totalDiscountPrice, discount, calculateT
     const [couponColor, setCouponColor] = useState(false);
     const [couponText, setCouponText] = useState("");
     const {mode}=useMode();
-    // @ts-ignore
-    const handleCoupon = (coupon) => {
-        setFinalPrice("");
-        setCouponDiscount("");
-        if (prodState.coupons.includes(coupon)) {
-            let discountPercentage = Number(coupon.split("@")[1]) / 100;
-            let couponDiscount = (calculateTotalPrice() * discountPercentage);
-            const finalPrice = calculateTotalPrice() - couponDiscount;
-            setFinalPrice(finalPrice+"");
-            setCouponDiscount(couponDiscount+"");
-            setCoupon("Coupon successfully set.");
-            setCouponColor(true);
-            prodDispatch({ type: "COUPON_APPLIED", payload: couponDiscount })
-
-        }
-        else {
-            setCoupon("You have entered invalid coupon.");
-            setCouponColor(false);
-            prodDispatch({ type: "COUPON_APPLIED", payload: 0 })
-        }
+   
+    const handleCoupon = (coupon:string) => {
+        handleToast(`Applying coupon code ${coupon}`)
+        setTimeout(()=>{
+            setFinalPrice("");
+            setCouponDiscount("");
+            if (prodState.coupons.includes(coupon)) {
+                let discountPercentage = Number(coupon.split("@")[1]) / 100;
+                let couponDiscount = (calculateTotalPrice() * discountPercentage);
+                const finalPrice = calculateTotalPrice() - couponDiscount;
+                setFinalPrice(finalPrice+"");
+                setCouponDiscount(couponDiscount+"");
+                setCoupon("Coupon successfully set.");
+                setCouponColor(true);
+                prodDispatch({ type: "COUPON_APPLIED", payload: couponDiscount })
+    
+            }
+            else {
+                setCoupon("You have entered invalid coupon.");
+                setCouponColor(false);
+                prodDispatch({ type: "COUPON_APPLIED", payload: 0 })
+            }
+        },1500)
+       
 
     }
 

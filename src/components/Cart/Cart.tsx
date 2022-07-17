@@ -3,7 +3,10 @@ import { useAuth } from "../../context/AuthContext/AuthContext";
 import { useMode } from "../../context/ModeContext/ModeContext";
 import { useProduct } from "../../context/ProductContext/ProductContext";
 import { allProductType } from "../../context/ProductContext/ProductContext.types";
+import { handleToast } from "../../utils/ToastUtils";
 import { PriceDetail } from "../PriceDetails/PriceDetail";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const Cart = () => {
   const { prodState, removeCart, inDecCart, addWishlist, getCart } =
@@ -58,18 +61,55 @@ export const Cart = () => {
     })();
   }, [prodState.cartItems]);
 
+  // save for later
+
+  const saveForLaterHandler = (el: any) => {
+    handleToast("saving your item for later");
+    setTimeout(() => {
+      addWishlist(token, el);
+      removeCart(token, el._id);
+    }, 1500);
+  };
+
+  // inc/dec item in the cart
+
+  const inDecCartHandler = (el: any, type: string) => {
+    if (type === "increment") {
+      handleToast("icrementing the item in the cart");
+      setTimeout(() => inDecCart(token, el._id, "increment"), 1500);
+    } else {
+      handleToast("decrementing the item in the cart");
+      setTimeout(() => inDecCart(token, el._id, "decrement"), 1500);
+    }
+  };
+
+  // remove item from the cart
+
+  const removeItemFromCart = (el:any) => {
+    handleToast("Removing the item from the cart");
+    setTimeout(() => removeCart(token, el._id), 1500);
+  };
+
   return (
     <>
-      <h1 className="cart-header" style={{ margin: "1rem",padding:"1rem" }} id={mode?`dark`:""} >
+      <h1
+        className="cart-header"
+        style={{ margin: "1rem", padding: "1rem" }}
+        id={mode ? `dark` : ""}
+      >
         My Cart({cartData.length})
       </h1>
 
-      <div className="cart-box" id={mode?`dark`:""} style={{padding:"1rem"}}>
+      <div
+        className="cart-box"
+        id={mode ? `dark` : ""}
+        style={{ padding: "1rem" }}
+      >
         {cartData.length > 0 ? (
           <div className="carts-container">
             {cartData.map((el) => {
               return (
-                <div key={el._id} className="cartItem-container" >
+                <div key={el._id} className="cartItem-container">
                   <div className="cartItem-img">
                     <img src={el.image} alt="loading..." />
                   </div>
@@ -90,7 +130,7 @@ export const Cart = () => {
 
                         <span
                           className="material-icons"
-                          onClick={() => inDecCart(token, el._id, "decrement")}
+                          onClick={() => inDecCartHandler(el, "decrement")}
                         >
                           {" "}
                           remove_circle_outline{" "}
@@ -98,7 +138,7 @@ export const Cart = () => {
                         <div className="qty-value">{el.qty}</div>
                         <span
                           className="material-icons"
-                          onClick={() => inDecCart(token, el._id, "increment")}
+                          onClick={() => inDecCartHandler(el, "increment")}
                         >
                           {" "}
                           add_circle_outline{" "}
@@ -108,13 +148,11 @@ export const Cart = () => {
                     <div className="cartItem-buttons">
                       <button
                         className="background"
-                        onClick={() => (
-                          addWishlist(token, el), removeCart(token, el._id)
-                        )}
+                        onClick={() => saveForLaterHandler(el)}
                       >
                         SAVE FOR LATER
                       </button>
-                      <button onClick={() => removeCart(token, el._id)}>
+                      <button onClick={() => removeItemFromCart(el)}>
                         REMOVE
                       </button>
                     </div>
@@ -138,6 +176,7 @@ export const Cart = () => {
           />
         )}
       </div>
+      <ToastContainer />
     </>
   );
 };
