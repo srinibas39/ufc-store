@@ -15,6 +15,8 @@ import { handleToastError } from "../../utils/ToastUtils";
 export const AllProducts = ({ allProducts }: AllProductProps) => {
   const { mode } = useMode();
   const { error } = useProduct();
+  const { state } = useFilter();
+  const navigate = useNavigate();
 
   useEffect(()=>{
     if(error){
@@ -30,7 +32,7 @@ export const AllProducts = ({ allProducts }: AllProductProps) => {
     return Number(nPrice) + Number(price);
   };
 
-  const { state } = useFilter();
+  
 
   const getCategoryData = () => {
     if (state.filterCategory.length !== 0) {
@@ -80,7 +82,7 @@ export const AllProducts = ({ allProducts }: AllProductProps) => {
   };
   const rangeData = getRangeData();
 
-  const navigate = useNavigate();
+  
 
   // Implementation of pagination.
 
@@ -104,11 +106,7 @@ export const AllProducts = ({ allProducts }: AllProductProps) => {
   const pageData = getPageData();
 
 
-  // handle preview
-
-  const handlePreview=()=>{
-    
-  }
+  
 
   return (
     <>
