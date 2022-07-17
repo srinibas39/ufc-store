@@ -8,11 +8,12 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { handleToast } from "../../utils/ToastUtils";
 import { useAddress } from "../../context/AddressContext/AddressContext";
+import { useMode } from "../../context/ModeContext/ModeContext";
 
 export const OrderSummary = () => {
   const { prodState, removeCart } = useProduct();
   const { user, token } = useAuth();
-  const { addressDispatch } = useAddress();
+  const { mode } = useMode();
   const navigate = useNavigate();
 
   const calculateTotalPrice = () => {
@@ -98,9 +99,9 @@ export const OrderSummary = () => {
 
   return (
     <>
-      <div className="order-summary-container">
-        <h2>Order Summary</h2>
-        <p>Please take a moment to revie your order.</p>
+      <div className="order-summary-container" >
+        <h2 id={mode?`dark`:""}>Order Summary</h2>
+        <p id={mode?`dark`:""}>Please take a moment to revie your order.</p>
         <table>
           <thead>
             <tr className="tr-header">
