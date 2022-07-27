@@ -44,7 +44,7 @@ const handleRemoveAddress=(el:any)=>{
   return (
     <>
       <div className="address-container">
-        <h2 id={mode ? `dark` : ""}>My addresses(2)</h2>
+        <h2 id={mode ? `dark` : ""}>My addresses({addressState.addresses.length })</h2>
 
         {addressState.addresses &&
           addressState.addresses.map((el, idx) => {
