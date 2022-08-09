@@ -11,6 +11,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useProduct } from "../../context/ProductContext/ProductContext";
 import { handleToastError } from "../../utils/ToastUtils";
+// @ts-ignore
+import { ReactComponent as ProductNotFound } from "../../images/noitems.svg";
 
 export const AllProducts = ({ allProducts }: AllProductProps) => {
   const { mode } = useMode();
@@ -21,7 +23,7 @@ export const AllProducts = ({ allProducts }: AllProductProps) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  
+
   useEffect(() => {
     if (error) {
       handleToastError(error);
@@ -67,7 +69,7 @@ export const AllProducts = ({ allProducts }: AllProductProps) => {
   const sortedData = getSortedData();
 
   const getStarData = () => {
-    const starNumber=state.stars?.split(" ")[0]
+    const starNumber = state.stars?.split(" ")[0];
     if (state.stars !== null) {
       return sortedData.filter((el) => Number(el.rating) >= Number(starNumber));
     }
@@ -107,14 +109,17 @@ export const AllProducts = ({ allProducts }: AllProductProps) => {
   return (
     <>
       <div className="all-products" id={mode ? `dark` : ""}>
-        <h1 style={{ margin: "1rem" }}>
-          Showing all products
-          <small className="lighter">
-            (showing {rangeData && rangeData.length} products)
-          </small>
-        </h1>
+        {rangeData.length && (
+          <h1 style={{ margin: "1rem" }}>
+            Showing all products
+            <small className="lighter">
+              (showing {rangeData.length} products)
+            </small>
+          </h1>
+        )}
+
         <div className="all-products-div">
-          {pageData &&
+          {pageData.length ? (
             pageData.map((el, idx) => {
               return (
                 <div key={idx} className="item-container">
@@ -147,7 +152,13 @@ export const AllProducts = ({ allProducts }: AllProductProps) => {
                   </div>
                 </div>
               );
-            })}
+            })
+          ) : (
+            <div className="no-items">
+              <p>No products found</p>
+              <ProductNotFound />
+            </div>
+          )}
         </div>
         <Pagination setCurrPage={setCurrPage} pagesArr={pagesArr} />
       </div>

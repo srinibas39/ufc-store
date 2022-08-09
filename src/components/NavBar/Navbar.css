@@ -84,11 +84,11 @@
   .notify span {
     height: 18px;
     width: 18px;
-    background-color: red;
+    background-color: var(--primary-color);
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: var(--secondary-color);
     border-radius: 50%;
     padding: 5px;
     font-size: 12px;
