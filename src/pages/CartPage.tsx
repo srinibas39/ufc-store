@@ -6,7 +6,9 @@ import { Navbar } from "../components/NavBar/NavBar";
 
 
 export const CartPage = () => {
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <Navbar />

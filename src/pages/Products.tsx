@@ -7,7 +7,9 @@ import { ProductSection } from "../components/ProductSection/ProductSection";
 
 
 export const Products = () => {
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>

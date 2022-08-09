@@ -394,6 +394,7 @@
   position: relative;
   margin: 3rem;
   width: 22rem;
+  cursor: pointer;
 }
 .card-img {
   width: 100%;
@@ -521,6 +522,9 @@
 }
 #dark-color {
   color: var(--footer-color);
+}
+.display-container{
+  cursor: pointer;
 }
 
 @media (min-width: 40rem) {

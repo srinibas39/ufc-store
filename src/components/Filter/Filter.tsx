@@ -1,11 +1,14 @@
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { useFilter } from "../../context/FilterContext/FilterContext";
 import { useMode } from "../../context/ModeContext/ModeContext";
 import { FilterProps } from "./Filter.types";
-import "./Filter.css"
+import "./Filter.css";
+import { useProduct } from "../../context/ProductContext/ProductContext";
 
 export const Filter = ({ allProducts }: FilterProps) => {
   const [categories, setCategories] = useState([]);
+  const { prodState, prodDispatch } = useProduct();
+
   const stars = [
     "1 Star & Above",
     "2 Star & Above",
@@ -14,8 +17,18 @@ export const Filter = ({ allProducts }: FilterProps) => {
   ];
   const [clear, setClear] = useState(false);
 
-  const { state } = useFilter();
+  const { state, dispatch } = useFilter();
   const { mode } = useMode();
+
+  useEffect(() => {
+    if (prodState.category.length) {
+      handleClear();
+      for (let i = 0; i < prodState.category.length; i++) {
+        dispatch({ type: "CATEGORY", payload: prodState.category[i] });
+      }
+      prodDispatch({ type: "CATEGORY", payload: [] });
+    }
+  }, []);
 
   useEffect(() => {
     const catName = allProducts.reduce(
@@ -27,8 +40,6 @@ export const Filter = ({ allProducts }: FilterProps) => {
     setCategories(catName);
     setClear(true);
   }, [allProducts, clear]);
-
-  const { dispatch } = useFilter();
 
   const handleClear = () => {
     dispatch({ type: "CLEAR" });
@@ -66,7 +77,11 @@ export const Filter = ({ allProducts }: FilterProps) => {
         <h2>Category</h2>
         {categories.map((el, id) => {
           return (
-            <div key={id} className="filter-category" onClick={() => dispatch({ type: "CATEGORY", payload: el })}>
+            <div
+              key={id}
+              className="filter-category"
+              onClick={() => dispatch({ type: "CATEGORY", payload: el })}
+            >
               <input
                 type="checkbox"
                 name="category"

@@ -6,7 +6,9 @@ import { Preview } from "../components/Preview/Preview";
 
 
 export const PreviewPage = () => {
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <Navbar />

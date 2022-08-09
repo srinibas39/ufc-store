@@ -6,7 +6,9 @@ import { SearchResult } from "../components/SearchResult/SearchResult";
 
 
 export const SearchPage = () => {
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <Navbar />
