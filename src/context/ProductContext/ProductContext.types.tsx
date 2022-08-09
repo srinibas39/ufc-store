@@ -63,5 +63,7 @@ export type ProductContextValueType={
     getCart:(token:string) =>void
     removeCart:(token:string, id:string) =>void
     inDecCart:(token:string, id:string, type:string) => void,
-    error:string
+    error:string,
+    currPage:number,
+    setCurrPage:React.Dispatch<React.SetStateAction<number>>
   }

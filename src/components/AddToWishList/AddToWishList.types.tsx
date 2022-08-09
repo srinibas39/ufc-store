@@ -2,5 +2,6 @@ import { allProductType } from "../../context/ProductContext/ProductContext.type
 
 
 export type AddToWishListProps={
-    el:allProductType
+    el:allProductType,
+    
 }

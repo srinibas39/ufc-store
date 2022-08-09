@@ -16,16 +16,20 @@ import { ReactComponent as ProductNotFound } from "../../images/noitems.svg";
 
 export const AllProducts = ({ allProducts }: AllProductProps) => {
   const { mode } = useMode();
-  const { error } = useProduct();
+  const { error,currPage,setCurrPage } = useProduct();
   const { state } = useFilter();
   const navigate = useNavigate();
-
   
   useEffect(() => {
     if (error) {
       handleToastError(error);
     }
   }, [error]);
+
+  useEffect(() => {
+    window.scrollTo(0,500);
+  }, [currPage]);
+  
 
   const discountPrice = (price: string, discount: string) => {
     const newD = Number(discount.split("%")[0]);
@@ -83,9 +87,6 @@ export const AllProducts = ({ allProducts }: AllProductProps) => {
   const rangeData = getRangeData();
 
   // Implementation of pagination.
-
-  const [currPage, setCurrPage] = useState(1);
-
   let pagesArr = [];
   let limit = 10;
 

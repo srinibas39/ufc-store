@@ -1,9 +1,12 @@
 
+
 import { useMode } from "../../context/ModeContext/ModeContext"
 import "./Pagination.css"
 import { PaginationProps } from "./Pagination.types"
 export const Pagination = ({ setCurrPage, pagesArr }:PaginationProps) => {
     const {mode}=useMode();
+    
+    
     return <>
         <ul className="pagination-container" >
             {

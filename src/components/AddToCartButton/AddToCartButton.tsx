@@ -7,7 +7,7 @@ import { AddToCartButtonProps } from "./AddToCartButton.types";
 import { handleToast } from "../../utils/ToastUtils";
 
 export const AddToCartButton = ({ el }: AddToCartButtonProps) => {
-  const { prodState, addCart } = useProduct();
+  const { prodState, addCart ,currPage} = useProduct();
   const { token } = useAuth();
   const [cartItem, setCartItem] = useState<allProductType | undefined>();
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ export const AddToCartButton = ({ el }: AddToCartButtonProps) => {
   useEffect(() => {
     const item = prodState.cartItems.find((ele) => el._id === ele._id);
     setCartItem(item);
-  }, [prodState.cartItems]);
+  }, [prodState.cartItems,currPage]);
 
  
 

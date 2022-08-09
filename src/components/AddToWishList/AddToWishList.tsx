@@ -9,7 +9,7 @@ import { AddToWishListProps } from "./AddToWishList.types";
 import { handleToast } from "../../utils/ToastUtils";
 
 export const AddToWishList = ({ el }: AddToWishListProps) => {
-  const { removeWishlist, addWishlist, prodState } = useProduct();
+  const { removeWishlist, addWishlist, prodState,currPage } = useProduct();
   const { token } = useAuth();
   const [item, setItem] = useState<allProductType | undefined>();
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ export const AddToWishList = ({ el }: AddToWishListProps) => {
   useEffect(() => {
     const item = prodState.wishlistItems.find((ele) => el._id === ele._id);
     setItem(item);
-  }, [prodState.wishlistItems]);
+  }, [prodState.wishlistItems,currPage]);
 
   // add Wishlist
 

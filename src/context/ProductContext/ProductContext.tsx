@@ -26,6 +26,7 @@ export const ProductContext = createContext({} as ProductContextValueType);
 export const ProductProvider = ({ children }: ProductProviderType) => {
 
   const [error, setError] = useState("");
+  const [currPage, setCurrPage] = useState(1);
 
   const productReducer = (
     state: productStateType,
@@ -172,7 +173,9 @@ export const ProductProvider = ({ children }: ProductProviderType) => {
         getCart,
         removeCart,
         inDecCart,
-        error
+        error,
+        currPage,
+        setCurrPage
       }}
     >
       {children}
