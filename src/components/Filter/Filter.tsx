@@ -1,8 +1,8 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState} from "react";
 import { useFilter } from "../../context/FilterContext/FilterContext";
 import { useMode } from "../../context/ModeContext/ModeContext";
-import { useProduct } from "../../context/ProductContext/ProductContext";
 import { FilterProps } from "./Filter.types";
+import "./Filter.css"
 
 export const Filter = ({ allProducts }: FilterProps) => {
   const [categories, setCategories] = useState([]);

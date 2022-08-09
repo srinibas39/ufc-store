@@ -1,0 +1,11 @@
+.filter-category,.filter-category label{
+    cursor: pointer;
+}
+
+.filter-rating,.filter-rating label{
+    cursor: pointer;
+}
+
+.filter-sort,.filter-sort label{
+    cursor: pointer;
+}
