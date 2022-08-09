@@ -29,11 +29,11 @@ export const Navbar = () => {
           <span className="material-icons-outlined"> person </span>
         </div>
         <div onClick={() => navigate("/products")}>
-          <span className="material-icons-outlined">inventory_2</span>
+          <span className="material-icons-outlined">local_mall</span>
         </div>
         <div onClick={() => navigate("/cart")}>
           <span className="material-icons-outlined notify">
-            shopping_bag{" "}
+            shopping_cart
             {prodState.cartItems.length ? (
               <span>{prodState.cartItems.length}</span>
             ) : (
@@ -53,11 +53,11 @@ export const Navbar = () => {
         </div>
         {mode ? (
           <div onClick={handleMode}>
-            <span className="material-symbols-outlined">light_mode</span>
+            <span className="material-icons-outlined">light_mode</span>
           </div>
         ) : (
           <div onClick={handleMode}>
-            <span className="material-symbols-outlined">dark_mode</span>
+            <span className="material-icons-outlined">dark_mode</span>
           </div>
         )}
       </div>
