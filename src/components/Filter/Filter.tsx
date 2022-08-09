@@ -6,52 +6,16 @@ import { FilterProps } from "./Filter.types";
 
 export const Filter = ({ allProducts }: FilterProps) => {
   const [categories, setCategories] = useState([]);
-  const stars = ["5", "4", "3", "2", "1"];
+  const stars = [
+    "1 Star & Above",
+    "2 Star & Above",
+    "3 Star & Above",
+    "4 Star & Above",
+  ];
   const [clear, setClear] = useState(false);
 
   const { state } = useFilter();
-  const { prodState } = useProduct();
   const { mode } = useMode();
-  const categoryRef = useRef([]);
-  const sortLowRef = useRef<HTMLInputElement>(null!);
-  const sortHighRef = useRef<HTMLInputElement>(null!);
-  const ratingRef = useRef([]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      const allCategory = categoryRef.current;
-      const lowSort = sortLowRef.current;
-      const highSort = sortHighRef.current;
-      const ratingSort = ratingRef.current;
-
-      // category
-      for (let i = 0; i < allCategory.length; i++) {
-        if (
-          // @ts-ignore
-          prodState.category.includes(allCategory[i].el) ||
-          // @ts-ignore
-          state.filterCategory.includes(allCategory[i].el)
-        ) {
-          // @ts-ignore
-          allCategory[i].ele.click();
-        }
-      }
-      //sort
-      if (state.sort === "LOW_TO_HIGH") {
-        lowSort.click();
-      } else if (state.sort === "HIGH_TO_LOW") {
-        highSort.click();
-      }
-      // rating
-      for (let i = 0; i < ratingSort.length; i++) {
-        // @ts-ignore
-        if (state.stars === ratingSort[i].el) {
-          // @ts-ignore
-          ratingSort[i].ele.click();
-        }
-      }
-    }, 500);
-  }, []);
 
   useEffect(() => {
     const catName = allProducts.reduce(
@@ -71,11 +35,9 @@ export const Filter = ({ allProducts }: FilterProps) => {
     setClear(false);
   };
 
-  
-
   return (
     clear && (
-      <div className="filter-container"  id={mode?`dark`:""}>
+      <div className="filter-container" id={mode ? `dark` : ""}>
         <div className="filter">
           <h2>Filters</h2>
           <p onClick={() => handleClear()}>Clear</p>
@@ -104,14 +66,12 @@ export const Filter = ({ allProducts }: FilterProps) => {
         <h2>Category</h2>
         {categories.map((el, id) => {
           return (
-            <div key={id} className="filter-category">
+            <div key={id} className="filter-category" onClick={() => dispatch({ type: "CATEGORY", payload: el })}>
               <input
                 type="checkbox"
                 name="category"
                 id="filter-category"
-                // @ts-ignore
-                ref={(ele) => (categoryRef.current[id] = { el, ele })}
-                onChange={() => dispatch({ type: "CATEGORY", payload: el })}
+                checked={state.filterCategory.includes(el)}
               />
               <label htmlFor="#filter-category">{el}</label>
             </div>
@@ -120,39 +80,44 @@ export const Filter = ({ allProducts }: FilterProps) => {
         <h2>Rating</h2>
         {stars.map((el, idx) => {
           return (
-            <div className="filter-rating">
+            <div
+              className="filter-rating"
+              onClick={() => dispatch({ type: "STARS", payload: el })}
+            >
               <input
                 type="radio"
                 key={idx}
                 name="rating"
                 id="filter-rating"
-                onClick={() => dispatch({ type: "STARS", payload: el })}
-                // @ts-ignore
-                ref={(ele) => (ratingRef.current[idx] = { el, ele })}
+                checked={state.stars === el}
               />
-              <label htmlFor="#filter-rating">{el} star</label>
+              <label htmlFor="#filter-rating">{el}</label>
             </div>
           );
         })}
 
         <h2>Sort by</h2>
-        <div className="filter-sort">
+        <div
+          className="filter-sort"
+          onClick={() => dispatch({ type: "SORT", payload: "LOW_TO_HIGH" })}
+        >
           <input
             type="radio"
             name="sort"
             id="filter-sort-low"
-            onClick={() => dispatch({ type: "SORT", payload: "LOW_TO_HIGH" })}
-            ref={sortLowRef}
+            checked={state.sort === "LOW_TO_HIGH"}
           />
           <label htmlFor="#filter-sort">Price-Low to High</label>
         </div>
-        <div className="filter-sort">
+        <div
+          className="filter-sort"
+          onClick={() => dispatch({ type: "SORT", payload: "HIGH_TO_LOW" })}
+        >
           <input
             type="radio"
             name="sort"
             id="filter-sort-high"
-            onClick={() => dispatch({ type: "SORT", payload: "HIGH_TO_LOW" })}
-            ref={sortHighRef}
+            checked={state.sort === "HIGH_TO_LOW"}
           />
           <label htmlFor="#filter-sort">Price-High to Low</label>
         </div>

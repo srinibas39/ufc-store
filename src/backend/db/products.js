@@ -583,16 +583,6 @@ export const products = [
     stock: true,
     qty: 0
   }, {
-    _id: "603ef9d4-6a56-4dae-a155-3b4a7554242c",
-    title: "UFC Octagon Pin",
-    price: "700",
-    categoryName: "Pin",
-    rating: "2",
-    image: "https://cdn.shopify.com/s/files/1/0035/4274/5152/products/UFCGHP0001_A_440x.jpg?v=1569194243",
-    discount: "30% off",
-    stock: true,
-    qty: 0
-  }, {
     _id: "613ef9d4-6a56-4dae-a155-3b4a7554242c",
     title: "UFC Black Glove Octagon Lapel Pi...",
     price: "800",

@@ -21,6 +21,7 @@ export const AllProducts = ({ allProducts }: AllProductProps) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  
   useEffect(() => {
     if (error) {
       handleToastError(error);
@@ -66,8 +67,9 @@ export const AllProducts = ({ allProducts }: AllProductProps) => {
   const sortedData = getSortedData();
 
   const getStarData = () => {
+    const starNumber=state.stars?.split(" ")[0]
     if (state.stars !== null) {
-      return sortedData.filter((el) => el.rating === state.stars);
+      return sortedData.filter((el) => Number(el.rating) >= Number(starNumber));
     }
     return sortedData;
   };
