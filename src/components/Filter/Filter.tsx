@@ -7,7 +7,7 @@ import { useProduct } from "../../context/ProductContext/ProductContext";
 
 export const Filter = ({ allProducts }: FilterProps) => {
   const [categories, setCategories] = useState([]);
-  const { prodState, prodDispatch } = useProduct();
+  const { prodState, prodDispatch,setCurrPage } = useProduct();
 
   const stars = [
     "1 Star & Above",
@@ -80,7 +80,7 @@ export const Filter = ({ allProducts }: FilterProps) => {
             <div
               key={id}
               className="filter-category"
-              onClick={() => dispatch({ type: "CATEGORY", payload: el })}
+              onClick={() =>(setCurrPage(1),dispatch({ type: "CATEGORY", payload: el }))}
             >
               <input
                 type="checkbox"
