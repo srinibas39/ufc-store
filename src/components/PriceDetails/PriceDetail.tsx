@@ -22,13 +22,13 @@ export const PriceDetail = ({ totalQty, totalDiscountPrice, discount, calculateT
             setCouponDiscount("");
             if (prodState.coupons.includes(coupon)) {
                 let discountPercentage = Number(coupon.split("@")[1]) / 100;
-                let couponDiscount = (calculateTotalPrice() * discountPercentage);
-                const finalPrice = calculateTotalPrice() - couponDiscount;
+                let couponDiscount = (calculateTotalPrice() * discountPercentage).toFixed(2);
+                const finalPrice = calculateTotalPrice() - Number(couponDiscount);
                 setFinalPrice(finalPrice+"");
                 setCouponDiscount(couponDiscount+"");
                 setCoupon("Coupon successfully set.");
                 setCouponColor(true);
-                prodDispatch({ type: "COUPON_APPLIED", payload: couponDiscount })
+                prodDispatch({ type: "COUPON_APPLIED", payload: Number(couponDiscount) })
     
             }
             else {
