@@ -2,5 +2,6 @@ import { allProductType } from "../../context/ProductContext/ProductContext.type
 
 
 export type FilterProps={
-    allProducts:allProductType[]
+    allProducts:allProductType[],
+    setFilterOpen:React.Dispatch<React.SetStateAction<boolean>>
 }

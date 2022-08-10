@@ -5,9 +5,9 @@ import { FilterProps } from "./Filter.types";
 import "./Filter.css";
 import { useProduct } from "../../context/ProductContext/ProductContext";
 
-export const Filter = ({ allProducts }: FilterProps) => {
+export const Filter = ({ allProducts,setFilterOpen }: FilterProps) => {
   const [categories, setCategories] = useState([]);
-  const { prodState, prodDispatch,setCurrPage } = useProduct();
+  const { prodState, prodDispatch, setCurrPage } = useProduct();
 
   const stars = [
     "1 Star & Above",
@@ -51,6 +51,9 @@ export const Filter = ({ allProducts }: FilterProps) => {
       <div className="filter-container" id={mode ? `dark` : ""}>
         <div className="filter">
           <h2>Filters</h2>
+          <span className="material-symbols-outlined" onClick={()=>setFilterOpen(false)} style={{cursor:"pointer"}}>
+            keyboard_double_arrow_down
+          </span>
           <p onClick={() => handleClear()}>Clear</p>
         </div>
 
@@ -80,7 +83,9 @@ export const Filter = ({ allProducts }: FilterProps) => {
             <div
               key={id}
               className="filter-category"
-              onClick={() =>(setCurrPage(1),dispatch({ type: "CATEGORY", payload: el }))}
+              onClick={() => (
+                setCurrPage(1), dispatch({ type: "CATEGORY", payload: el })
+              )}
             >
               <input
                 type="checkbox"

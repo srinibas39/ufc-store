@@ -376,7 +376,18 @@
 .filter-container > * {
   margin-bottom: 0.5rem;
 }
-
+.filter-cap{
+  background-color: var(--secondary-color);
+  position: fixed;
+  bottom: 0px;
+  z-index: 1;
+  width: 100%;
+  height: 6%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
 /* product display */
 .display-container {
   width: 16rem;
@@ -544,6 +555,7 @@
   cursor: pointer;
 }
 
+
 @media (min-width: 60rem) {
   .card-img div {
     background-color: var(--secondary-color);
@@ -646,4 +658,6 @@
     flex-direction: column;
     justify-content: center;
   }
+
+ 
 }
