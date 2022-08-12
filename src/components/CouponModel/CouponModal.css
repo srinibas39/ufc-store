@@ -1,0 +1,37 @@
+
+.coupon-modal-container{
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.coupon-modal{
+    height: 10rem;
+    width: 15rem;
+    background-color: var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+}
+
+.coupon-modal div>*{
+    margin:0 5px;
+    cursor: pointer;
+}
+
+.cross{
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    cursor: pointer;
+}

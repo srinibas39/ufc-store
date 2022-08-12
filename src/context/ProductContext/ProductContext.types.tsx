@@ -1,3 +1,5 @@
+import React from "react";
+
 export type ProductProviderType={
     children:React.ReactNode
 }
@@ -65,5 +67,9 @@ export type ProductContextValueType={
     inDecCart:(token:string, id:string, type:string) => void,
     error:string,
     currPage:number,
-    setCurrPage:React.Dispatch<React.SetStateAction<number>>
+    setCurrPage:React.Dispatch<React.SetStateAction<number>>,
+    couponText:string,
+    setCouponText:React.Dispatch<React.SetStateAction<string>>,
+    couponMod:boolean,
+    setCouponMod:React.Dispatch<React.SetStateAction<boolean>>
   }

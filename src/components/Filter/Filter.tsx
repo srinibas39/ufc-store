@@ -5,9 +5,10 @@ import { FilterProps } from "./Filter.types";
 import "./Filter.css";
 import { useProduct } from "../../context/ProductContext/ProductContext";
 
-export const Filter = ({ allProducts,setFilterOpen }: FilterProps) => {
+export const Filter = ({ allProducts, setFilterOpen }: FilterProps) => {
   const [categories, setCategories] = useState([]);
   const { prodState, prodDispatch, setCurrPage } = useProduct();
+
 
   const stars = [
     "1 Star & Above",
@@ -19,7 +20,7 @@ export const Filter = ({ allProducts,setFilterOpen }: FilterProps) => {
 
   const { state, dispatch } = useFilter();
   const { mode } = useMode();
-
+ 
   useEffect(() => {
     if (prodState.category.length) {
       handleClear();
@@ -51,7 +52,11 @@ export const Filter = ({ allProducts,setFilterOpen }: FilterProps) => {
       <div className="filter-container" id={mode ? `dark` : ""}>
         <div className="filter">
           <h2>Filters</h2>
-          <span className="material-symbols-outlined" onClick={()=>setFilterOpen(false)} style={{cursor:"pointer"}}>
+          <span
+            className="material-symbols-outlined"
+            onClick={() => setFilterOpen(false)}
+            style={{ cursor: "pointer" }}
+          >
             keyboard_double_arrow_down
           </span>
           <p onClick={() => handleClear()}>Clear</p>
@@ -91,6 +96,7 @@ export const Filter = ({ allProducts,setFilterOpen }: FilterProps) => {
                 type="checkbox"
                 name="category"
                 id="filter-category"
+                onChange={() => {}}
                 checked={state.filterCategory.includes(el)}
               />
               <label htmlFor="#filter-category">{el}</label>
@@ -109,6 +115,7 @@ export const Filter = ({ allProducts,setFilterOpen }: FilterProps) => {
                 key={idx}
                 name="rating"
                 id="filter-rating"
+                onChange={() => {}}
                 checked={state.stars === el}
               />
               <label htmlFor="#filter-rating">{el}</label>
@@ -125,6 +132,7 @@ export const Filter = ({ allProducts,setFilterOpen }: FilterProps) => {
             type="radio"
             name="sort"
             id="filter-sort-low"
+            onChange={() => {}}
             checked={state.sort === "LOW_TO_HIGH"}
           />
           <label htmlFor="#filter-sort">Price-Low to High</label>
@@ -137,6 +145,7 @@ export const Filter = ({ allProducts,setFilterOpen }: FilterProps) => {
             type="radio"
             name="sort"
             id="filter-sort-high"
+            onChange={() => {}}
             checked={state.sort === "HIGH_TO_LOW"}
           />
           <label htmlFor="#filter-sort">Price-High to Low</label>

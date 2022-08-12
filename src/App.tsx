@@ -16,6 +16,7 @@ import { Error } from "./components/Error/Error";
 import { SearchPage } from "./pages/SearchPage";
 import { OrderSummaryPage } from "./pages/OrderSummaryPage";
 import { useMode } from "./context/ModeContext/ModeContext";
+import { CouponModal } from "./components/CouponModel/CouponModal";
 
 
 export const App = () => {
@@ -55,12 +56,13 @@ export const App = () => {
           <AddressPage />
         </RequiresAuth>
       } />
-      <Route path="search" element={<SearchPage />} />
-      <Route path="summary" element={
+      <Route path="/search" element={<SearchPage />} />
+      <Route path="/summary" element={
         <RequiresAuth token={token}>
           <OrderSummaryPage />
         </RequiresAuth>
       } />
+      <Route path="/modal" element={<CouponModal/>}/>
     </Routes>
   </div>
 }

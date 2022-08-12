@@ -338,7 +338,7 @@
   position: static;
 } */
 
-.filter-container{
+.filter-container {
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -376,7 +376,7 @@
 .filter-container > * {
   margin-bottom: 0.5rem;
 }
-.filter-cap{
+.filter-cap {
   background-color: var(--secondary-color);
   position: fixed;
   bottom: 0px;
@@ -504,6 +504,7 @@
 }
 /* WishList page */
 .wishList {
+  padding: 1rem;
   display: flex;
   justify-content: center;
   margin: 1rem;
@@ -551,10 +552,9 @@
 #dark-color {
   color: var(--footer-color);
 }
-.display-container{
+.display-container {
   cursor: pointer;
 }
-
 
 @media (min-width: 60rem) {
   .card-img div {
@@ -658,6 +658,4 @@
     flex-direction: column;
     justify-content: center;
   }
-
- 
 }

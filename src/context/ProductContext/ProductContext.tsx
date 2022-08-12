@@ -1,4 +1,4 @@
-import  {
+import {
   createContext,
   useContext,
   useState,
@@ -24,9 +24,10 @@ import {
 export const ProductContext = createContext({} as ProductContextValueType);
 
 export const ProductProvider = ({ children }: ProductProviderType) => {
-
   const [error, setError] = useState("");
   const [currPage, setCurrPage] = useState(1);
+  const [couponText, setCouponText] = useState("");
+  const [couponMod, setCouponMod] = useState(false);
 
   const productReducer = (
     state: productStateType,
@@ -78,7 +79,7 @@ export const ProductProvider = ({ children }: ProductProviderType) => {
           );
           prodDispatch({ type: "AUTO_SUGGEST", payload: suggestions });
         }
-      } catch (error:any) {
+      } catch (error: any) {
         setError(error);
       }
     })();
@@ -92,7 +93,7 @@ export const ProductProvider = ({ children }: ProductProviderType) => {
           payload: res.data.wishlist,
         });
       }
-    } catch (error:any) {
+    } catch (error: any) {
       setError(error);
     }
   };
@@ -105,7 +106,7 @@ export const ProductProvider = ({ children }: ProductProviderType) => {
           payload: res.data.wishlist,
         });
       }
-    } catch (error:any) {
+    } catch (error: any) {
       setError(error);
     }
   };
@@ -115,7 +116,7 @@ export const ProductProvider = ({ children }: ProductProviderType) => {
       if (resWishlist.status === 200 || resWishlist.status === 201) {
         return resWishlist.data.wishlist;
       }
-    } catch (error:any) {
+    } catch (error: any) {
       setError(error);
     }
   };
@@ -125,7 +126,7 @@ export const ProductProvider = ({ children }: ProductProviderType) => {
       if (res.status === 200 || res.status === 201) {
         prodDispatch({ type: "ADD_REMOVE_CART", payload: res.data.cart });
       }
-    } catch (error:any) {
+    } catch (error: any) {
       setError(error);
     }
   };
@@ -135,7 +136,7 @@ export const ProductProvider = ({ children }: ProductProviderType) => {
       if (res.status === 200 || res.status === 201) {
         prodDispatch({ type: "ADD_REMOVE_CART", payload: res.data.cart });
       }
-    } catch (error:any) {
+    } catch (error: any) {
       setError(error);
     }
   };
@@ -145,7 +146,7 @@ export const ProductProvider = ({ children }: ProductProviderType) => {
       if (res.status === 200 || res.status === 201) {
         return res.data.cart;
       }
-    } catch (error:any) {
+    } catch (error: any) {
       setError(error);
     }
   };
@@ -155,7 +156,7 @@ export const ProductProvider = ({ children }: ProductProviderType) => {
       if (res.status === 200 || res.status === 201) {
         prodDispatch({ type: "ADD_REMOVE_CART", payload: res.data.cart });
       }
-    } catch (error:any) {
+    } catch (error: any) {
       setError(error);
     }
   };
@@ -175,7 +176,11 @@ export const ProductProvider = ({ children }: ProductProviderType) => {
         inDecCart,
         error,
         currPage,
-        setCurrPage
+        setCurrPage,
+        couponText,
+        setCouponText,
+        couponMod,
+        setCouponMod,
       }}
     >
       {children}
