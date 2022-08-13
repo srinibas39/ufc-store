@@ -64,3 +64,7 @@
 .login button:hover {
   background-color: var(--primary-color2);
 }
+
+#no-margin{
+  margin:0px
+}

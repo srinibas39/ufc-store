@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useMode } from "../../context/ModeContext/ModeContext";
 import { useProduct } from "../../context/ProductContext/ProductContext";
 import { AddToCartButton } from "../AddToCartButton/AddToCartButton"
 import { AddToWishList } from "../AddToWishList/AddToWishList"
@@ -12,6 +13,7 @@ export const SearchResult = () => {
     const searchProducts = prodState.allProducts.filter((el) => el.title === prodState.selectedSuggestion);
 
     const navigate = useNavigate();
+    const { mode } = useMode();
 
     const discountPrice = (price: string, discount: string) => {
         const newD = Number(discount.split("%")[0]);
@@ -27,7 +29,7 @@ export const SearchResult = () => {
         <div className="search-item-container">
             {
                 searchProducts.length ? searchProducts.map((el, idx) => {
-                    return <div key={idx} className="item-container">
+                    return <div key={idx} className="item-container"id={mode ? `dark` : ""}>
                         <div className="item-img">
                             <img src={el.image} alt="loading" />
                             <AddToWishList el={el} />

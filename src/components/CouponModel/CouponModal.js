@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import { useMode } from "../../context/ModeContext/ModeContext";
 import { useProduct } from "../../context/ProductContext/ProductContext"
 import "./CouponModal.css"
 
 export const CouponModal = () => {
     const { setCouponText, couponMod, setCouponMod } = useProduct();
     const [couponModal, setCouponModal] = useState("");
+    const { mode } = useMode();
 
     useEffect(() => {
         setCouponText(couponModal)
@@ -18,9 +20,9 @@ export const CouponModal = () => {
 
     return <>
         {
-            couponMod && <div className="coupon-modal-container" onClick={() => setCouponMod(false)}>
+            couponMod && <div className="coupon-modal-container" onClick={() => setCouponMod(false)} >
 
-                <div className="coupon-modal" onClick={(e) => e.stopPropagation()}>
+                <div className="coupon-modal" onClick={(e) => e.stopPropagation()} id={mode ? `dark` : ""}>
                     <span className="material-symbols-outlined cross" onClick={() => setCouponMod(false)}>
                         close
                     </span>

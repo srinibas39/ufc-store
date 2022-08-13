@@ -6,6 +6,7 @@ import { useMode } from "../../context/ModeContext/ModeContext";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastMsg } from "../ToastMsg/ToastMsg";
+import * as EmailValidator from "email-validator";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -20,11 +21,19 @@ export const Login = () => {
   const location = useLocation();
 
   const handleSubmit = () => {
-    handleToast("logging you in");
-    setTimeout(() => {
-      handleLogin(form.email, form.password);
-      navigate("/products");
-    }, 1500);
+    if (form.email.trim() && form.password.trim()) {
+      if (EmailValidator.validate(form.email)) {
+        handleToast("logging you in");
+        setTimeout(() => {
+          handleLogin(form.email, form.password);
+          navigate("/products");
+        }, 1500);
+      } else {
+        handleToastError("Please check your email");
+      }
+    } else {
+      handleToastError("Fields cannot be empty");
+    }
   };
 
   useEffect(() => {
@@ -34,11 +43,11 @@ export const Login = () => {
     }
   }, [loggedIn]);
 
-  useEffect(()=>{
-    if(error){
-        handleToastError(error)
+  useEffect(() => {
+    if (error) {
+      handleToastError(error);
     }
-  },[error])
+  }, [error]);
 
   const handleGuest = () => {
     handleToast("logging you in");
@@ -46,7 +55,6 @@ export const Login = () => {
       handleLogin("srinibaskhuntia39@gmail.com", "srinibaskhuntia");
       navigate("/products");
     }, 1500);
-    handleLogin("srinibaskhuntia39@gmail.com", "srinibaskhuntia");
   };
 
   const handleToast = (msg: string) => {
@@ -98,19 +106,13 @@ export const Login = () => {
               onChange={(e) => setForm({ ...form, password: e.target.value })}
             />
           </div>
-          <div className="forgotP-container">
-            <div className="remember">
-              <input type="checkbox" name="remember-me" />
-              <label htmlFor="remember-me">Remember Me</label>
-            </div>
-            <a href="#">Forgot Your Password ?</a>
-          </div>
+
           <button className="btn-logins" onClick={() => handleSubmit()}>
             Login
           </button>
           <button onClick={() => handleGuest()}>Login as a Guest</button>
           <div className="create-new" onClick={() => navigate("/signup")}>
-            <p>Create new Account</p>
+            <p id="no-margin">Create new Account</p>
             <span className="material-icons"> arrow_forward_ios </span>
           </div>
         </div>

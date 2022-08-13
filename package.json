@@ -9,6 +9,7 @@
     "@types/react-dom": "^18.0.5",
     "axios": "^0.26.1",
     "dayjs": "^1.11.0",
+    "email-validator": "^2.0.4",
     "html2canvas": "^1.4.1",
     "jest-watch-typeahead": "^2.0.0",
     "jspdf": "^2.5.1",

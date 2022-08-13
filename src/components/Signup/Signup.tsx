@@ -6,17 +6,18 @@ import { useMode } from "../../context/ModeContext/ModeContext";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastMsg } from "../ToastMsg/ToastMsg";
+import * as EmailValidator from "email-validator";
 
 export const Signup = () => {
   const navigate = useNavigate();
   const { mode } = useMode();
   const { error } = useAuth();
 
-  useEffect(()=>{
-    if(error){
-      handleToastError(error)
+  useEffect(() => {
+    if (error) {
+      handleToastError(error);
     }
-  },[error])
+  }, [error]);
 
   const handleToastError = (msg: string) => {
     toast.error(<ToastMsg msg={msg} />, {
@@ -30,7 +31,6 @@ export const Signup = () => {
       theme: "colored",
     });
   };
-  
 
   const [form, setForm] = useState({
     firstName: "",
@@ -40,15 +40,29 @@ export const Signup = () => {
   });
   const { handleSignup } = useAuth();
   const handleSubmit = () => {
-    handleToast("signing you in");
-    setTimeout(
-      () =>{
-          handleSignup(form.firstName, form.lastName, form.email, form.password)
-          navigate("/products")
-
-      },
-      1500
-    );
+    if (
+      form.firstName.trim() &&
+      form.lastName.trim() &&
+      form.email.trim() &&
+      form.password.trim()
+    ) {
+      if (EmailValidator.validate(form.email)) {
+        handleToast("signing you in");
+        setTimeout(() => {
+          handleSignup(
+            form.firstName,
+            form.lastName,
+            form.email,
+            form.password
+          );
+          navigate("/products");
+        }, 1500);
+      } else {
+        handleToastError("Please check your email");
+      }
+    } else {
+      handleToastError("Fields cannot be empty");
+    }
   };
   const handleToast = (msg: string) => {
     toast.success(<ToastMsg msg={msg} />, {
@@ -60,6 +74,16 @@ export const Signup = () => {
       draggable: true,
       progress: undefined,
       theme: "colored",
+    });
+  };
+
+  const handleDummy = () => {
+    setForm({
+      ...form,
+      firstName: "Sriyasri",
+      lastName: "Khuntia",
+      email: "sriyasrikhuntia191@gmail.com",
+      password: "12345678",
     });
   };
 
@@ -104,12 +128,9 @@ export const Signup = () => {
               onChange={(e) => setForm({ ...form, password: e.target.value })}
             />
           </div>
-
-          <div className="terms">
-            <input type="checkbox" name="remember-me" />
-            <label htmlFor="terms">{`I accept all terms & conditions`}</label>
-          </div>
-
+          <button className="btn-register" onClick={handleDummy}>
+            Fill with dummy data
+          </button>
           <button className="btn-register" onClick={() => handleSubmit()}>
             Create New Account
           </button>

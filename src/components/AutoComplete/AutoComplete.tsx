@@ -70,7 +70,7 @@ export const AutoComplete = () => {
       {showSuggestion && input && (
         <>
           {filteredSuggestionList.length ? (
-            <ul className="auto-input">
+            <ul className="auto-input" id={mode ? `dark` : ""}>
               {filteredSuggestionList.map((el, idx) => {
                 return (
                   <li key={idx} onClick={(e) => handleClick(e)}>
